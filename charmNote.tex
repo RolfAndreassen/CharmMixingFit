@@ -1,0 +1,146 @@
+\documentclass[12pt,pdflatex]{article}
+\usepackage{color}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{colortbl} 
+\usepackage{graphicx}
+\usepackage{colordvi}
+\usepackage{amssymb}
+\usepackage{ulem} 
+\pagestyle{empty}
+%\textheight 510pt
+%\textwidth 683.4pt
+%\oddsidemargin 0pt
+%\evensidemargin 0pt
+%\topmargin -82pt
+\fboxrule0.05in
+\fboxsep0.1in
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\addtolength{\headheight}{2.5pt}
+\lfoot{\thepage\ of \pageref{lastpage}}
+%\cfoot{Rolf Andreassen}
+\rfoot{University of Cincinnati} 
+
+\newcommand{\mb}{\mathbf}
+\boldmath 
+
+\begin{document}
+\begin{center}
+{\LARGE Combining mixing results}
+\end{center}
+
+\section{Introduction}
+
+The new $D^0\to K\pi$ result from LHCb provides a credibly powerful constraint
+on mixing parameters. This note describes a fit in the style of HFAG to combine 
+our result with previous measurements. 
+
+\section{Chi-square calculation}
+
+The purpose of our fit is to combine the errors on several different
+measurements of the same parameters, where each measurement may have a
+different relation to the underlying true mixing parameters (eg measuring
+$(x'^2, y')$ in place of $(x, y)$), and where the numbers in each measurement
+may be strongly correlated. To do so we construct an overall $\chi^2$ for
+all the results:
+\begin{eqnarray}
+\chi^2 &=& \vec\epsilon^T \sigma^-1 \vec\epsilon
+\end{eqnarray}
+where the elements of $\vec\epsilon$ are given by
+$\epsilon_i = m_i - p_i$. Here $\vec m$ is the list of measured
+values from experiments, and $\vec p$ is a set of ``proposed'' values
+for the mixing parameters; we use MINUIT to vary $\vec p$ so as
+to minimise $\chi^2$. Finally, $\sigma$ is an $N\times N$ matrix where
+$N$ is the number of measurements, with $\sigma_{ij} = e_i c_{ij} e_j$.
+Here $e_i$ is the reported error on measurement $i$, and $c_{ij}$ is the
+correlation coefficient between measurements $i$ and $j$. 
+
+Notice that, if
+the measurements are uncorrelated, then $\sigma$ reduces to
+a diagonal matrix where the elements are the squares of the measurement
+errors. In this case $\chi^2$ is simply the sum $\sum\limits_{i}\epsilon_i^2/e_i^2$,
+that is, each element is the difference between a measurement
+and the corresponding prediction, divided by the error on the measurement,
+squared. In other words, if there are no correlations we recover
+the usual chi-square goodness-of-fit metric. 
+
+\section{Fit variants}
+
+In full generality, we wish to fit for no less than seven underlying
+related mixing parameters:
+\begin{itemize}
+\item $x$ and $y$, the normalised mass and width differences
+\item $R_D^+$ and $R_D^-$, the ratios of rates
+\item $\delta$, the strong phase difference
+\item $|q/p$ and $\phi$, the magnitude and phase of the indirect CP violation. 
+\end{itemize}
+The observed inputs, however, are not all direct measurements of these
+quantities. From $D^0\to K_S\pi\pi$ we get direct measurements of $x$, $y$, $|q/p|$ and $\phi$;
+$D^0\to K\pi$ results also yield $R_D^\pm$ directly, although sometimes quoted
+as $R_D &=& \frac{1}{2}(R_D^+ + R_D^-)$ and $A_D &=& \frac{R_D^+ - R_D^-}{R_D^+ + R_D^-}$.
+However, we also measure the derived parameters $x'^{2(\pm)}$, $y'^{(\pm)}$, $y_{CP}$, and $A_\Gamma$,
+defined as:
+\begin{eqnarray}
+x' &=& x\cos\delta + y\sin\delta \\
+y' &=& y\cos\delta - x\sin\delta \\
+x'^{\pm} &=& \left(\frac{1\pm A_M}{1\mp A_M}\right)^{1/4}\left(x'\cos\phi \pm y'\sin\phi\right) \\
+y'^{\pm} &=& \left(\frac{1\pm A_M}{1\mp A_M}\right)^{1/4}\left(y'\cos\phi \mp x'\sin\phi\right) \\
+2y_{CP}  &=& \left(|q/p|+|p/q|\right)y\cos\phi - \left(|q/p|-|p/q|\right)x\sin\phi\\
+2A_\Gamma  &=& \left(|q/p|-|p/q|\right)y\cos\phi - \left(|q/p|+|p/q|\right)x\sin\phi\\
+\end{eqnarray}
+where the helper quantity $A_M$ is given by
+\begin{eqnarray}
+A_M &=& \frac{|q/p|^2 - |p/q|^2}{|q/p|^2 + |p/q|^2}. 
+\end{eqnarray}
+
+To calculate $\vec\epsilon$, then, we take in a vector of proposed mixing parameters
+from MINUIT, calculate the resulting observable parameters from the equations above, 
+and subtract the actually observed numbers.
+
+In addition to the fully-general fit allowing all these variables to float, 
+there are some variants imposing different no-CPV constraints:
+\begin{itemize}
+\item No CP violation. In this fit we set $|q/p|=1$, $\phi=0$, and $R_D^+=R_D^-$, 
+and fit only for $x$, $y$, $\delta$, and $R_D$. 
+\item No direct CP violation. With no direct CP violation, $R_D^+=R_D^-$;
+in addition, the four parameters $x$, $y$, $\phi$ and $|q/p|$ are related 
+(in the limit that CPV is small) by the constraint
+\begin{eqnarray}
+|q/p| &=& 1 - \frac{y}{x}\tan\phi \\
+\phi &=& \frac{x}{y}\atan\left(\frac{1-|q/p|^2}{1+|q/p|^2}\right).
+\end{eqnarray}
+Thus we have two variants on this fit:
+\begin{description}
+\item[2a] Here we allow $|q/p|$ to float and calculate $\phi$
+from the constraint. 
+\item[2b] We allow $\phi$ to float and calculate $|q/p|$ from the constraint. 
+\end{description}
+\item All CPV allowed. As $A_D$ is quite
+small, the contribution of a new physics phase to $\phi$ is far below
+our current sensitivity; consequently the constraint above is a reasonable
+approximation. We therefore run three variants of the all-CPV-allowed 
+scenario:
+\begin{description}
+\item[3a] All parameters float, no constraint.
+\item[3b] $\phi$ is calculated from $|q/p|$ as above, rather than allowed to float.
+$R_D^+$ and $R_D^-$ are both free, as before.
+\item[3c] As in 3b, but with $|q/p|$ calculated from the constraint and $\phi$ allowed
+to float.
+\end{description}
+\end{itemize}
+
+In addition, we do a fit not allowing direct CP violation, in which the
+free parameters are $x_{12}$, $y_{12}$, and $\phi
+
+\section{Measurements used}
+
+
+
+\section{Results}
+
+\section{Conclusion}
+
+
+
+\label{lastpage}
+\end{document}

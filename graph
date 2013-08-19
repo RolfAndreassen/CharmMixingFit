@@ -1,0 +1,8 @@
+size  0.0 0.0 0.015 0.015
+xaxis 0 x
+yaxis 1 y
+directory testing
+# name1 name2 drawtype basecolour modcolour numContours
+include fitresult           none           special blue   0 2
+pointsPerContour 3600 
+endfile 
