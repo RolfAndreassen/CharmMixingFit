@@ -8,23 +8,23 @@
 #include "TRandom.h" 
 #include <algorithm> 
 #include <iomanip> 
-
-TMatrixTSym<matrixfp> MixingResult::sigma; 
-TMatrixTSym<matrixfp> MixingResult::invsigma; 
-std::vector<double> MixingResult::epsilon; 
-std::vector<MixingResult*> MixingResult::allResults; 
-std::map<std::string, MixingResult*> MixingResult::mapResults;
-bool MixingResult::initialised = false; 
-const int MixingResult::nParams = MixingResult::NUMSENSE; 
-TMinuit* MixingResult::minuit = new TMinuit(MixingResult::nParams);
-MixingResult* MixingResult::fitResult = new MixingResult("fitresult", "plainx", "none", 0, 0, 0, 0, 1);  
-bool* MixingResult::isSensitive = new bool[MixingResult::nParams]; 
-bool debugCorrelations = false; 
-bool printChisq = false; 
-bool use_hfag_convention = true; 
-bool special_invert = false; 
-MixingResult::CpvAllowed allowcpv = MixingResult::NOCPV; 
-bool fit_for_phi = true; 
+//The commenting that was missed
+TMatrixTSym<matrixfp> MixingResult::sigma; //this is the covariance matrix for inversion for the chi2
+TMatrixTSym<matrixfp> MixingResult::invsigma; //the inverse covariance matrix
+std::vector<double> MixingResult::epsilon; //the error for a single measurement for epsilon_i W_ij epsilon_j
+std::vector<MixingResult*> MixingResult::allResults; //All the results we load
+std::map<std::string, MixingResult*> MixingResult::mapResults;//map the results from a string to a mixing result
+bool MixingResult::initialised = false; //Class helper. See if the result is initialized
+const int MixingResult::nParams = MixingResult::NUMSENSE; //number of parameters
+TMinuit* MixingResult::minuit = new TMinuit(MixingResult::nParams);//initialize minuit
+MixingResult* MixingResult::fitResult = new MixingResult("fitresult", "plainx", "none", 0, 0, 0, 0, 1);  //plain initializer for the mixing fit
+bool* MixingResult::isSensitive = new bool[MixingResult::nParams]; //important. return sensitivity for an individual mixing result
+bool debugCorrelations = false; //do you want to debug correlations?
+bool printChisq = false; //do you want to print the chi2 at every step (dump this into a file, otherwise you'll be sorry)
+bool use_hfag_convention = true; //hfag convention for the sign of the primes?
+bool special_invert = false; //do rolf's inversion?
+MixingResult::CpvAllowed allowcpv = MixingResult::NOCPV; //the type of cpv allowed i.e. direct, indirect, etc
+bool fit_for_phi = true; //are we going to fit for phi?
 char strbuffer[1000]; 
 
 MixingResult::MixingResult (const char* n, 
@@ -35,7 +35,7 @@ MixingResult::MixingResult (const char* n,
 			    double syst,
 			    double modl,
 			    double coef) 
-  : name(n)
+  : name(n)//fill the shiz for the class
   , measurement(res)
   , error(0)
   , correlations()
@@ -67,13 +67,13 @@ MixingResult::MixingResult (const char* n,
    
 }
 
-MixingResult::~MixingResult () {
+MixingResult::~MixingResult () {//destructor
   mapResults[name] = 0; 
   std::vector<MixingResult*>::iterator me = std::find(allResults.begin(), allResults.end(), this); 
   if (me != allResults.end()) allResults.erase(me); 
 }
 
-void MixingResult::randomise () {
+void MixingResult::randomise () {//randomizer
   static TRandom donram(42); 
   std::cout << "Randomising " << getName() << "; old value "
 	    << measurement;
@@ -82,7 +82,7 @@ void MixingResult::randomise () {
   std::cout << " delta " << delta << " new value " << measurement << std::endl; 
 }
 
-double getMixX (double x12, double y12, double phi12) {
+double getMixX (double x12, double y12, double phi12) {//
   x12 *= x12;
   y12 *= y12; 
 
@@ -767,9 +767,58 @@ int main (int argc, char** argv) {
   maxVal[7]   = 1.25; 
   parName[7]  = "qoverp"; 
   
+  /*
+  par[0] = 4.81799e-03;            
+  stepSize[0] = 0.0001;       
+  minVal[0] = -0.1;         
+  maxVal[0] = 0.1;
+  parName[0] = "x";
 
+  par[1] = 6.86772e-03;          
+  stepSize[1] = 0.0001;     
+  minVal[1] = -0.1;         
+  maxVal[1] = 0.1;
+  parName[1] = "y";
+
+  par[2]      = 3.24594e-01;       
+  stepSize[2] = 0.01;      
+  minVal[2]   = -1.6;      
+  maxVal[2]   = 2.6;
+  parName[2]  = "deltaKpi";
+
+  par[3]      = 3.90000e-01; 
+  stepSize[3] = 0.01;
+  minVal[3]   = -3;
+  maxVal[3]   = 2;
+  parName[3]  = "deltaKpipi0";
+
+  par[4]      = -6.23232e-02; 
+  stepSize[4] = 0.001;
+  minVal[4]   = -3.15;
+  maxVal[4]   = 3.15;
+  parName[4]  = "phi"; 
+
+  par[5]      = 3.56763e-03; 
+  stepSize[5] = 0.0001;
+  minVal[5]   = -0.01;
+  maxVal[5]   = 0.01;
+  parName[5]  = "rsubdm";
+
+  par[6]      = 3.54714e-03; 
+  stepSize[6] = 0.0001;
+  minVal[6]   = -0.01;
+  maxVal[6]   = 0.01; 
+  parName[6]  = "rsubdp"; 
+
+  par[7]      = 9.51249e-01; 
+  stepSize[7] = 0.01;
+  minVal[7]   = 0.75;
+  maxVal[7]   = 1.25; 
+  parName[7]  = "qoverp"; 
+  */
   for (int i = 0; i < MixingResult::nParams; i++) {
     MixingResult::isSensitive[i] = false; 
+
     for (MixingResult::ResultIterator r = MixingResult::begin(); r != MixingResult::end(); ++r) {
       if (!(*r)->isActive()) continue; 
       if (!(*r)->isSensitiveTo(i)) continue;
@@ -780,9 +829,10 @@ int main (int argc, char** argv) {
   }
 
   //MixingResult::isSensitive[2] = false; 
-
+  
   for (int i = 0; i < MixingResult::nParams; i++) {
     MixingResult::minuit->DefineParameter(i, parName[i].c_str(), par[i], stepSize[i], minVal[i], maxVal[i]);
+    //MixingResult::minuit->FixParameter(i);
     if (!MixingResult::isSensitive[i]) MixingResult::minuit->FixParameter(i); 
   }
 
@@ -812,7 +862,7 @@ int main (int argc, char** argv) {
     MixingResult::minuit->GetParameter(i, fitpar[i], fiterr[i]);
   }  
 
-  printChisq = true;
+  printChisq = false;
   MixChisqFcn(npars, 0, chisq, fitpar, 4);
 
   //#define DEBUGCORR 1
@@ -860,8 +910,10 @@ int main (int argc, char** argv) {
       char name[1000];
       int col; 
       grpOpts >> name;
+      std::cout<<"name = "<<name<<std::endl;//ad 8/18/13
       std::string sname(name); 
       MixingResult* toDraw = MixingResult::getByName(sname); 
+      std::cout<<"toDraw->getName() = "<<toDraw->getName()<<std::endl;//AD 8/18/13
       if (!toDraw) {
 	std::cout << "Could not find result " << name << std::endl;
 	assert(toDraw); 
@@ -869,16 +921,21 @@ int main (int argc, char** argv) {
 
       prevOpt = new DrawOptions();
       grpOpts >> name;
+      std::cout<<"name = "<<name<<std::endl;//ad 8/18/13
       MixingResult* second = MixingResult::getByName(name);
+      //std::cout<<"second->getName() = "<<second->getName()<<std::endl;//AD 8/18/13
       if (second) prevOpt->drawWith.push_back(second);
       grpOpts >> name;
       prevOpt->drawType = DrawOptions::getDrawType(name); 
       grpOpts >> name >> col >> prevOpt->numContours;
+      std::cout<<"prevOpt->numContours = "<<prevOpt->numContours<<std::endl;//ad 8/18/13
       prevOpt->setColor(name, col); 
       drawer->addResult(toDraw, prevOpt); 
+      
     }
     else if (lineType == "xaxis") {
       grpOpts >> MixDrawer::graphicsXIndex >> drawer->xaxisTitle;
+      std::cout<<"MixDrawer::graphicsXIndex = "<<MixDrawer::graphicsXIndex<<std::endl;//ad 8/19/13
     }
     else if (lineType == "yaxis") {
       grpOpts >> MixDrawer::graphicsYIndex >> drawer->yaxisTitle; 
@@ -892,6 +949,7 @@ int main (int argc, char** argv) {
       grpOpts >> name; 
       MixingResult* second = MixingResult::getByName(name);
       if (second) prevOpt->drawWith.push_back(second);
+      //std::cout<<"second->getName() = "<<second->getName()<<std::endl;//ad 8/18/13
     }
     else if (lineType == "pointsPerContour") {
       grpOpts >> MixDrawer::pointsPerContour; 

@@ -11,9 +11,12 @@
 #include "TGaxis.h"
 #include "TLine.h"
 #include "TLegend.h"
+#include "TLatex.h"
+#include "TMath.h"
+#include "TPaveText.h"
 #include <cmath> 
 
-int MixDrawer::pointsPerContour = 36; 
+int MixDrawer::pointsPerContour = 3600; 
 int MixDrawer::graphicsXIndex = 0; 
 int MixDrawer::graphicsYIndex = 1; 
 int MixDrawer::ymult = 1000; 
@@ -30,6 +33,145 @@ MixDrawer::MixDrawer ()
 
 
 void MixDrawer::draw () {
+  //gROOT->ProcessLine(".L ./lhcb_style.cc");
+  /*
+  // Use times new roman, precision 2 
+  Int_t lhcbFont        = 132;  // Old LHCb style: 62;
+  // Line thickness
+  Double_t lhcbWidth    = 2.00; // Old LHCb style: 3.00;
+  // Text size
+  Double_t lhcbTSize    = 0.06; 
+  
+  // use plain black on white colors
+  gROOT->SetStyle("Plain"); 
+  TStyle *lhcbStyle= new TStyle("lhcbStyle","LHCb plots style");
+  
+  //lhcbStyle->SetErrorX(0); //  don't suppress the error bar along X
+
+  lhcbStyle->SetFillColor(1);
+  lhcbStyle->SetFillStyle(1001);   // solid
+  lhcbStyle->SetFrameFillColor(0);
+  lhcbStyle->SetFrameBorderMode(0);
+  lhcbStyle->SetPadBorderMode(0);
+  lhcbStyle->SetPadColor(0);
+  lhcbStyle->SetCanvasBorderMode(0);
+  lhcbStyle->SetCanvasColor(0);
+  lhcbStyle->SetStatColor(0);
+  lhcbStyle->SetLegendBorderSize(0);
+
+  // If you want the usual gradient palette (blue -> red)
+  lhcbStyle->SetPalette(1);
+  // If you want colors that correspond to gray scale in black and white:
+  int colors[8] = {0,5,7,3,6,2,4,1};
+  lhcbStyle->SetPalette(8,colors);
+
+  // set the paper & margin sizes
+  lhcbStyle->SetPaperSize(20,26);
+  lhcbStyle->SetPadTopMargin(0.05);
+  lhcbStyle->SetPadRightMargin(0.05); // increase for colz plots
+  lhcbStyle->SetPadBottomMargin(0.16);
+  lhcbStyle->SetPadLeftMargin(0.14);
+  
+  // use large fonts
+  lhcbStyle->SetTextFont(lhcbFont);
+  lhcbStyle->SetTextSize(lhcbTSize);
+  lhcbStyle->SetLabelFont(lhcbFont,"x");
+  lhcbStyle->SetLabelFont(lhcbFont,"y");
+  lhcbStyle->SetLabelFont(lhcbFont,"z");
+  lhcbStyle->SetLabelSize(lhcbTSize,"x");
+  lhcbStyle->SetLabelSize(lhcbTSize,"y");
+  lhcbStyle->SetLabelSize(lhcbTSize,"z");
+  lhcbStyle->SetTitleFont(lhcbFont);
+  lhcbStyle->SetTitleFont(lhcbFont,"x");
+  lhcbStyle->SetTitleFont(lhcbFont,"y");
+  lhcbStyle->SetTitleFont(lhcbFont,"z");
+  lhcbStyle->SetTitleSize(1.2*lhcbTSize,"x");
+  lhcbStyle->SetTitleSize(1.2*lhcbTSize,"y");
+  lhcbStyle->SetTitleSize(1.2*lhcbTSize,"z");
+
+  // use medium bold lines and thick markers
+  lhcbStyle->SetLineWidth(lhcbWidth);
+  lhcbStyle->SetFrameLineWidth(lhcbWidth);
+  lhcbStyle->SetHistLineWidth(lhcbWidth);
+  lhcbStyle->SetFuncWidth(lhcbWidth);
+  lhcbStyle->SetGridWidth(lhcbWidth);
+  lhcbStyle->SetLineStyleString(2,"[12 12]"); // postscript dashes
+  lhcbStyle->SetMarkerStyle(20);
+  lhcbStyle->SetMarkerSize(1.0);
+
+  // label offsets
+  lhcbStyle->SetLabelOffset(0.010,"X");
+  lhcbStyle->SetLabelOffset(0.010,"Y");
+
+  // by default, do not display histogram decorations:
+  lhcbStyle->SetOptStat(0);  
+  //lhcbStyle->SetOptStat("emr");  // show only nent -e , mean - m , rms -r
+  // full opts at http://root.cern.ch/root/html/TStyle.html#TStyle:SetOptStat
+  lhcbStyle->SetStatFormat("6.3g"); // specified as c printf options
+  lhcbStyle->SetOptTitle(0);
+  lhcbStyle->SetOptFit(0);
+  //lhcbStyle->SetOptFit(1011); // order is probability, Chi2, errors, parameters
+  //titles
+  lhcbStyle->SetTitleOffset(0.95,"X");
+  lhcbStyle->SetTitleOffset(0.95,"Y");
+  lhcbStyle->SetTitleOffset(1.2,"Z");
+  lhcbStyle->SetTitleFillColor(0);
+  lhcbStyle->SetTitleStyle(0);
+  lhcbStyle->SetTitleBorderSize(0);
+  lhcbStyle->SetTitleFont(lhcbFont,"title");
+  lhcbStyle->SetTitleX(0.0);
+  lhcbStyle->SetTitleY(1.0); 
+  lhcbStyle->SetTitleW(1.0);
+  lhcbStyle->SetTitleH(0.05);
+  
+  // look of the statistics box:
+  lhcbStyle->SetStatBorderSize(0);
+  lhcbStyle->SetStatFont(lhcbFont);
+  lhcbStyle->SetStatFontSize(0.05);
+  lhcbStyle->SetStatX(0.9);
+  lhcbStyle->SetStatY(0.9);
+  lhcbStyle->SetStatW(0.25);
+  lhcbStyle->SetStatH(0.15);
+
+  // put tick marks on top and RHS of plots
+  lhcbStyle->SetPadTickX(1);
+  lhcbStyle->SetPadTickY(1);
+
+  // histogram divisions: only 5 in x to avoid label overlaps
+  lhcbStyle->SetNdivisions(505,"x");
+  lhcbStyle->SetNdivisions(510,"y");
+  
+  gROOT->SetStyle("lhcbStyle");
+  gROOT->ForceStyle();
+
+  // add LHCb label
+  TPaveText *lhcbName = new TPaveText(gStyle->GetPadLeftMargin() + 0.05,
+                           0.87 - gStyle->GetPadTopMargin(),
+                           gStyle->GetPadLeftMargin() + 0.20,
+                           0.95 - gStyle->GetPadTopMargin(),
+                           "BRNDC");
+  lhcbName->AddText("LHCb");
+  lhcbName->SetFillColor(0);
+  lhcbName->SetTextAlign(12);
+  lhcbName->SetBorderSize(0);
+
+  TText *lhcbLabel = new TText();
+  lhcbLabel->SetTextFont(lhcbFont);
+  lhcbLabel->SetTextColor(1);
+  lhcbLabel->SetTextSize(lhcbTSize);
+  lhcbLabel->SetTextAlign(12);
+
+  TLatex *lhcbLatex = new TLatex();
+  lhcbLatex->SetTextFont(lhcbFont);
+  lhcbLatex->SetTextColor(1);
+  lhcbLatex->SetTextSize(lhcbTSize);
+  lhcbLatex->SetTextAlign(12);
+
+  std::cout << "-------------------------" << std::endl;  
+  std::cout << "Set LHCb Style - Feb 2012" << std::endl;
+  std::cout << "-------------------------" << std::endl;  
+  */
+  
   gStyle->SetCanvasBorderMode(0);
   gStyle->SetCanvasColor(10);
   gStyle->SetFrameFillColor(10);
@@ -73,10 +215,12 @@ void MixDrawer::draw () {
   YMIN = gr23->GetYaxis()->GetXmin();
   YMAX = gr23->GetYaxis()->GetXmax();
   gr23->Draw("alf");
+  
   TF1* multXBy1k = new TF1("multXBy1k", "1000*x", xmin*1000, xmax*1000);
   TF1* multYBy1k = new TF1("multYBy1k", "1000*x", ymin*ymult, ymax*ymult);
   TGaxis* xaxis = new TGaxis(xmin,ymin,xmax,ymin,"multXBy1k",510,"+");
   TGaxis* yaxis = new TGaxis(xmin,ymin,xmin,ymax,"multYBy1k",510,"-");
+  
   xaxis->SetTitle((xaxisTitle+ " #times 10^{3}").c_str()); 
   xaxis->CenterTitle();
   xaxis->SetTitleSize(0.06);
@@ -94,6 +238,7 @@ void MixDrawer::draw () {
   gr23->GetYaxis()->SetLabelColor(kWhite);
   gr23->GetYaxis()->SetTitleColor(kWhite);
   gr23->GetYaxis()->SetAxisColor(kWhite);
+
   xaxis->Draw();
   yaxis->Draw();
   foo->SaveAs((directory + "/axisplot.png").c_str()); 
@@ -108,8 +253,8 @@ void MixDrawer::draw () {
   if (drawmap[MixingResult::fitResult]) {
     if (MixingResult::isSensitive[MixingResult::WYE]) {
       if (MixingResult::isSensitive[MixingResult::EKS]) {
-	
-	drawEllipse(drawmap[MixingResult::fitResult], foo); 
+	drawEllipse3(drawmap[MixingResult::fitResult], foo); 
+	//drawEllipse(drawmap[MixingResult::fitResult], foo); 
       }
       else {
 	MixingResult::minuit->GetParameter(MixingResult::WYE, MixingResult::fitResult->measurement, MixingResult::fitResult->error);
@@ -119,7 +264,7 @@ void MixDrawer::draw () {
   }
 
   foo->SaveAs((directory + "/finalplot.png").c_str()); 
-  foo->SaveAs((directory + "/finalplot.eps").c_str()); 
+  //foo->SaveAs((directory + "/finalplot.pdf").c_str()); 
   delete foo; 
 }
 
@@ -177,7 +322,7 @@ void MixDrawer::drawAnnulus (MixingResult* dat, DrawOptions* dis, TCanvas* foo) 
   TMinuit* temp = MixingResult::minuit;
   MixingResult::minuit = annuMin; 
 
-  double anglestep = 0.01; 
+  double anglestep = 0.001; 
   for (double delta = 0; delta < 6.281; delta += anglestep) {
     // For this value of delta, what (x, y) are compatible with
     // the measured x', y'? 
@@ -318,7 +463,8 @@ void MixDrawer::drawResult (MixingResult* dat, DrawOptions* dis, TCanvas* foo) {
   case DrawOptions::Ellipse:
     {
       assert(dis->drawWith.size() > 0); 
-      std::pair<TGraph*, TGraph*> ells = drawEllipse(dis, foo); 
+      //std::pair<TGraph*, TGraph*> ells = drawEllipse(dis, foo); 
+      std::vector<TGraph*> ells = drawEllipse3(dis, foo); 
     }
     break; 
   case DrawOptions::Ybar:
@@ -400,8 +546,10 @@ void MixDrawer::findPoint (TGraph* ret, int idx, double angle, double errorDef) 
 
 TGraph* MixDrawer::getEllipse (double errorDef) {
   MixingResult::minuit->SetErrorDef(errorDef);
+  std::cout << "Getting ellipse with " << graphicsXIndex << " " << graphicsYIndex << std::endl; 
   TGraph* ret = (TGraph*) MixingResult::minuit->Contour(pointsPerContour, graphicsXIndex, graphicsYIndex);
-
+  
+  /*
   if ((!ret) || (ret->GetN() < pointsPerContour)) {
     if (ret) delete ret;
     ret = new TGraph(pointsPerContour); 
@@ -411,6 +559,9 @@ TGraph* MixDrawer::getEllipse (double errorDef) {
       findPoint(ret, i, angle, errorDef);
     }
   }
+  */
+  
+
 
   return ret; 
 }
@@ -434,7 +585,7 @@ std::pair<TGraph*, TGraph*> MixDrawer::drawEllipse (DrawOptions* dis, TCanvas* f
   */
   MixingResult::initialised = false; 
 
-  //std::cout << "Drawing " << dis->numContours << " ellipses\n";
+  std::cout << "Drawing " << dis->numContours << " ellipses\n";
 
   //  In 2 dimensions, an error ellipse nominally
   //  providing 68.27% coverage [equivalent to
@@ -451,6 +602,57 @@ std::pair<TGraph*, TGraph*> MixDrawer::drawEllipse (DrawOptions* dis, TCanvas* f
   }
   if (ret.first) {
     ret.first->Draw("if");
+    //std::cout << "Inner ellipse drawn\n"; 
+  }
+
+  MixingResult::minuit->SetErrorDef(1.00);
+  return ret; 
+}
+
+std::vector<TGraph*> MixDrawer::drawEllipse3 (DrawOptions* dis, TCanvas* foo) {
+  std::vector<TGraph*> ret(3); 
+
+  /*
+  for (int i = 2; i < MixingResult::NUMSENSE; ++i) {
+    bool sensitive = false; 
+    for (MixingResult::ResultIterator m = MixingResult::begin(); m != MixingResult::end(); ++m) {
+      if (!(*m)->isActive()) continue;
+      if (!(*m)->isSensitiveTo(i)) continue;
+      sensitive = true;
+      break;
+    }
+    if (!sensitive) MixingResult::minuit->FixParameter(i);
+  }
+  MixingResult::minuit->FixParameter(2);
+  MixingResult::minuit->FixParameter(3);
+  */
+  MixingResult::initialised = false; 
+
+  std::cout << "Drawing " << dis->numContours << " ellipses\n";
+
+  //  In 2 dimensions, an error ellipse nominally
+  //  providing 68.27% coverage [equivalent to
+  //  1 sigma in 1 dimension] has chisq=2.30
+  MixingResult::minuit->Migrad(); 
+  if(dis->numContours>2){
+    ret[2] = getEllipse(11.83);//3 sigma in 2d
+    if (ret[2]) ret[2]->SetFillColor(kRed);
+  }
+  ret[1] = getEllipse(6.18);
+  if (ret[1]) ret[1]->SetFillColor(kOrange);
+  ret[0] = getEllipse(2.30);
+  if (ret[0]) ret[0]->SetFillColor(dis->colour);
+
+  if((dis->numContours>2) &&(ret[2])&&(ret[1])){
+    ret[2]->Draw("if");
+    //std::cout<< "3sigma elipse drawn"<<std::endl;
+  }
+    if ((dis->numContours > 1) && (ret[1])) {
+      ret[1]->Draw("if");
+    //std::cout << "Outer ellipse drawn\n"; 
+  }
+    if (ret[0]) {
+      ret[0]->Draw("if");
     //std::cout << "Inner ellipse drawn\n"; 
   }
 
