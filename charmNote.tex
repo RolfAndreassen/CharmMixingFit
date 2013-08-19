@@ -6,6 +6,7 @@
 \usepackage{colordvi}
 \usepackage{amssymb}
 \usepackage{ulem} 
+\usepackage{hyperref}
 \pagestyle{empty}
 %\textheight 510pt
 %\textwidth 683.4pt
@@ -44,7 +45,7 @@ $(x'^2, y')$ in place of $(x, y)$), and where the numbers in each measurement
 may be strongly correlated. To do so we construct an overall $\chi^2$ for
 all the results:
 \begin{eqnarray}
-\chi^2 &=& \vec\epsilon^T \sigma^-1 \vec\epsilon
+\chi^2 &=& \vec\epsilon^T \sigma^{-1} \vec\epsilon
 \end{eqnarray}
 where the elements of $\vec\epsilon$ are given by
 $\epsilon_i = m_i - p_i$. Here $\vec m$ is the list of measured
@@ -130,7 +131,8 @@ to float.
 \end{itemize}
 
 In addition, we do a fit not allowing direct CP violation, in which the
-free parameters are $x_{12}$, $y_{12}$, and $\phi$
+free parameters are the underlying\footnote{See Kagan and Sokoloff, \url{http://arxiv.org/abs/0907.3917}.}
+$x_{12}$, $y_{12}$, and $\phi_{12}$. 
 
 \section{Measurements used}
 
