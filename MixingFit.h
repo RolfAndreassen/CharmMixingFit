@@ -34,7 +34,7 @@ public:
   typedef std::vector<MixingResult*>::iterator ResultIterator; 
   enum ResultType {PLAINX, PLAINY, YCP, AGAMMA, XPRIME, XPRIME_P, XPRIME_M, YPRIME, YPRIME_P, YPRIME_M, COSANGLE, SINANGLE, ANGLE, NODCPV, RDM, RDP, RD, AD, QP, PHI, NUMTYPES}; 
   enum PrimeType {KPI, KPIPI0, QOVERP, NOPRIME, NUMPRIMES};
-  enum Sensitivity {EKS = 0, WYE, DELTAKPI, DELTAKPIPI, PHI_12, RSUBDM, RSUBDP, ARGQOVERP, NUMSENSE}; 
+  enum Sensitivity {EKS = 0, WYE, DELTAKPI, DELTAKPIPI, PHI_12, RSUBDM, RSUBDP, MAGQOVERP, NUMSENSE}; 
   enum CpvAllowed {NOCPV = 0, INDIRECT_CPV, ALL_CPV, NUMCPV}; 
   
   std::string getName () const {return name;} 

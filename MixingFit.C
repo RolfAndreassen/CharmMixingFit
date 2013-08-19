@@ -25,6 +25,8 @@ bool use_hfag_convention = true; //hfag convention for the sign of the primes?
 bool special_invert = false; //do rolf's inversion?
 MixingResult::CpvAllowed allowcpv = MixingResult::NOCPV; //the type of cpv allowed i.e. direct, indirect, etc
 bool fit_for_phi = true; //are we going to fit for phi?
+bool special_alex_fit = false; // If true, we fit for x_12, y_12, phi_12. 
+bool skipGraphics = false; 
 char strbuffer[1000]; 
 
 MixingResult::MixingResult (const char* n, 
@@ -137,16 +139,30 @@ double MixingResult::calcEpsilon (double x,
 				  double rsubdp,
 				  double qoverp) {
 
-  if (INDIRECT_CPV == allowcpv) {
-    if (fit_for_phi) {
-      qoverp = 1 - (y/x)*tan(phi);
-      // This is eqn 20 of Grossman/Nir/Perez. It assumes small CPV, ie |sin(phi_12)|<<1.
-      // NB! This function's 'phi' is not the same as 'phi_12'! 
-    }
-    else {
-      if (fabs(x) > fabs(y)*1e12) phi = sign(x)*sign(y)*M_PI_2; 
-      // ie, y approaches zero, tan phi approaches infinity, phi is pi/2.
-      else phi = atan(((1-qoverp*qoverp)/(1+qoverp*qoverp))*(x/y)); 
+  if (special_alex_fit) {
+    // In this case, interpret x, y, phi as underlying x_12, y_12, phi_12,
+    // and calculate x, y, phi, q/p from them.
+    double mixx = getMixX(x, y, phi);
+    double mixy = getMixY(x, y, phi); 
+    double qovp = getQoverP(x, y, phi);
+    double rphi = getPhi(x, y, phi);
+    x = mixx;
+    y = mixy;
+    qoverp = qovp;
+    phi = rphi; 
+  }
+  else {
+    if (INDIRECT_CPV == allowcpv) {
+      if (fit_for_phi) {
+	qoverp = 1 - (y/x)*tan(phi);
+	// This is eqn 20 of Grossman/Nir/Perez. It assumes small CPV, ie |sin(phi_12)|<<1.
+	// NB! This function's 'phi' is not the same as 'phi_12'! 
+      }
+      else {
+	if (fabs(x) > fabs(y)*1e12) phi = sign(x)*sign(y)*M_PI_2; 
+	// ie, y approaches zero, tan phi approaches infinity, phi is pi/2.
+	else phi = atan(((1-qoverp*qoverp)/(1+qoverp*qoverp))*(x/y)); 
+      }
     }
   }
 
@@ -501,9 +517,10 @@ bool MixingResult::isSensitiveTo (int param) const {
   case RSUBDM:
     if (RD == myType) return true; 
     return (RDM == myType);    
-  case ARGQOVERP:
+  case MAGQOVERP:
     if (NOCPV == allowcpv) return false; 
     if ((INDIRECT_CPV == allowcpv) && (fit_for_phi)) return false; 
+    if (special_alex_fit)   return false; 
     if (AGAMMA   == myType) return true;
     if (YCP      == myType) return true;
     if (YPRIME_P == myType) return true;
@@ -687,6 +704,8 @@ int main (int argc, char** argv) {
     else if (lineType == "allow_all_cpv") allowcpv = MixingResult::ALL_CPV; 
     else if (lineType == "use_hfag_convention") use_hfag_convention = true;
     else if (lineType == "fit_for_qp") fit_for_phi = false; 
+    else if (lineType == "special_alex_fit") special_alex_fit = true; 
+    else if (lineType == "skipGraphics") skipGraphics = true; 
     else if (lineType == "use_block_diag") {
       std::string name;
       fitOpts >> name;
@@ -729,12 +748,12 @@ int main (int argc, char** argv) {
   stepSize[0] = 0.0001;       
   minVal[0] = -0.1;         
   maxVal[0] = 0.1;
-  parName[0] = "x";
+  parName[0] = special_alex_fit ? "x_12" : "x";
   par[1] = 0.0070;          
   stepSize[1] = 0.0001;     
   minVal[1] = -0.1;         
   maxVal[1] = 0.1;
-  parName[1] = "y";
+  parName[1] = special_alex_fit ? "y_12" : "y";
   par[2]      = 0.3;       
   stepSize[2] = 0.01;      
   minVal[2]   = -1.6;      
@@ -749,7 +768,7 @@ int main (int argc, char** argv) {
   stepSize[4] = 0.001;
   minVal[4]   = -3.15;
   maxVal[4]   = 3.15;
-  parName[4]  = "phi"; 
+  parName[4]  = special_alex_fit ? "phi_12" : "phi"; 
   par[5]      = 0.0034; 
   stepSize[5] = 0.0001;
   minVal[5]   = -0.01;
@@ -885,6 +904,8 @@ int main (int argc, char** argv) {
   }
 
 #endif 
+
+  if (skipGraphics) return 0; 
 
 #define DRAWSTUFF 1
 #ifdef DRAWSTUFF
