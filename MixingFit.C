@@ -702,7 +702,10 @@ int main (int argc, char** argv) {
     else if (lineType == "silent") {
       MixingResult::minuit->SetPrintLevel(-1); 
     }
-    else if (lineType == "allow_indirect_cpv") allowcpv = MixingResult::INDIRECT_CPV; 
+    else if (lineType == "allow_indirect_cpv") {
+      allowcpv = MixingResult::INDIRECT_CPV; 
+      fit_for_phi = QP_FREE; 
+    }
     else if (lineType == "allow_all_cpv") allowcpv = MixingResult::ALL_CPV; 
     else if (lineType == "use_hfag_convention") use_hfag_convention = true;
     else if (lineType == "fit_for_qp") fit_for_phi = QP_FREE;
