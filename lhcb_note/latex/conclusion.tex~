@@ -1,8 +1,0 @@
-\section{Conclusion}
-\label{sec:Conclusion}
-The tool TupleToolExtraMu allows a way to explore the backgrounds contributing 
-to the decay $B\to \mu D^* X, D^*\to D^0\pi_S,D^0\to K\pi$ due to misidentification or 
-mis-association of muons in the event. It has proven to be a very useful data-driven 
-tool which allowed identification of backgrounds as well as determination of background 
-shapes. While agreement with Monte Carlo is only partial, the usefulness in exploring 
-the LHCb data via data-driven methods is easily seen.
