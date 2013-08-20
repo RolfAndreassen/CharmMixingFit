@@ -1,0 +1,123 @@
+# Results have these parameters, in order:
+# name        : Used for internal reference and in correlations, eg hfag_ycp
+# result_type : Kind of measurement, eg y_CP, plainx, cosangle 
+# prime_type  : Refers to the type of delta involved, eg kpi, kpipi
+# value       : The actual measurement
+# stat        : Statistical error
+# syst        : Systematic error
+# modl        : Model error
+# coefficient : Used when the result is an allowed band; denotes the slope of the band
+#
+result hfag_ycp           ycp none 0.008660 0.001550 0.0000 0.0000 1.00
+result hfag_agamma        agamma none -0.00022 0.00161 0.0000 0.0000 1.00
+#
+result lhcb_agamma_kk     agamma none -0.00035 0.00062 0.00012 0.0000 1.00
+result lhcb_agamma_pipi   agamma none 0.00033 0.00106 0.00014 0.0000 1.00
+#
+result lhcb_xp2_p           xprimep kpi  0.000055 0.000042 0.000026 0.000 1.00
+result lhcb_yprime_p        yprimep kpi  0.004810 0.000850 0.000530 0.000 1.00
+result lhcb_rd_p            rsubdp  none 0.003568 0.000058 0.000033 0.000 1.00
+result lhcb_xp2_m           xprimem kpi  0.000055 0.000042 0.000026 0.000 1.00
+result lhcb_yprime_m        yprimem kpi  0.004810 0.000850 0.000530 0.000 1.00
+result lhcb_rd_m            rsubdm  none 0.003568 0.000058 0.000033 0.000 1.00
+#
+result belle_kspipi_x      plainx none 0.0081 0.0030 0.0015 0.000 1.00
+result belle_kspipi_y      plainy none 0.0037 0.0025 0.0012 0.000 1.00
+result belle_qoverp        qoverp none 0.86   0.30   0.10   0.000 1.00
+result belle_phi           phi    none -0.244 0.31   0.09   0.000 1.00
+#
+result cleo_cosd          cosangle kpi  0.81 0.200 0.060 0.000 1.00
+result cleo_sind          sinangle kpi -0.01 0.410 0.040 0.000 1.00
+result cleo_rd            rsubd    none  0.00533 0.00107 0.00045 0.0 1.0
+result cleo_xp2           xprime   kpi   0.0006 0.0023 0.0011 0.0 1.0
+result cleo_yprime        yprime   kpi   0.042  0.02   0.01   0.0 1.0
+#
+result cdf_rd             rsubd  none 0.00304 0.00055 0.0 0.0 1.0 
+result cdf_xp2            xprime kpi -0.00012 0.00035 0.0 0.0 1.0
+result cdf_yprime         yprime kpi  0.0085  0.0076  0.0 0.0 1.0
+#
+result belle_rd_m         rsubdm  none 0.00360 0.0002 0.0 0.0 1.0
+result belle_xp2_m        xprimem kpi  0.00006 0.00034 0.0 0.0 1.0
+result belle_yprime_m     yprimem kpi  0.00200 0.00540 0.0 0.0 1.0
+result belle_rd_p         rsubdp  none 0.00368 0.0002 0.0 0.0 1.0
+result belle_xp2_p        xprimep kpi  0.00032 0.00037 0.0 0.0 1.0
+result belle_yprime_p     yprimep kpi -0.0012  0.0058  0.0 0.0 1.0
+#
+result babar_rd_m           rsubdm  none 0.00303 0.0002 0.0001 0.0 1.0
+result babar_xp2_m          xprimem kpi -0.00020 0.00041  0.00029 0.0 1.0
+result babar_yprime_m       yprimem kpi  0.0096  0.0064   0.0045 0.0 1.0
+result babar_rd_p           rsubdp  none 0.00303 0.0002 0.0001 0.0 1.0
+result babar_xp2_p          xprimep kpi -0.00024 0.00043  0.0003 0.0 1.0
+result babar_yprime_p       yprimep kpi  0.0098  0.0061   0.0043 0.0 1.0
+#
+result babar_kspipi_x       plainx  none 0.0016 0.0023 0.0012 0.0008 1.0
+result babar_kspipi_y       plainy  none 0.0057 0.0020 0.0013 0.0007 1.0
+#
+correlation lhcb_rd_p     lhcb_yprime_p -0.947
+correlation lhcb_rd_p     lhcb_xp2_p     0.866
+correlation lhcb_rd_p     lhcb_rd_m     -0.006
+correlation lhcb_rd_p     lhcb_yprime_m -0.007
+correlation lhcb_rd_p     lhcb_xp2_m     0.006
+correlation lhcb_yprime_p lhcb_xp2_p    -0.968
+correlation lhcb_yprime_p lhcb_rd_m     -0.007
+correlation lhcb_yprime_p lhcb_yprime_m  0.007
+correlation lhcb_yprime_p lhcb_xp2_m    -0.007
+correlation lhcb_xp2_p    lhcb_rd_m      0.006
+correlation lhcb_xp2_p    lhcb_yprime_m -0.007
+correlation lhcb_xp2_p    lhcb_xp2_m     0.008
+correlation lhcb_rd_m     lhcb_yprime_m -0.946
+correlation lhcb_rd_m     lhcb_xp2_m     0.862
+correlation lhcb_yprime_m lhcb_xp2_m    -0.966
+#
+correlation cdf_rd cdf_xp2 0.923
+correlation cdf_rd cdf_yprime -0.971
+correlation cdf_xp2 cdf_yprime -0.984 
+#
+correlation babar_rd_m  babar_xp2_m     0.77
+correlation babar_rd_m  babar_yprime_m -0.87
+correlation babar_xp2_m babar_yprime_m -0.94
+correlation babar_rd_p  babar_xp2_p     0.77
+correlation babar_rd_p  babar_yprime_p -0.87
+correlation babar_xp2_p babar_yprime_p -0.94
+#
+correlation belle_rd_m  belle_xp2_m     0.655
+correlation belle_rd_m  belle_yprime_m -0.834
+correlation belle_xp2_m belle_yprime_m -0.909
+correlation belle_rd_p  belle_xp2_p     0.655
+correlation belle_rd_p  belle_yprime_p -0.834
+correlation belle_xp2_p belle_yprime_p -0.909
+#
+correlation cleo_rd     cleo_xp2     0.000
+correlation cleo_rd     cleo_yprime  0.000
+correlation cleo_rd     cleo_cosd   -0.420
+correlation cleo_rd     cleo_sind    0.010
+correlation cleo_xp2    cleo_yprime -0.730
+correlation cleo_xp2    cleo_cosd    0.390
+correlation cleo_xp2    cleo_sind    0.020
+correlation cleo_yprime cleo_cosd   -0.530
+correlation cleo_yprime cleo_sind   -0.030
+correlation cleo_cosd   cleo_sind    0.040
+#
+correlation belle_kspipi_x belle_kspipi_y -0.007
+correlation belle_kspipi_x belle_qoverp   -0.510
+correlation belle_kspipi_x belle_phi       0.216
+correlation belle_kspipi_y belle_qoverp   -0.038
+correlation belle_kspipi_y belle_phi      -0.280
+correlation belle_qoverp   belle_phi      -0.266
+#
+correlation babar_kspipi_x babar_kspipi_y 0.0615
+#
+#fitlist hfag_ycp lhcb_xp2_m lhcb_yprime_m lhcb_rd_m lhcb_xp2_p lhcb_yprime_p lhcb_rd_p belle_kspipi_x belle_kspipi_y belle_qoverp belle_phi cleo_cosd cleo_sind cdf_rd cdf_xp2 cdf_yprime babar_rd_m babar_xp2_m babar_yprime_m babar_rd_p babar_xp2_p babar_yprime_p belle_rd_m belle_xp2_m belle_yprime_m belle_rd_p belle_xp2_p belle_yprime_p babar_kspipi_x babar_kspipi_y hfag_agamma endline 
+#
+# Drop Belle and BaBar Kpi
+fitlist hfag_ycp lhcb_xp2_m lhcb_yprime_m lhcb_rd_m lhcb_xp2_p lhcb_yprime_p lhcb_rd_p belle_kspipi_x belle_kspipi_y belle_qoverp belle_phi cleo_cosd cleo_sind cdf_rd cdf_xp2 cdf_yprime babar_kspipi_x babar_kspipi_y hfag_agamma endline 
+
+# Drop Everything in K pi but LHCb
+#fitlist hfag_ycp lhcb_xp2_m lhcb_yprime_m lhcb_rd_m lhcb_xp2_p lhcb_yprime_p lhcb_rd_p belle_kspipi_x belle_kspipi_y belle_qoverp belle_phi cleo_cosd cleo_sind babar_kspipi_x babar_kspipi_y hfag_agamma lhcb_agamma_kk lhcb_agamma_pipi endline 
+
+use_hfag_convention yes 
+allow_all_cpv 
+#skipGraphics
+#special_alex_fit
+#silent
+endfile 

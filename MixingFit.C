@@ -689,7 +689,7 @@ int main (int argc, char** argv) {
       double coef = 0; 
       fitOpts >> name >> rtype >> ptype >> result >> stat >> syst >> modl >> coef; 
       res = new MixingResult(name, rtype, ptype, result, stat, syst, modl, coef); 
-      my_out_file<<"$" <<name<<"$" <<"("<<ptype<<")"<<" & $"<<result<<"\\pm"<<stat<<"\\pm"<<syst<<"$ & \\\\"<<std::endl;
+      my_out_file<<"$" <<name <<"("<<ptype<<")"<<"$"<<" & $"<<result<<"\\pm"<<stat<<"\\pm"<<syst<<"$ & \\\\"<<std::endl;
     }
     else if (lineType == "correlation") {
       char numOne[1000];
@@ -741,7 +741,8 @@ int main (int argc, char** argv) {
     }
     else if (lineType == "endfile") break; 
   }
-  my_out_file<<"\\end{tabular}"<<std::endl
+  my_out_file<<"\\hline"<<std::endl
+	     <<"\\end{tabular}"<<std::endl
 	     <<"\\end{center}"<<std::endl
 	     <<"\\label{table:"<<std::string(argv[1]).c_str()<<"}"<<std::endl
 	     <<"\\end{table}"<<std::endl;

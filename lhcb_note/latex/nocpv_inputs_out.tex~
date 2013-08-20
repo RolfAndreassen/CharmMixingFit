@@ -1,0 +1,35 @@
+\begin{table}[htdp]
+\caption{All CPV allowed inputs}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Result & Value & Correlation Coefficients \\
+\hline \hline
+$hfag_ycp(none)$ & $0.00866\pm0.00155\pm0$ & \\
+\hline
+$lhcb_xp2(kpi)$ & $5.5e-05\pm4.2e-05\pm2.6e-05$ & \\
+$lhcb_yprime(kpi)$ & $0.00481\pm0.00085\pm0.00053$ & \\
+$lhcb_rd(none)$ & $0.003568\pm5.8e-05\pm3.3e-05$ & \\
+\hline
+$hfag_kspipi_x(none)$ & $0.00419\pm0.00211\pm0$ & \\
+$hfag_kspipi_y(none)$ & $0.00456\pm0.00186\pm0$ & \\
+\hline
+$cleo_cosd(kpi)$ & $0.81\pm0.2\pm0.06$ & \\
+$cleo_sind(kpi)$ & $-0.01\pm0.41\pm0.04$ & \\
+\hline
+$cdf_rd(none)$ & $0.00304\pm0.00055\pm0$ & \\
+$cdf_xp2(kpi)$ & $-0.00012\pm0.00035\pm0$ & \\
+$cdf_yprime(kpi)$ & $0.0085\pm0.0076\pm0$ & \\
+\hline
+$belle_rd(none)$ & $0.00364\pm0.00017\pm0$ & \\
+$belle_xp2(kpi)$ & $0.00018\pm0.00022\pm0$ & \\
+$belle_yprime(kpi)$ & $0.0006\pm0.004\pm0$ & \\
+\hline
+$babar_rd(none)$ & $0.00303\pm0.00016\pm0.0001$ & \\
+$babar_xp2(kpi)$ & $-0.00022\pm0.0003\pm0.00021$ & \\
+$babar_yprime(kpi)$ & $0.0097\pm0.0044\pm0.0031$ & \\
+\hline
+\end{tabular}
+\end{center}
+\label{table:nocpv_inputs}
+\end{table}

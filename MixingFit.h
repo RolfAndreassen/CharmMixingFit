@@ -37,7 +37,7 @@ public:
   enum Sensitivity {EKS = 0, WYE, DELTAKPI, DELTAKPIPI, PHI_12, RSUBDM, RSUBDP, MAGQOVERP, NUMSENSE}; 
   enum CpvAllowed {NOCPV = 0, INDIRECT_CPV, ALL_CPV, NUMCPV}; 
   enum ConstraintType {BOTH_FREE = 0, PHI_FREE, QP_FREE, NUMCONSTRAINTS}; 
-  
+
   std::string getName () const {return name;} 
   double calcEpsilon (double x, 
 		      double y, 

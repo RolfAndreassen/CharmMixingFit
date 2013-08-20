@@ -68,9 +68,9 @@ void MixDrawer::draw () {
   // set the paper & margin sizes
   lhcbStyle->SetPaperSize(20,26);
   lhcbStyle->SetPadTopMargin(0.05);
-  lhcbStyle->SetPadRightMargin(0.05); // increase for colz plots
+  lhcbStyle->SetPadRightMargin(0.09); // increase for colz plots
   lhcbStyle->SetPadBottomMargin(0.16);
-  lhcbStyle->SetPadLeftMargin(0.14);
+  lhcbStyle->SetPadLeftMargin(0.20);
   
   // use large fonts
   lhcbStyle->SetTextFont(lhcbFont);
@@ -100,8 +100,8 @@ void MixDrawer::draw () {
   lhcbStyle->SetMarkerSize(1.0);
 
   // label offsets
-  lhcbStyle->SetLabelOffset(0.015,"X");
-  lhcbStyle->SetLabelOffset(0.015,"Y");
+  lhcbStyle->SetLabelOffset(0.010,"X");
+  lhcbStyle->SetLabelOffset(0.010,"Y");
 
   // by default, do not display histogram decorations:
   lhcbStyle->SetOptStat(0);  
@@ -112,8 +112,8 @@ void MixDrawer::draw () {
   lhcbStyle->SetOptFit(0);
   //lhcbStyle->SetOptFit(1011); // order is probability, Chi2, errors, parameters
   //titles
-  lhcbStyle->SetTitleOffset(0.95,"X");
-  lhcbStyle->SetTitleOffset(0.95,"Y");
+  lhcbStyle->SetTitleOffset(1.05,"X");
+  lhcbStyle->SetTitleOffset(1.55,"Y");
   lhcbStyle->SetTitleOffset(1.2,"Z");
   lhcbStyle->SetTitleFillColor(0);
   lhcbStyle->SetTitleStyle(0);
