@@ -24,7 +24,7 @@ bool printChisq = false; //do you want to print the chi2 at every step (dump thi
 bool use_hfag_convention = true; //hfag convention for the sign of the primes?
 bool special_invert = false; //do rolf's inversion?
 MixingResult::CpvAllowed allowcpv = MixingResult::NOCPV; //the type of cpv allowed i.e. direct, indirect, etc
-MixingResult::ConstraintType fit_for_phi = BOTH_FREE; // Fit for phi, |q/p|, or both. 
+MixingResult::ConstraintType fit_for_phi = MixingResult::BOTH_FREE; // Fit for phi, |q/p|, or both. 
 bool special_alex_fit = false; // If true, we fit for x_12, y_12, phi_12. 
 bool skipGraphics = false; 
 char strbuffer[1000]; 
@@ -153,7 +153,7 @@ double MixingResult::calcEpsilon (double x,
   }
   else {
     switch (fit_for_phi) {
-    case PHI_FREE:
+    case MixingResult::PHI_FREE:
       qoverp = 1 - (y/x)*tan(phi);
       // This is eqn 20 of Grossman/Nir/Perez. It assumes small CPV, ie |sin(phi_12)|<<1.
       // NB! This function's 'phi' is not the same as 'phi_12'! 
@@ -479,7 +479,7 @@ bool MixingResult::isSensitiveTo (int param) const {
   switch (param) {
   case EKS: 
     if (YCP      == myType) return (ALL_CPV == allowcpv); 
-    if (AGAMMA   == myType) return ((ALL_CPV == allowcpv) || ((INDIRECT_CPV == allowcpv) && (PHI_FREE == fit_for_phi))); 
+    if (AGAMMA   == myType) return ((ALL_CPV == allowcpv) || ((INDIRECT_CPV == allowcpv) && (MixingResult::PHI_FREE == fit_for_phi))); 
     if (PLAINY   == myType) return false; 
     if (RDM      == myType) return false;
     if (RDP      == myType) return false;
@@ -521,7 +521,7 @@ bool MixingResult::isSensitiveTo (int param) const {
     return (RDM == myType);    
   case MAGQOVERP:
     if (NOCPV == allowcpv) return false; 
-    if ((INDIRECT_CPV == allowcpv) && (PHI_FREE == fit_for_phi)) return false; 
+    if ((INDIRECT_CPV == allowcpv) && (MixingResult::PHI_FREE == fit_for_phi)) return false; 
     if (special_alex_fit)   return false; 
     if (AGAMMA   == myType) return true;
     if (YCP      == myType) return true;
@@ -719,12 +719,12 @@ int main (int argc, char** argv) {
     }
     else if (lineType == "allow_indirect_cpv") {
       allowcpv = MixingResult::INDIRECT_CPV; 
-      fit_for_phi = QP_FREE; 
+      fit_for_phi = MixingResult::QP_FREE; 
     }
     else if (lineType == "allow_all_cpv") allowcpv = MixingResult::ALL_CPV; 
     else if (lineType == "use_hfag_convention") use_hfag_convention = true;
-    else if (lineType == "fit_for_qp") fit_for_phi = QP_FREE;
-    else if (lineType == "fit_for_phi") fit_for_phi = PHI_FREE;
+    else if (lineType == "fit_for_qp") fit_for_phi = MixingResult::QP_FREE;
+    else if (lineType == "fit_for_phi") fit_for_phi = MixingResult::PHI_FREE;
     else if (lineType == "special_alex_fit") special_alex_fit = true; 
     else if (lineType == "skipGraphics") skipGraphics = true; 
     else if (lineType == "use_block_diag") {
@@ -759,8 +759,8 @@ int main (int argc, char** argv) {
   }
 
   if (3 < argc) {
-    if (std::string(argv[3]) == "qp")  fit_for_phi = false;
-    if (std::string(argv[3]) == "phi") fit_for_phi = true; 
+    if (std::string(argv[3]) == "qp")  fit_for_phi = MixingResult::QP_FREE;
+    if (std::string(argv[3]) == "phi") fit_for_phi = MixingResult::PHI_FREE;
   }
 
   double par[MixingResult::nParams];               
