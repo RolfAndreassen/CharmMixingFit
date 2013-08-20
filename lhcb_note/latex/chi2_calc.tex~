@@ -1,5 +1,5 @@
 \section{Chi-square calculation}
-
+\label{sec:Chi_square_calc}
 The purpose of our fit is to combine the errors on several different
 measurements of the same parameters, where each measurement may have a
 different relation to the underlying true mixing parameters (eg measuring

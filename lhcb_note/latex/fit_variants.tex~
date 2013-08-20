@@ -1,74 +1,5 @@
-\documentclass[12pt,pdflatex]{article}
-\usepackage{color}
-\usepackage[usenames,dvipsnames]{xcolor}
-\usepackage{colortbl} 
-\usepackage{graphicx}
-\usepackage{colordvi}
-\usepackage{amssymb}
-\usepackage{ulem}
-\usepackage{graphicx}
-%\usepackage{caption}
-%\usepackage{subcaption}
-\pagestyle{empty}
-%\textheight 510pt
-%\textwidth 683.4pt
-%\oddsidemargin 0pt
-%\evensidemargin 0pt
-%\topmargin -82pt
-%\fboxrule0.05in
-%\fboxsep0.1in
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\addtolength{\headheight}{2.5pt}
-\lfoot{\thepage\ of \pageref{lastpage}}
-%\cfoot{Rolf Andreassen}
-\rfoot{University of Cincinnati} 
-
-\newcommand{\mb}{\mathbf}
-\boldmath 
-
-\begin{document}
-\begin{center}
-{\LARGE Combining mixing results}
-\end{center}
-
-\section{Introduction}
-
-The new $D^0\to K\pi$ result from LHCb provides a credibly powerful constraint
-on mixing parameters. This note describes a fit in the style of HFAG to combine 
-our result with previous measurements. 
-
-\section{Chi-square calculation}
-
-The purpose of our fit is to combine the errors on several different
-measurements of the same parameters, where each measurement may have a
-different relation to the underlying true mixing parameters (eg measuring
-$(x'^2, y')$ in place of $(x, y)$), and where the numbers in each measurement
-may be strongly correlated. To do so we construct an overall $\chi^2$ for
-all the results:
-\begin{eqnarray}
-\chi^2 &=& \vec\epsilon^T \sigma^-1 \vec\epsilon
-\end{eqnarray}
-where the elements of $\vec\epsilon$ are given by
-$\epsilon_i = m_i - p_i$. Here $\vec m$ is the list of measured
-values from experiments, and $\vec p$ is a set of ``proposed'' values
-for the mixing parameters; we use MINUIT to vary $\vec p$ so as
-to minimise $\chi^2$. Finally, $\sigma$ is an $N\times N$ matrix where
-$N$ is the number of measurements, with $\sigma_{ij} = e_i c_{ij} e_j$.
-Here $e_i$ is the reported error on measurement $i$, and $c_{ij}$ is the
-correlation coefficient between measurements $i$ and $j$. 
-
-Notice that, if
-the measurements are uncorrelated, then $\sigma$ reduces to
-a diagonal matrix where the elements are the squares of the measurement
-errors. In this case $\chi^2$ is simply the sum $\sum\limits_{i}\epsilon_i^2/e_i^2$,
-that is, each element is the difference between a measurement
-and the corresponding prediction, divided by the error on the measurement,
-squared. In other words, if there are no correlations we recover
-the usual chi-square goodness-of-fit metric. 
-
 \section{Fit variants}
-
+\label{sec:fit_variants}
 In full generality, we wish to fit for no less than seven underlying
 related mixing parameters:
 \begin{itemize}
@@ -134,16 +65,3 @@ to float.
 
 In addition, we do a fit not allowing direct CP violation, in which the
 free parameters are $x_{12}$, $y_{12}$, and $\phi$
-
-\section{Measurements used}
-
-
-
-%\section{Results}
-\input{results}
-\section{Conclusion}
-
-
-
-\label{lastpage}
-\end{document}

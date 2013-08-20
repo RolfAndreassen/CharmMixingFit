@@ -66,7 +66,7 @@ MixingResult::MixingResult (const char* n,
 	    << ptype << " " 
 	    << myPrime << " " 
 	    << std::endl; 
-   
+
 }
 
 MixingResult::~MixingResult () {//destructor
@@ -655,12 +655,26 @@ int main (int argc, char** argv) {
   int numActive = 0; 
   char token[10000]; 
   MixingResult* res = 0;
+  std::ofstream my_out_file;
+  std::string my_string = std::string(argv[1])+"_out.tex";
+  //  std::cout<<"my_string = "<<my_string<<std::endl;
+  my_out_file.open(my_string.c_str());
+  my_out_file<<"\\begin{table}[htdp]"<<std::endl
+	     <<"\\caption{All CPV allowed inputs}"<<std::endl
+	     <<"\\begin{center}"<<std::endl
+	     <<"\\begin{tabular}{|c|c|c|}"<<std::endl
+	     <<"\\hline"<<std::endl
+	     <<"Result & Value & Correlation Coefficients \\\\"<<std::endl
+	     <<"\\hline \\hline"<<std::endl;
+
+
   while (!fitOpts.eof()) {
     fitOpts >> token; 
     if (token[0] == '#') {
       fitOpts.getline(token, 10000); 
       continue; 
     }
+    
     std::string lineType(token); 
     if (lineType == "result") {
       char name[1000];
@@ -673,6 +687,7 @@ int main (int argc, char** argv) {
       double coef = 0; 
       fitOpts >> name >> rtype >> ptype >> result >> stat >> syst >> modl >> coef; 
       res = new MixingResult(name, rtype, ptype, result, stat, syst, modl, coef); 
+      my_out_file<<"$" <<name<<"$" <<"("<<ptype<<")"<<" & $"<<result<<"\\pm"<<stat<<"\\pm"<<syst<<"$ & \\\\"<<std::endl;
     }
     else if (lineType == "correlation") {
       char numOne[1000];
@@ -720,7 +735,12 @@ int main (int argc, char** argv) {
     }
     else if (lineType == "endfile") break; 
   }
+  my_out_file<<"\\end{tabular}"<<std::endl
+	     <<"\\end{center}"<<std::endl
+	     <<"\\label{table:"<<std::string(argv[1]).c_str()<<"}"<<std::endl
+	     <<"\\end{table}"<<std::endl;
 
+  my_out_file.close();
   if (0 == numActive) {
     std::cout << "Warning: No measurements specified in fitlist! No fit will be done." << std::endl; 
   }

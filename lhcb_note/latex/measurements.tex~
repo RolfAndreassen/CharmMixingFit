@@ -3,5 +3,5 @@
 
 To summarize the state of the field, Table~\ref{table:all_cpv_meas} lists all of
 the current measurements pertaining to the neutral $D$ meson system.
-%\input{the_input_table}
-\input{allcpv_inputs_gen}
+\input{the_input_table}
+
