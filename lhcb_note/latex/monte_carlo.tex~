@@ -1,0 +1,63 @@
+\section{Comparison to Monte Carlo}
+\label{sec:Monte-Carlo}
+As a test of concept, the tool was applied to a Monte Carlo (MC) $B\to \mu D^* X$, $D^0\to K^-\pi^+$ cocktail as well as 
+$B\to D^*\tau\nu, \tau\to\mu\overline{\nu}\nu$ background MC. The comparison between the number of candidates in MC and 
+Data is shown in Figure~\ref{fig:ncandidate-MC-compare}. Additonally, the percentage of candidates falling into each bin is
+given in Table~\ref{table:mc_data_ncand}. Additionally, the comparison of mass peaks of the $\mu D^*$ candidates, $m(\mu D^*)$
+is shown in Figure~\ref{fig:m-dstar-mu-MC-compare}. Agreement is not perfect, but general agreement is seen.\\
+The output of TupleToolExtraMu run on MC compared to data is given in Table~\ref{table:mc_vs_data}. The deviation of the 
+TupleToolExtraMu result from that of MC is not understood. Checking explicitly that the charge of the extra muon be the same 
+as the charge of the tagging muon did not change the result. 
+%%%%%%%%%%%%%%%MC B mass%%%%%%%%%%%%%%%%
+\begin{figure}[tb]
+  \begin{center}
+	\includegraphics[width=0.49\linewidth]{dst_scaled_mc_rd_histo} \put(-58,123){(a)}
+	\includegraphics[width=0.49\linewidth]{dst_scaled_mc_rd_histo_logy} \put(-58,123){(b)}
+	\end{center}
+  \caption{
+    \small %captions should be a little bit smaller than main text                                                                                                                
+    Normalized invariant mass distributions of $m(D^{*}\mu)$. The blue line is 1.065 fb$^-1$ of 2012 LHCb data reconstructed Right Sign $D^0\to K \pi$ decays, green is the background $B\to D^*\tau\nu$ Monte Carlo sample, and black is the $B\to D^* \mu \nu$, $K\pi$ signal Monte Carlo. Shown in (a) linear scale and (b) log scale.
+    }
+  \label{fig:m-dstar-mu-MC-compare}
+\end{figure}
+%%%%%%%%%%%%%%%%%N Candidate Distributions
+\begin{figure}[tb]
+  \begin{center}
+	\includegraphics[width=0.49\linewidth]{RS_sigmc_RD__ncandidate} \put(-58,123){(a)}
+	\includegraphics[width=0.49\linewidth]{RS_sigmc_RD__ncandidate_logy} \put(-58,123){(b)}
+	\end{center}
+  \caption{
+    \small %captions should be a little bit smaller than main text                                                                                                                
+    Normalized distributions of the numbers of candidate events. To a first approximation, any events with multiple candidates should constitute the possibility of being mis-reconstructed. Blue line represents 1.065 fb$^-1$ of 2012 LHCb data reconstructed Right Sign $D^0\to K \pi$ decays, and the Red line represents Signal Monte Carlo. Shown in (a) linear scale and (b) log scale. Agreement between Data and Monte Carlo allow direct comparison between TupleToolExtraMu and MC mis-reconstruction rate.
+    }
+  \label{fig:ncandidate-MC-compare}
+\end{figure}
+
+\begin{table}[htdp]
+	\begin{center}
+		\begin{tabular}{c c c c}
+		\hline
+		Category & \multicolumn{3}{c}{Reconstructed Candidates} \\ \hline \hline
+		 & 1 & 2 & 3 \\ \hline
+		Data & $98.37\pm 0.01$& $1.57\pm 0.01$ & $0.05 \pm 0.002$ \\
+		Signal MC & $98.13\pm 0.04$ & $1.80\pm 0.04$ & $0.06\pm 0.009$ \\
+		\hline \hline
+		\end{tabular}
+	\end{center}
+	\label{table:mc_data_ncand}
+	\caption{Numbers of candidates reconstructed by DecayTreeTuple. Normalized by the total number of events. Agreement between Data and Monte Carlo is at the XX$\sigma$ level}
+\end{table}
+
+\begin{table}[htdp]
+	\begin{center}
+		\begin{tabular}{c c c c}
+		\hline
+		Category & \multicolumn{3}{c}{Percentage of Additional Muons Passing Selection Cuts} \\ \hline
+		 & 0 & 1& 2 \\ \hline\hline
+		Data & $95.80 \pm 0.01$& $3.94 \pm 0.01$ &$ 0.230\pm 0.003$ \\
+		Signal MC & $98.27\pm 0.03$& $1.69\pm 0.03$& $0.04\pm 0.005$\\ \hline \hline
+		\end{tabular}
+	\end{center}
+	\label{table:mc_vs_data}
+	\caption{Comparison of Data Driven methods with Monte Carlo results. Agreement between Data and Signal Monte Carlo is at the YY$\sigma$ level.}
+\end{table}%

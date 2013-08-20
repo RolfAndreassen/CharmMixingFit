@@ -1,0 +1,28 @@
+\section{Chi-square calculation}
+\label{sec:Chi_square_calc}
+The purpose of our fit is to combine the errors on several different
+measurements of the same parameters, where each measurement may have a
+different relation to the underlying true mixing parameters (eg measuring
+$(x'^2, y')$ in place of $(x, y)$), and where the numbers in each measurement
+may be strongly correlated. To do so we construct an overall $\chi^2$ for
+all the results:
+\begin{eqnarray}
+\chi^2 &=& \vec{\epsilon}^T \sigma^-1 \vec{\epsilon}
+\end{eqnarray}
+where the elements of $\vec{\epsilon}$ are given by
+$\epsilon_i = m_i - p_i$. Here $\vec{m}$ is the list of measured
+values from experiments, and $\vec{p}$ is a set of ``proposed'' values
+for the mixing parameters; we use MINUIT to vary $\vec{p}$ so as
+to minimise $\chi^2$. Finally, $\sigma$ is an $N\times N$ matrix where
+$N$ is the number of measurements, with $\sigma_{ij} = e_i c_{ij} e_j$.
+Here $e_i$ is the reported error on measurement $i$, and $c_{ij}$ is the
+correlation coefficient between measurements $i$ and $j$. 
+
+Notice that, if
+the measurements are uncorrelated, then $\sigma$ reduces to
+a diagonal matrix where the elements are the squares of the measurement
+errors. In this case $\chi^2$ is simply the sum $\sum\limits_{i}\epsilon_i^2/e_i^2$,
+that is, each element is the difference between a measurement
+and the corresponding prediction, divided by the error on the measurement,
+squared. In other words, if there are no correlations we recover
+the usual chi-square goodness-of-fit metric. 

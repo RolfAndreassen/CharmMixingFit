@@ -1,0 +1,74 @@
+\section{Dataset and Selection Criteria}
+\label{sec:Dataset-and-Selection-Criteria}
+The dataset used for this analysis is from the 2 fb$^{-1}$ 2012 LHCb Data Sample, with 
+Stripping20 applied. Specifically, the stripping line b2D0MuXDstB2DMuNuXLine
+\footnote{\href{http://lhcb-release-area.web.cern.ch/LHCb-release-area/DOC/stripping/config/stripping20/semileptonic/strippingb2d0muxdstb2dmunuxline.html}{Hyperlink to selection criteria}} is used 
+to select candidate events. In order to extract the mixing and CPV 
+parameters, it is necessary to select a very clean sample of both Wrong Sign 
+(WS, $D^0\to K^+\pi^-$) and Right Sign (RS, $D^0\to K^-\pi^+$) neutral D decays. Unless specifically 
+noted, charge conjugates of decays are implied. In addition to the stripping level cuts, 
+a set of box selection cuts is applied in order to minimize background contributions, 
+and listed it Table~\ref{table:B2MuXAnalysisCuts}. Candidates are also required
+to be TOS on Mu\_L0\_MuonDecision, Mu\_Hlt1TrackMuonDecision and 
+B\_Hlt2TopoMu$(2||3||4)$BodyBBDTDecision. In order to test the data driven 
+method, only RS decays are considered, which are primarily signal events. As the 
+analysis is still blinded, WS decays are not considered.
+\begin{table}[t] 
+	\begin{center}
+%\tabcolsep=0.11cm
+		\begin{tabular}{l l l }
+			\hline
+%			\multicolumn{3}{|c|}{Stripping and Analysis Cuts}\\
+			\hline
+			Variable & Stripping Cut & Analysis Cut\\\hline
+			\hline	
+%			$m(\mu D^*)$ &$<6.2$ GeV &$3.1<m(\mu D^*)<5.1$ GeV \\ \hline
+			$B$ Measured Mass &$<6.0$ GeV &$3.1<m(\mu D^*)<5.1$ GeV \\ \hline
+%			$m(K\pi)$ & $m(K\pi)<100+m_{PDG}(D^0) and m(k\pi)>100-m_{PDG}(D^0)$ & m(K\pi)<24+m_{PDG}(D^0)  and m(K\pi)>24-m_{PDG}(D^0) $ MeV\\ \hline
+			$\Delta \log(\mathcal{L}_{K-\pi})(K)$& $>4.0$ & $>8.0$\\ \hline
+			$\Delta \log(\mathcal{L}_{K-\pi})(\pi)$& $<10 (<4)$&$<-5$\\ \hline
+			$\Delta \log(\mathcal{L}_{e-\pi})(\pi_s)$& &$<1$\\ \hline
+			Ghost Prob $\pi_s$ & & $<0.5$ \\ \hline 
+			$\Delta m$ & $0<\Delta m<170$ MeV & - \\ \hline
+%						\hline
+%			 RS & $\sim$ 866k & blah \\
+%			$m(\mu D^*)$ &$<6.2$ GeV &$3.1<m(\mu D^*)<5.1$ GeV \\ \hline
+%			$B$ Measured Mass &$<6.0$ GeV &$3.1<m(\mu D^*)<5.1$ GeV \\ \hline
+			$B$ DIRA & $>0.999$ & \\ \hline
+			min Vertex $z$ & $>-9999$ mm & \\ \hline
+			Vertex $\chi^2/DoF (B)$ & $<6.0$& \\ \hline
+			$m(K\pi)$ & $| m(K\pi)-m_{PDG}(D^0)|<100$&$| m(K\pi)-m_{PDG}(D^0)|<24$ MeV\\ \hline
+			$p_T(\mu)$ & $>800$ MeV & \\ \hline
+			$p(\mu)$ & $>3$ GeV & \\ \hline
+			$\mu$ Ghost Probability & $<0.5$ & \\ \hline
+			Track $\chi^2(\mu)$ & $<5.0$ & \\ \hline
+			min IP $\chi^2(\mu)$ Primary & $>4.0$ & \\ \hline
+			PID$(\mu)$ & $>-0.0$ & \\ \hline
+			Track $\chi^2(K)$ &$<4$ &  \\ \hline
+			$p(K)$ &$>2$ GeV & \\ \hline
+			$p_T(K)$ & $>300$ MeV & \\ \hline
+			$K$ Ghost Prob &$<0.5$ & \\ \hline 
+			min IP$\chi^2(K)$ Primary & $>0.9$ & \\ \hline
+%			$\Delta \log(\mathcal{L}_{K-\pi})(K)$& $>4.0$ & $>8.0$\\ \hline
+			Track $\chi^2(\pi)$ &$<4$ &  \\ \hline
+			$p(\pi)$ &$> 2$ GeV& \\ \hline
+			$p_T(\pi)$ &$> 300$ MeV& \\ \hline
+			Ghost Prob $\pi$ & $<0.5$ & \\ \hline
+			min IP$\chi^2$ Primary & $>9$& \\ \hline
+%			$\Delta \log(\mathcal{L}_{K-\pi})(\pi)$& $<10 (<4)$&$<-5$\\ \hline
+%			$\Delta \log(\mathcal{L}_{e-\pi})(\pi_s)$& &$<1$\\ \hline
+%			Ghost Prob $\pi_s$ & & $<0.5$ \\ \hline 
+			$p_T(\pi_s)$ & $>180$ MeV (Both Signs)& \\ \hline
+%			$\Delta m$ & $0<\Delta m<170$ MeV & $139<\Delta m<165$ MeV \\ \hline
+			Vertex $\chi^2/DoF(D^*)$ &$ <8.0$ & \\ 
+			\hline
+%			Mu L0 MuonDecision TOS & & 1\\ \hline
+%			Mu Hlt1TrackMuonDecision TOS & & 1\\ \hline
+%			B Hlt2TopoMu$(2||3||4)$BodyBBDTDecision & & 1\\
+			\hline\hline
+		\end{tabular}
+	\end{center}
+	\caption{Stripping Level and Analysis cuts for the Semileptonic Sample $B\to\mu D^* X$}
+	\label{table:B2MuXAnalysisCuts}
+
+\end{table}

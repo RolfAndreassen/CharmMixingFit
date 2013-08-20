@@ -1,0 +1,45 @@
+\section{TupleToolExtraMu}
+\label{sec:TupleToolExtraMu}
+Looking explicitly for extra particles in the decay and asking whether or not these 
+particles would satisfy the selection criteria for a given channel is done automatically 
+by the DecayTreeTuple algorithm. However, it is beneficial to ask whether there are other 
+particles which would satisfy the same selection criteria. The motivation behind writing 
+the tool TupleToolExtraMu is to explicitly search for extra muons in an event which could 
+be confused with, or be mis-associated as the true muon from the semileptonic decay 
+$B\to \mu D^* X$. Storing additonal information about the ``extra" candidate then allows 
+for a by-hand analysis of extra candidates.\\
+TupleToolExtraMu configures as a tuple tool added to the DecayTreeTuple algorithm. By default, 
+it outputs
+\begin{itemize}
+	\item The number of additional muons reconstructed from the TES location StdAllVeryLooseMuons, called extra muons
+	\item The 4-momentum components of the extra muons
+	\item The charge of the extra muon
+	\item The Delta Log Likelihood distributions $\Delta \log( \mathcal{L}(\mu-\pi))$ and  $\Delta \log( \mathcal{L}(\mu-K))$ for the extra muon
+	\item The Ghost Probability of the extra muon
+	\item The extra muon Track Ghost Probability
+	\item Extra muon Track $\chi^2/DoF$
+	\item The invariant mass of the extra muon and the original muon being used
+	\item The vertex $\chi^2$ and $DoF$ of the extra muon and original muon vertex
+	\item The vertex $\chi^2$ and $DoF$ of the extra muon and the $D^*$ candidate
+	\item The invariant mass of the extra muon and $D^*$ candidates
+	\item The IP and IP$\chi^2$ of the extra muon
+	\item Whether or not the extra muon originates from the same primary vertex as the $D^*$ candidate
+\end{itemize}
+This information allows one to, by hand, apply the stripping selections to the extra muons. 
+The inclusion of the invariant mass distributions is meant to provide a tool in searching for 
+additional sources of background. Figure~\ref{fig:nextra} shows the output of the number of 
+extra muons summed over all events. The additional lines show the transformation of the number 
+of additional candidate muons after applying cuts.
+
+%%%%%%nextramu distributions%%%%%%%%%
+\begin{figure}[tb]
+  \begin{center}
+	\includegraphics[width=0.49\linewidth]{rs_n_extra_muon_stripped} \put(-58,123){(a)}
+	\includegraphics[width=0.49\linewidth]{rs_n_extra_muon_stripped_logy} \put(-58,123){(b)}
+	\end{center}
+  \caption{
+    \small %captions should be a little bit smaller than main text                                                                                                                
+    Distribution of $n(\mu_\text{Extra})$, the number of extra muons in a event, in (a) linear scale and (b) log scale. Different selection cuts are applied to extra muons to determine what fraction mis-association is to be expected.
+    }
+  \label{fig:nextra}
+\end{figure}

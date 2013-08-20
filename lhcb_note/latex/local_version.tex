@@ -1,0 +1,239 @@
+\documentclass[11pt]{article}% Physical Review B
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{multicol}
+\usepackage{bm}% bold math
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{cite}
+%\usepackage{caption}
+%\usepackage{subcaption}
+\usepackage{subfigure}
+\usepackage[pdftex]{graphicx}
+\usepackage[top=.75in,right=.75in,left=.75in,bottom=.75in]{geometry}
+\usepackage[left]{lineno}
+
+%================================================================
+\begin{document}
+
+%\preprint{draft1}
+\title{TupleToolExtraMu: A data driven study of muon mis-association and mis-reconstruction}%
+\author{The Authors}%Adam C.S. Davis$^1$, Angelo Di Canto$^2$ Mika Anton Vesterinen$^2$, Mike Sokoloff $^1$\\$^1$University of Cincinnati, $^2$Physikalisches Institut, Ruprecht-Karls-Universit\"at Heidelberg, $^3$CERN}
+%Department of Physics, University of Cincinnati,\\ Cincinnati, Ohio 45221-0011 USA
+\date{\today}
+\maketitle
+\begin{flushleft}
+
+%================================================================
+\begin{abstract}
+	In the exploration of the inclusive semileptonic decay $B\to\mu D^*X$, tools were developed to specifically study the possibility of confusing extra muons in the event with the tagging muon. The results of these studies are presented here.
+\end{abstract}
+\setrunninglinenumbers
+%===============================================================================================
+\section{Introduction}
+\begin{linenumbers}
+\hspace{10mm}The doubly-tagged decay $B\to\mu D^* X,D^*\to D^0\pi_S,D^0\to K \pi$ provides the opportunity to add statistics to the lowest decay time bins in the extension to the prompt analysis $D^*\to D^0\pi_S,D^0\to K \pi$ to 2012 data, which is currently under way. The double tagging with the $\mu$ and $\pi_S$ allows for extremely accurate tagging of the initial flavor of the $D^*$ and hence $D^0$. However, utilization of this decay incorporates systematic uncertainties not present in the prompt analysis, specifically with the $\mu$. In order to explore the effect of wrongly identified or mis-associated muons, the tool TupleToolExtraMu was written. Specifically, this tool loops over all muon identified in the event and returns values to the n-tuple which can be used to find mis-association and misidentification rates. In section XX, the method of implementation of the tool is described. Section YY contains the invariant mass plots of this extra candidate. Section ZZ compares the results with Monte Carlo Simulation.
+
+\section{Dataset and Selection Criteria}
+The dataset used for this analysis is from the 2 fb$^-1$ 2012 LHCb Data Sample, with Stripping 20 applied. Specifically, the stripping line b2D0MuXDstB2DMuNuXLine (add citation) is used to select candidate events. In order to extract the mixing and CPV parameters, it is necessary to select a very clean sample of both Wrong Sign(WS, $D^0\to K^+\pi^-$) and Right Sign (RS, $D^0\to K^-\pi^+$). Unless specifically noted, charge conjugates of decays are implied. In addition to the stripping level cuts, a set of box selection cuts is applied in order to minimize background contributions, and listed it Table~\ref{table:B2MuXAnalysisCuts}. In order to test the data driven method, only RS decays are considered, which are primarily signal events. As the analysis is still blinded, WS decays are not considered.
+
+\begin{table}[htdp] 
+	\begin{center}
+		\begin{tabular}{c c c }
+			\hline
+%			\multicolumn{3}{|c|}{Stripping and Analysis Cuts}\\
+			\hline
+			Variable & Stripping Cut & Analysis Cut\\\hline
+			\hline	
+%			$m(\mu D^*)$ &$<6.2$ GeV &$3.1<m(\mu D^*)<5.1$ GeV \\ \hline
+			$B$ Measured Mass &$<6.0$ GeV &$3.1<m(\mu D^*)<5.1$ GeV \\ \hline
+%			$m(K\pi)$ & $m(K\pi)<100+m_{PDG}(D^0) and m(k\pi)>100-m_{PDG}(D^0)$ & m(K\pi)<24+m_{PDG}(D^0)  and m(K\pi)>24-m_{PDG}(D^0) $ MeV\\ \hline
+			$\Delta \log(\mathcal{L}_{K-\pi})(K)$& $>4.0$ & $>8.0$\\ \hline
+			$\Delta \log(\mathcal{L}_{K-\pi})(\pi)$& $<10 (<4)$&$<-5$\\ \hline
+			$\Delta \log(\mathcal{L}_{e-\pi})(\pi_s)$& &$<1$\\ \hline
+			Ghost Prob $\pi_s$ & & $<0.5$ \\ \hline 
+			$\Delta m$ & $0<\Delta m<170$ MeV & - \\ \hline
+%						\hline
+%			 RS & $\sim$ 866k & blah \\
+%			$m(\mu D^*)$ &$<6.2$ GeV &$3.1<m(\mu D^*)<5.1$ GeV \\ \hline
+%			$B$ Measured Mass &$<6.0$ GeV &$3.1<m(\mu D^*)<5.1$ GeV \\ \hline
+			$B$ DIRA & $>0.999$ & \\ \hline
+			min Vertex $z$ & $>-9999$ mm & \\ \hline
+			Vertex $\chi^2/DoF (B)$ & $<6.0$& \\ \hline
+			$m(K\pi)$ & $| m(K\pi)-m_{PDG}(D^0)|<100$&$| m(K\pi)-m_{PDG}(D^0)|<24$ MeV\\ \hline
+			$p_T(\mu)$ & $>800$ MeV & \\ \hline
+			$p(\mu)$ & $>3$ GeV & \\ \hline
+			$\mu$ Ghost Probability & $<0.5$ & \\ \hline
+			Track $\chi^2(\mu)$ & $<5.0$ & \\ \hline
+			min IP $\chi^2(\mu)$ Primary & $>4.0$ & \\ \hline
+			PID$(\mu)$ & $>-0.0$ & \\ \hline
+			Track $\chi^2(K)$ &$<4$ &  \\ \hline
+			$p(K)$ &$>2$ GeV & \\ \hline
+			$p_T(K)$ & $>300$ MeV & \\ \hline
+			$K$ Ghost Prob &$<0.5$ & \\ \hline 
+			min IP$\chi^2(K)$ Primary & $>0.9$ & \\ \hline
+%			$\Delta \log(\mathcal{L}_{K-\pi})(K)$& $>4.0$ & $>8.0$\\ \hline
+			Track $\chi^2(\pi)$ &$<4$ &  \\ \hline
+			$p(\pi)$ &$> 2$ GeV& \\ \hline
+			$p_T(\pi)$ &$> 300$ MeV& \\ \hline
+			Ghost Prob $\pi$ & $<0.5$ & \\ \hline
+			min IP$\chi^2$ Primary & $>9$& \\ \hline
+%			$\Delta \log(\mathcal{L}_{K-\pi})(\pi)$& $<10 (<4)$&$<-5$\\ \hline
+%			$\Delta \log(\mathcal{L}_{e-\pi})(\pi_s)$& &$<1$\\ \hline
+%			Ghost Prob $\pi_s$ & & $<0.5$ \\ \hline 
+			$p_T(\pi_s)$ & $>180$ MeV (Both Signs)& \\ \hline
+%			$\Delta m$ & $0<\Delta m<170$ MeV & $139<\Delta m<165$ MeV \\ \hline
+			Vertex $\chi^2/DoF(D^*)$ &$ <8.0$ & \\ 
+			\hline
+			Mu L0 MuonDecision TOS & & 1\\ \hline
+			Mu Hlt1TrackMuonDecision TOS & & 1\\ \hline
+			B Hlt2TopoMu$(2||3||4)$BodyBBDTDecision & & 1\\
+			\hline\hline
+		\end{tabular}
+	\end{center}
+	\caption{Stripping Level and Analysis cuts for the Semileptonic Sample $B\to\mu D^* X$}
+	\label{table:B2MuXAnalysisCuts}
+\end{table}
+
+
+\section{TupleToolExtraMu}
+Looking explicitly for extra particles in the decay and asking whether or not these particles would satisfy the selection criteria for a given channel is done automatically by the DecayTreeTuple algorithm. However, it is beneficial to ask whether there are other particles which would satisfy the same selection criteria. The motivation behind writing the tool TupleToolExtraMu was to explicitly search for extra muons in an event which could be confused with, or be mis-associated as the true muon from the semileptonic decay $B\to \mu D^* X$. Storing additonal information about the ``extra" candidate then allows for a by-hand analysis of extra candidates.\\
+TupleToolExtraMu configures as a tuple tool added to the DecayTreeTuple algorithm. By default, it outputs
+\begin{itemize}
+	\item The number of additional muons reconstructed from the TES location StdAllVeryLooseMuons, called extra muons
+	\item The 4-momentum components of the extra muons
+	\item The charge of the extra muon
+	\item The Delta Log Likelihood distributions $\Delta \log( \mathcal{L}(\mu-\pi))$ and  $\Delta \log( \mathcal{L}(\mu-K))$ for the extra muon
+	\item The Ghost Probability of the extra muon
+	\item The extra muon Track Ghost Probability
+	\item Extra muon Track $\chi^2/DoF$
+	\item The invariant mass of the extra muon and the original muon being used
+	\item The vertex $\chi^2$ and $DoF$ of the extra muon and original muon vertex
+	\item The vertex $\chi^2$ and $DoF$ of the extra muon and the $D^*$ candidate
+	\item The invariant mass of the extra muon and $D^*$ candidates
+	\item The IP and IP$\chi^2$ of the extra muon
+	\item Whether or not the extra muon originates from the same primary vertex as the $D^*$ candidate
+\end{itemize}
+This information allows one to, by hand, apply the stripping selections to the extra muons. The inclusion of the invariant mass distributions is meant to provide a tool in searching for additional sources of background. Figure~\ref{fig:nextra} shows the output of the number of extra muons summed over all events. Na\"ively, Poisson statistics are expected. The additional lines show the transformation of the number of additional candidate muons after applying cuts.
+
+%%%%%%nextramu distributions%%%%%%%%%
+\begin{figure}[tb]
+  \begin{center}
+	\includegraphics[width=0.49\linewidth]{rs_n_extra_muon_stripped} \put(-58,123){(a)}
+	\includegraphics[width=0.49\linewidth]{rs_n_extra_muon_stripped_logy} \put(-58,123){(b)}
+	\end{center}
+  \caption{
+    \small %captions should be a little bit smaller than main text                                                                                                                
+    Distribution of $n(\mu_\text{Extra})$, the number of extra muons in a event, in (a) linear scale and (b) log scale. Different selection cuts are applied to extra muons to determine what fraction mis-association is to be expected. Na\"ively, Poisson variation is expected.
+    }
+  \label{fig:nextra}
+\end{figure}
+\section{Invariant Mass Plots}
+\hspace{3mm} As a first check of the Data-Driven study, a check of the $\mu\mu_\text{Extra}$ invariant mass was performed. From earlier studies (cite SemiLeptonic $\Delta\mathcal{A}_{CP}$ paper), it was understood that the contribution of $J/\psi$ to muon misidentification was on the order of a per-mille effect. However, instead of swapping muons, the study focused on misidentification of muons as kaon candidtates. In order to expand the study, the invariant mass of the original and extra muons was plotted in Figure~\ref{fig:mumumass}. Separating further by charge of the extra muon, a peak at 3.1 GeV is seen, constituting about 0.5\% of all events seen. Hence, this contribution is roughly at the half percent level, which is in agreement with the previous studies.\\
+\hspace{3mm}Additionally, it was possible to swap the extra muon with the original muon and explore the invariant mass of the $\mu D^*$ system. This is plotted in Figure~\ref{fig:dstar-muext}. Here, an unusual double-peaking structure was seen at invariant masses lower than 3.1 GeV. This is not identifiable with any resonance, and should not be peaking if the candidate was actually a muon. By replacing the hypothesis of the particle with a kaon mass hypothesis, a single peaking structure is then seen in Figure~\ref{fig:dstar-muext-k}. The resulting peak is well below the minimum analysis cut. However, the combinatoric exponential tail on the high mass side is present for both situations and is constant over the entire analysis range for both charges of muon considered. This represents the random muon background.
+%%%%%%mu mu%%%%%%%%%
+\begin{figure}[tb]
+  \begin{center}
+	\includegraphics[width=0.49\linewidth]{rs_ss_loop_dimu_mass_extramu_nocut} \put(-58,123){(a)}
+	\includegraphics[width=0.49\linewidth]{rs_ss_loop_dimu_mass_extramu_nocut_logy} \put(-58,123){(b)}
+	\end{center}
+  \caption{
+    \small %captions should be a little bit smaller than main text                                                                                                                
+    Invariant mass distributions of $m(\mu\mu_\text{Extra})$ in (a) linear scale and (b) log scale. The peak at 3.1 GeV/c$^2$ is the $J/\psi$ resonance. 
+    }
+  \label{fig:mumumass}
+\end{figure}
+
+%%%%%%%%%%mu dstar %%%%%%%%%%%
+
+\begin{figure}[tb]
+  \begin{center}
+	\includegraphics[width=0.49\linewidth]{rs_loop_bmass_extramu_nocut} \put(-58,123){(a)}
+	\includegraphics[width=0.49\linewidth]{rs_loop_bmass_extramu_nocut_logy} \put(-58,123){(b)}
+	\end{center}
+  \caption{
+    \small %captions should be a little bit smaller than main text                                                                                                                
+    Invariant mass distributions of $m(D^{*}\mu_\text{Extra})$ in (a) linear scale and (b) log scale. Peaking structures which are unassociated with clear resonances are seen.
+    }
+  \label{fig:dstar-muext}
+\end{figure}
+%%%%%%%%%%mu dstar , K hypothesis%%%%%%%%%%%
+
+\begin{figure}[tb]
+  \begin{center}
+	\includegraphics[width=0.49\linewidth]{rs_loop_bmass_extramu_khypo} \put(-58,123){(a)}
+	\includegraphics[width=0.49\linewidth]{rs_loop_bmass_extramu_khypo_logy} \put(-58,123){(b)}
+	\end{center}
+  \caption{
+    \small %captions should be a little bit smaller than main text                                                                                                                
+    Invariant mass distributions of $m(D^{*}\mu_\text{Extra})$ with a kaon mass hypothesis for the muon. Shown in (a) linear scale and (b) log scale. By swapping the mass hypothesis, it is possible to identify the resonance as a XXXX.
+    }
+  \label{fig:dstar-muext-k}
+\end{figure}
+
+
+
+\section{Comparison to Monte Carlo}
+
+%%%%%%%%%%%%%%%MC B mass%%%%%%%%%%%%%%%%
+\begin{figure}[tb]
+  \begin{center}
+	\includegraphics[width=0.49\linewidth]{dst_scaled_mc_rd_histo} \put(-58,123){(a)}
+	\includegraphics[width=0.49\linewidth]{dst_scaled_mc_rd_histo_logy} \put(-58,123){(b)}
+	\end{center}
+  \caption{
+    \small %captions should be a little bit smaller than main text                                                                                                                
+    Normalized invariant mass distributions of $m(D^{*}\mu)$. The blue line is 1.065 fb$^-1$ of 2012 LHCb data reconstructed Right Sign $D^0\to K \pi$ decays, green is the background $B\to D^*\tau\nu$ Monte Carlo sample, and black is the $B\to D^* \mu \nu$, $K\pi$ signal Monte Carlo. Shown in (a) linear scale and (b) log scale.
+    }
+  \label{fig:m-dstar-mu-MC-compare}
+\end{figure}
+%%%%%%%%%%%%%%%%%N Candidate Distributions
+\begin{figure}[tb]
+  \begin{center}
+	\includegraphics[width=0.49\linewidth]{RS_sigmc_RD__ncandidate} \put(-58,123){(a)}
+	\includegraphics[width=0.49\linewidth]{RS_sigmc_RD__ncandidate_logy} \put(-58,123){(b)}
+	\end{center}
+  \caption{
+    \small %captions should be a little bit smaller than main text                                                                                                                
+    Normalized distributions of the numbers of candidate events. To a first approximation, any events with multiple candidates should constitute the possibility of being mis-reconstructed. Blue line represents 1.065 fb$^-1$ of 2012 LHCb data reconstructed Right Sign $D^0\to K \pi$ decays, and the Red line represents Signal Monte Carlo. Shown in (a) linear scale and (b) log scale. Agreement between Data and Monte Carlo allow direct comparison between TupleToolExtraMu and MC mis-reconstruction rate.
+    }
+  \label{fig:ncandidate-MC-compare}
+\end{figure}
+
+\begin{table}[htdp]
+	\begin{center}
+		\begin{tabular}{c c c c}
+		\hline
+		Category & \multicolumn{3}{c}{Reconstructed Candidates} \\ \hline \hline
+		 & 1 & 2 & 3 \\ \hline
+		Data & $98.39\pm err$& $1.80\pm err$ & $0.05 \pm err$ \\
+		Signal MC & $98.13\pm err$ & $1.80\pm err$ & $0.06\pm err$ \\
+		\hline \hline
+		\end{tabular}
+	\end{center}
+	\label{table:mc_data_ncand}
+	\caption{Numbers of candidates reconstructed by DecayTreeTuple. Normalized by the total number of events. Agreement between Data and Monte Carlo is at the XX$\sigma$ level}
+\end{table}
+
+\begin{table}[htdp]
+	\begin{center}
+		\begin{tabular}{c c c c}
+		\hline
+		Category & \multicolumn{3}{c}{Percentage of Additional Muons Passing Selection Cuts} \\ \hline
+		 & 0 & 1& 2 \\ \hline\hline
+		Data & $95.81 \pm err$& $3.94 \pm err$ &$ 0.23 \pm err$ \\
+		Signal MC & $98.27\pm 0.03$& $1.69\pm 0.03$& $0.04\pm 4.69\times 10^{-3}$\\ \hline \hline
+		\end{tabular}
+	\end{center}
+	\label{table:mc_vs_data}
+	\caption{Comparison of Data Driven methods with Monte Carlo results. Agreement between Data and Signal Monte Carlo is at the YY$\sigma$ level.}
+\end{table}%
+
+
+\section{Conclusion}
+The tool TupleToolExtraMu was written in order to explore the backgrounds contributing to the decay $B\to \mu D^* X, D^*\to D^0\pi_S,D^0\to K\pi$ due to misidentification or mis-association of muons in the event. It has proven to be a very useful data-driven tool which allowed identification of backgrounds as well as determination of background shapes. While agreement with Monte Carlo is only partial, the usefulness in exploring the LHCb data via data-driven methods is easily seen.
+\end{linenumbers}
+\end{flushleft}
+\bibliographystyle{h-physrev}
+%\bibliography{orals_paper_bib}
+\end{document}
+
