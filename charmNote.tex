@@ -5,10 +5,15 @@
 \usepackage{graphicx}
 \usepackage{colordvi}
 \usepackage{amssymb}
+<<<<<<< HEAD
 \usepackage{ulem}
 \usepackage{graphicx}
 %\usepackage{caption}
 %\usepackage{subcaption}
+=======
+\usepackage{ulem} 
+\usepackage{hyperref}
+>>>>>>> ef914da38699bf434d7c63631ae79a0dd9c7af00
 \pagestyle{empty}
 %\textheight 510pt
 %\textwidth 683.4pt
@@ -47,7 +52,7 @@ $(x'^2, y')$ in place of $(x, y)$), and where the numbers in each measurement
 may be strongly correlated. To do so we construct an overall $\chi^2$ for
 all the results:
 \begin{eqnarray}
-\chi^2 &=& \vec\epsilon^T \sigma^-1 \vec\epsilon
+\chi^2 &=& \vec\epsilon^T \sigma^{-1} \vec\epsilon
 \end{eqnarray}
 where the elements of $\vec\epsilon$ are given by
 $\epsilon_i = m_i - p_i$. Here $\vec m$ is the list of measured
@@ -108,10 +113,17 @@ and fit only for $x$, $y$, $\delta$, and $R_D$.
 \item No direct CP violation. With no direct CP violation, $R_D^+=R_D^-$;
 in addition, the four parameters $x$, $y$, $\phi$ and $|q/p|$ are related 
 (in the limit that CPV is small) by the constraint
+<<<<<<< HEAD
 %\begin{eqnarray}
 %%|q/p| &=& 1 - \frac{y}{x}\tan\phi \\
 %%\phi &=& \frac{x}{y}\atan\left(\frac{1-|q/p|^2}{1+|q/p|^2}\right)
 %\end{eqnarray}
+=======
+\begin{eqnarray}
+|q/p| &=& 1 - \frac{y}{x}\tan\phi \\
+\phi &=& \frac{x}{y}\arctan\left(\frac{1-|q/p|^2}{1+|q/p|^2}\right).
+\end{eqnarray}
+>>>>>>> ef914da38699bf434d7c63631ae79a0dd9c7af00
 Thus we have two variants on this fit:
 \begin{description}
 \item[2a] Here we allow $|q/p|$ to float and calculate $\phi$
@@ -133,14 +145,26 @@ to float.
 \end{itemize}
 
 In addition, we do a fit not allowing direct CP violation, in which the
+<<<<<<< HEAD
 free parameters are $x_{12}$, $y_{12}$, and $\phi$
+=======
+free parameters are the underlying\footnote{See Kagan and Sokoloff, \url{http://arxiv.org/abs/0907.3917}.}
+$x_{12}$, $y_{12}$, and $\phi_{12}$. 
+>>>>>>> ef914da38699bf434d7c63631ae79a0dd9c7af00
 
 \section{Measurements used}
 
 
 
+<<<<<<< HEAD
 %\section{Results}
 \input{results}
+=======
+\section{Results}
+
+\input{results.tex}
+
+>>>>>>> ef914da38699bf434d7c63631ae79a0dd9c7af00
 \section{Conclusion}
 
 
