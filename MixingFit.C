@@ -747,12 +747,12 @@ int main (int argc, char** argv) {
   par[0] = 0.0012;            
   stepSize[0] = 0.0001;       
   minVal[0] = -0.1;         
-  maxVal[0] = 0.1;
+  maxVal[0] = 0.15;
   parName[0] = special_alex_fit ? "x_12" : "x";
   par[1] = 0.0070;          
   stepSize[1] = 0.0001;     
   minVal[1] = -0.1;         
-  maxVal[1] = 0.1;
+  maxVal[1] = 0.15;
   parName[1] = special_alex_fit ? "y_12" : "y";
   par[2]      = 0.3;       
   stepSize[2] = 0.01;      
@@ -782,8 +782,8 @@ int main (int argc, char** argv) {
 
   par[7]      = 1.00; 
   stepSize[7] = 0.01;
-  minVal[7]   = 0.75;
-  maxVal[7]   = 1.25; 
+  minVal[7]   = 0.25;
+  maxVal[7]   = 1.9; 
   parName[7]  = "qoverp"; 
   
   /*

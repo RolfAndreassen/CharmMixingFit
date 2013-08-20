@@ -11,6 +11,9 @@
 result hfag_ycp           ycp none 0.008660 0.001550 0.0000 0.0000 1.00
 result hfag_agamma        agamma none -0.00022 0.00161 0.0000 0.0000 1.00
 #
+result lhcb_agamma_kk     agamma none -0.00035 0.00062 0.00012 0.0000 1.00
+result lhcb_agamma_pipi   agamma none 0.00033 0.00106 0.00014 0.0000 1.00
+#
 result lhcb_rd              rsubd   none 0.003568 0.000058 0.000033 0.0 1.0
 result lhcb_yprime_p        yprimep kpi  0.00446  0.00089  0.00057  0.0 1.0
 result lhcb_xp2_p           xprimep kpi  0.000077 0.000046 0.000029 0.0 1.0

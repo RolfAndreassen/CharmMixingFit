@@ -6,7 +6,7 @@
 #
 # Author: Fons Rademakers, 29/2/2000
 
-ARCH          = linux
+#ARCH          = linux
 
 ObjSuf        = o
 SrcSuf        = C

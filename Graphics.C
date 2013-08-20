@@ -34,7 +34,7 @@ MixDrawer::MixDrawer ()
 
 void MixDrawer::draw () {
   //gROOT->ProcessLine(".L ./lhcb_style.cc");
-  /*
+
   // Use times new roman, precision 2 
   Int_t lhcbFont        = 132;  // Old LHCb style: 62;
   // Line thickness
@@ -100,8 +100,8 @@ void MixDrawer::draw () {
   lhcbStyle->SetMarkerSize(1.0);
 
   // label offsets
-  lhcbStyle->SetLabelOffset(0.010,"X");
-  lhcbStyle->SetLabelOffset(0.010,"Y");
+  lhcbStyle->SetLabelOffset(0.015,"X");
+  lhcbStyle->SetLabelOffset(0.015,"Y");
 
   // by default, do not display histogram decorations:
   lhcbStyle->SetOptStat(0);  
@@ -170,8 +170,8 @@ void MixDrawer::draw () {
   std::cout << "-------------------------" << std::endl;  
   std::cout << "Set LHCb Style - Feb 2012" << std::endl;
   std::cout << "-------------------------" << std::endl;  
-  */
-  
+
+  /*  
   gStyle->SetCanvasBorderMode(0);
   gStyle->SetCanvasColor(10);
   gStyle->SetFrameFillColor(10);
@@ -193,7 +193,7 @@ void MixDrawer::draw () {
   gStyle->SetPadTopMargin(0.13);
   gStyle->SetLineStyleString(11, "0 5000");
   gStyle->SetLineStyleString(12, "100 50");
-  TGaxis::SetMaxDigits(2);
+  TGaxis::SetMaxDigits(2);*/
   TCanvas* foo = new TCanvas();
   foo->Size(40,40);
   foo->SetFillColor(0);
@@ -214,11 +214,13 @@ void MixDrawer::draw () {
   XMAX = gr23->GetXaxis()->GetXmax();
   YMIN = gr23->GetYaxis()->GetXmin();
   YMAX = gr23->GetYaxis()->GetXmax();
+  gr23->GetXaxis()->SetTitle(xaxisTitle.c_str());
+  gr23->GetYaxis()->SetTitle(yaxisTitle.c_str());
   gr23->Draw("alf");
   
-  TF1* multXBy1k = new TF1("multXBy1k", "1000*x", xmin*1000, xmax*1000);
+  TF1* multXBy1k = new TF1("multXBy1k", "x", xmin, xmax);
   TF1* multYBy1k = new TF1("multYBy1k", "1000*x", ymin*ymult, ymax*ymult);
-  TGaxis* xaxis = new TGaxis(xmin,ymin,xmax,ymin,"multXBy1k",510,"+");
+  /*  TGaxis* xaxis = new TGaxis(xmin,ymin,xmax,ymin,"multXBy1k",510,"+");
   TGaxis* yaxis = new TGaxis(xmin,ymin,xmin,ymax,"multYBy1k",510,"-");
   
   xaxis->SetTitle((xaxisTitle+ " #times 10^{3}").c_str()); 
@@ -240,7 +242,7 @@ void MixDrawer::draw () {
   gr23->GetYaxis()->SetAxisColor(kWhite);
 
   xaxis->Draw();
-  yaxis->Draw();
+  yaxis->Draw();*/
   foo->SaveAs((directory + "/axisplot.png").c_str()); 
   delete multXBy1k;
   delete multYBy1k;
@@ -264,7 +266,7 @@ void MixDrawer::draw () {
   }
 
   foo->SaveAs((directory + "/finalplot.png").c_str()); 
-  //foo->SaveAs((directory + "/finalplot.pdf").c_str()); 
+  foo->SaveAs((directory + "/finalplot.pdf").c_str()); 
   delete foo; 
 }
 
@@ -315,7 +317,7 @@ void MixDrawer::drawAnnulus (MixingResult* dat, DrawOptions* dis, TCanvas* foo) 
     std::cout << "Error: Cannot draw annulus with non-prime result " << xres->getName() << " " << xres->myPrime << std::endl; 
     assert(false); 
   }
-
+  
   annuMin->FixParameter(2); 
   annuMin->FixParameter(3); 
 
@@ -451,7 +453,9 @@ void MixDrawer::drawAnnulus (MixingResult* dat, DrawOptions* dis, TCanvas* foo) 
 void MixDrawer::drawResult (MixingResult* dat, DrawOptions* dis, TCanvas* foo) {
   std::vector<MixingResult*> actives; 
   for (MixingResult::ResultIterator i = MixingResult::begin(); i != MixingResult::end(); ++i) {
-    if ((*i)->isActive()) actives.push_back(*i); 
+    if((*i)->isActive()){ actives.push_back(*i);
+      std::cout<<"i->getName() = "<<(*i)->getName()<<std::endl;//ad 8/19/13
+    }
     (*i)->setActive(false); 
   }
   dat->setActive(true); 
@@ -490,7 +494,7 @@ void MixDrawer::drawResult (MixingResult* dat, DrawOptions* dis, TCanvas* foo) {
   }
 }
 
-void MixDrawer::findPoint (TGraph* ret, int idx, double angle, double errorDef) {
+void MixDrawer::findPoint (TGraph* ret, int idx, double angle, double errorDef, int par1, int par2) {
   double fitpar[MixingResult::nParams];            
   double fiterr[MixingResult::nParams];            
   double chisq;
@@ -502,8 +506,8 @@ void MixDrawer::findPoint (TGraph* ret, int idx, double angle, double errorDef) 
   
   MixChisqFcn(npars, 0, chisq, fitpar, 4);
 
-  double initX = fitpar[0];
-  double initY = fitpar[1]; 
+  double initX = fitpar[par1];
+  double initY = fitpar[par2]; 
   double xincrement = cos(angle);
   double yincrement = sin(angle); 
   double minimum = 0;
@@ -520,7 +524,7 @@ void MixDrawer::findPoint (TGraph* ret, int idx, double angle, double errorDef) 
     chiAtMaximum = chisq; 
   }
 
-  static const double tolerance = 0.01; 
+  static const double tolerance = 0.001; 
   for (int i = 0; i < 1000; ++i) {
     double currDist = minimum + (maximum - minimum)*0.5; 
     fitpar[0] = initX + currDist*xincrement;
@@ -546,22 +550,19 @@ void MixDrawer::findPoint (TGraph* ret, int idx, double angle, double errorDef) 
 
 TGraph* MixDrawer::getEllipse (double errorDef) {
   MixingResult::minuit->SetErrorDef(errorDef);
-  std::cout << "Getting ellipse with " << graphicsXIndex << " " << graphicsYIndex << std::endl; 
   TGraph* ret = (TGraph*) MixingResult::minuit->Contour(pointsPerContour, graphicsXIndex, graphicsYIndex);
-  
-  /*
+  std::cout<<"!ret = "<<!ret<<std::endl;//ad 8/19/13
+  if(graphicsXIndex==0){
   if ((!ret) || (ret->GetN() < pointsPerContour)) {
     if (ret) delete ret;
     ret = new TGraph(pointsPerContour); 
 
     for (int i = 0; i < pointsPerContour; ++i) {
       double angle = i*(6.28/pointsPerContour); 
-      findPoint(ret, i, angle, errorDef);
+      findPoint(ret, i, angle, errorDef,graphicsXIndex,graphicsYIndex);
     }
   }
-  */
-  
-
+  }
 
   return ret; 
 }
@@ -597,11 +598,11 @@ std::pair<TGraph*, TGraph*> MixDrawer::drawEllipse (DrawOptions* dis, TCanvas* f
   if (ret.first) ret.first->SetFillColor(dis->colour);
 
   if ((dis->numContours > 1) && (ret.second)) {
-    ret.second->Draw("if");
+    ret.second->Draw("if9");
     //std::cout << "Outer ellipse drawn\n"; 
   }
   if (ret.first) {
-    ret.first->Draw("if");
+    ret.first->Draw("if9");
     //std::cout << "Inner ellipse drawn\n"; 
   }
 
@@ -610,7 +611,7 @@ std::pair<TGraph*, TGraph*> MixDrawer::drawEllipse (DrawOptions* dis, TCanvas* f
 }
 
 std::vector<TGraph*> MixDrawer::drawEllipse3 (DrawOptions* dis, TCanvas* foo) {
-  std::vector<TGraph*> ret(3); 
+  std::vector<TGraph*> ret(dis->numContours); 
 
   /*
   for (int i = 2; i < MixingResult::NUMSENSE; ++i) {
@@ -634,28 +635,43 @@ std::vector<TGraph*> MixDrawer::drawEllipse3 (DrawOptions* dis, TCanvas* foo) {
   //  providing 68.27% coverage [equivalent to
   //  1 sigma in 1 dimension] has chisq=2.30
   MixingResult::minuit->Migrad(); 
+  if(dis->numContours>4){
+    ret[4] = getEllipse(28.74);//5 sigma contour
+    if(ret[4]) ret[4]->SetFillColor(46);
+  }
+
+  if(dis->numContours>3){
+    ret[3]= getEllipse(19.33); //4 sigma contour
+    if(ret[3]) ret[3]->SetFillColor(42);
+  }
+
   if(dis->numContours>2){
     ret[2] = getEllipse(11.83);//3 sigma in 2d
-    if (ret[2]) ret[2]->SetFillColor(kRed);
+    if (ret[2]) ret[2]->SetFillColor(8);
   }
   ret[1] = getEllipse(6.18);
-  if (ret[1]) ret[1]->SetFillColor(kOrange);
+  if (ret[1]) ret[1]->SetFillColor(kCyan-7);
   ret[0] = getEllipse(2.30);
-  if (ret[0]) ret[0]->SetFillColor(dis->colour);
-
+  if (ret[0]) ret[0]->SetFillColor(kBlue);
+  for(unsigned int ell_num=(ret.size())-1; ell_num>0;ell_num-=1){
+    std::cout<<"drawing contour"<<ell_num<<std::endl;
+    if(ret[ell_num]) ret[ell_num]->Draw("if9");
+  }
+  if(ret[0]) ret[0]->Draw("if9");
+  /*
   if((dis->numContours>2) &&(ret[2])&&(ret[1])){
-    ret[2]->Draw("if");
+    ret[2]->Draw("if9");
     //std::cout<< "3sigma elipse drawn"<<std::endl;
   }
     if ((dis->numContours > 1) && (ret[1])) {
-      ret[1]->Draw("if");
+      ret[1]->Draw("if9");
     //std::cout << "Outer ellipse drawn\n"; 
   }
     if (ret[0]) {
-      ret[0]->Draw("if");
+      ret[0]->Draw("if9");
     //std::cout << "Inner ellipse drawn\n"; 
   }
-
+  */
   MixingResult::minuit->SetErrorDef(1.00);
   return ret; 
 }

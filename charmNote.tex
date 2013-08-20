@@ -5,15 +5,18 @@
 \usepackage{graphicx}
 \usepackage{colordvi}
 \usepackage{amssymb}
-\usepackage{ulem} 
+\usepackage{ulem}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
 \pagestyle{empty}
 %\textheight 510pt
 %\textwidth 683.4pt
 %\oddsidemargin 0pt
 %\evensidemargin 0pt
 %\topmargin -82pt
-\fboxrule0.05in
-\fboxsep0.1in
+%\fboxrule0.05in
+%\fboxsep0.1in
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \addtolength{\headheight}{2.5pt}
@@ -77,7 +80,7 @@ related mixing parameters:
 The observed inputs, however, are not all direct measurements of these
 quantities. From $D^0\to K_S\pi\pi$ we get direct measurements of $x$, $y$, $|q/p|$ and $\phi$;
 $D^0\to K\pi$ results also yield $R_D^\pm$ directly, although sometimes quoted
-as $R_D &=& \frac{1}{2}(R_D^+ + R_D^-)$ and $A_D &=& \frac{R_D^+ - R_D^-}{R_D^+ + R_D^-}$.
+as $R_D = \frac{1}{2}(R_D^+ + R_D^-)$ and $A_D = \frac{R_D^+ - R_D^-}{R_D^+ + R_D^-}$.
 However, we also measure the derived parameters $x'^{2(\pm)}$, $y'^{(\pm)}$, $y_{CP}$, and $A_\Gamma$,
 defined as:
 \begin{eqnarray}
@@ -105,10 +108,10 @@ and fit only for $x$, $y$, $\delta$, and $R_D$.
 \item No direct CP violation. With no direct CP violation, $R_D^+=R_D^-$;
 in addition, the four parameters $x$, $y$, $\phi$ and $|q/p|$ are related 
 (in the limit that CPV is small) by the constraint
-\begin{eqnarray}
-|q/p| &=& 1 - \frac{y}{x}\tan\phi \\
-\phi &=& \frac{x}{y}\atan\left(\frac{1-|q/p|^2}{1+|q/p|^2}\right).
-\end{eqnarray}
+%\begin{eqnarray}
+%%|q/p| &=& 1 - \frac{y}{x}\tan\phi \\
+%%\phi &=& \frac{x}{y}\atan\left(\frac{1-|q/p|^2}{1+|q/p|^2}\right)
+%\end{eqnarray}
 Thus we have two variants on this fit:
 \begin{description}
 \item[2a] Here we allow $|q/p|$ to float and calculate $\phi$
@@ -130,14 +133,14 @@ to float.
 \end{itemize}
 
 In addition, we do a fit not allowing direct CP violation, in which the
-free parameters are $x_{12}$, $y_{12}$, and $\phi
+free parameters are $x_{12}$, $y_{12}$, and $\phi$
 
 \section{Measurements used}
 
 
 
-\section{Results}
-
+%\section{Results}
+\input{results}
 \section{Conclusion}
 
 

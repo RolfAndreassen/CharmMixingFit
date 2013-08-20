@@ -120,7 +120,7 @@ public:
 private:
   void drawResult (MixingResult* dat, DrawOptions* dis, TCanvas* foo);
   TGraph* getEllipse (double errorDef); 
-  void findPoint (TGraph* ret, int idx, double angle, double errorDef); 
+  void findPoint (TGraph* ret, int idx, double angle, double errorDef, int par1, int par2);//ad 8/19/13 
   std::pair<TGraph*, TGraph*> drawEllipse (DrawOptions* dis, TCanvas* foo);
   std::vector<TGraph*> drawEllipse3 (DrawOptions* dis, TCanvas* foo);//ad 8/18/13
   void drawYbar (MixingResult* dat, DrawOptions* dis, TCanvas* foo);
