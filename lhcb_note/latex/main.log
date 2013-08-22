@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  20 AUG 2013 14:41
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.7.3)  20 AUG 2013 16:08
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -424,48 +424,8 @@ Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 (/usr/local/texlive/2011/texmf-dist/tex/latex/oberdiek/grfext.sty
 Package: grfext 2010/08/19 v1.1 Managing graphics extensions (HO)
 )
-Package grfext Info: Graphics extension search list:
-(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 452.
-
-(/usr/local/texlive/2011/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-))
-Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: hyperref package is loaded.
-Package caption Info: hypcap package is loaded.
-Package caption Info: End \AtBeginDocument code.
-LaTeX Info: Redefining \microtypecontext on input line 34.
-Package microtype Info: Generating PDF output.
-Package microtype Info: Character protrusion enabled (level 2).
-Package microtype Info: Using default protrusion set `alltext'.
-Package microtype Info: Automatic font expansion enabled (level 2),
-(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
-Package microtype Info: Using default expansion set `basictext'.
-Package microtype Info: No tracking.
-Package microtype Info: No adjustment of interword spacing.
-Package microtype Info: No adjustment of character kerning.
-
-(/usr/local/texlive/2011/texmf-dist/tex/latex/microtype/mt-cmr.cfg
-File: mt-cmr.cfg 2009/11/09 v2.0 microtype config. file: Computer Modern Roman 
-(RS)
-)
-\AtBeginShipoutBox=\box30
-Package hyperref Info: Link coloring OFF on input line 34.
-
-(/usr/local/texlive/2011/texmf-dist/tex/latex/hyperref/nameref.sty
-Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
-
-(/usr/local/texlive/2011/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
-Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
-)
-\c@section@level=\count131
-)
-LaTeX Info: Redefining \ref on input line 34.
-LaTeX Info: Redefining \pageref on input line 34.
-LaTeX Info: Redefining \nameref on input line 34.
+Package grfext Info: Graphics extension searTeX Info: Redefining \pageref on input line 32.
+LaTeX Info: Redefining \nameref on input line 32.
 
 (./main.out) (./main.out)
 \@outlinefile=\write3
@@ -481,6 +441,52 @@ File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 19.
+
+(/usr/local/texlive/2011/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+)
+(/usr/local/texlive/2011/texmf-dist/tex/latex/microtype/mt-eur.cfg
+File: mt-eur.cfg 2006/07/31 v1.1 microtype config. file: AMS Euler Roman (RS)
+)
+<figs/lhcb-logo.pdf, id=4, 87.32625pt x 60.225pt>
+File: figs/lhcb-logo.pdf Graphic file (type pdf)
+ <use figs/lhcb-logo.pdf>
+Package pdftex.def Info: figs/lhcb-logo.pdf used on input line 23.
+(pdftex.def)             Requested size: 63.73389pt x 43.95468pt.
+
+./title-LHCb-INT.tex:25: Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.25  &
+        & LHCb-INT-20XX-YYY \\  % ID
+? 
+./title-LHCb-INT.tex:25: Emergency stop.
+<recently read> \endtemplate 
+                             
+l.25  &
+        & LHCb-INT-20XX-YYY \\  % ID
+End of file on the terminal!
+
+ 
+Here is how much of TeX's memory you used:
+ 8679 strings out of 493633
+ 124611 string characters out of 3143378
+ 233592 words of memory out of 3000000
+ 11867 multiletter control sequences out of 15000+200000
+ 9232 words of font info for 37 fonts, out of 3000000 for 9000
+ 831 hyphenation exceptions out of 8191
+ 36i,12n,35p,251b,247s stack positions out of 5000i,500n,10000p,200000b,50000s
+./title-LHCb-INT.tex:25:  ==> Fatal error occurred, no output PDF file produced
+!
+t of 3000000 for 9000
+ 831 hyphenation exceptions out of 8191
+ 36i,8n,35p,251b,192s stack positions out of 5000i,500n,10000p,200000b,50000s
+./title-LHCb-INT.tex:22:  ==> Fatal error occurred, no output PDF file produced
+!
+sb on input line 19.
 
 (/usr/local/texlive/2011/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
@@ -528,8 +534,8 @@ LaTeX Warning: Reference `blah' on page 3 undefined on input line 6.
 LaTeX Warning: Reference `table:all_cpv_meas' on page 3 undefined on input line
  8.
 
-(./nocpv_inputs_out.tex) (./allcpv_inputs_gen.tex)) (./results.tex
-<./figs/finalplot_nocpv__graph.pdf, id=91, 569.12625pt x 569.12625pt>
+(./nocpv_inputs_out.tex) (./allcpv_inputs_gen.tex)) (./results.tex [3]
+<./figs/finalplot_nocpv__graph.pdf, id=96, 569.12625pt x 569.12625pt>
 File: ./figs/finalplot_nocpv__graph.pdf Graphic file (type pdf)
 
 <use ./figs/finalplot_nocpv__graph.pdf>
@@ -537,7 +543,7 @@ Package pdftex.def Info: ./figs/finalplot_nocpv__graph.pdf used on input line 1
 5.
 (pdftex.def)             Requested size: 182.09485pt x 182.09807pt.
 
-<./figs/finalplot_nocpv_belle_babar_graph.pdf, id=92, 569.12625pt x 569.12625pt
+<./figs/finalplot_nocpv_belle_babar_graph.pdf, id=97, 569.12625pt x 569.12625pt
 >
 File: ./figs/finalplot_nocpv_belle_babar_graph.pdf Graphic file (type pdf)
  <use ./figs/finalplot_nocpv_belle_babar_graph.pdf>
@@ -545,7 +551,7 @@ Package pdftex.def Info: ./figs/finalplot_nocpv_belle_babar_graph.pdf used on i
 nput line 23.
 (pdftex.def)             Requested size: 182.09485pt x 182.09807pt.
 
-<./figs/finalplot_nocpv_belle_babar_cdf_graph.pdf, id=93, 569.12625pt x 569.126
+<./figs/finalplot_nocpv_belle_babar_cdf_graph.pdf, id=98, 569.12625pt x 569.126
 25pt>
 File: ./figs/finalplot_nocpv_belle_babar_cdf_graph.pdf Graphic file (type pdf)
  <use ./figs/finalplot_nocpv_belle_babar_cdf_graph.pdf>
@@ -553,7 +559,7 @@ Package pdftex.def Info: ./figs/finalplot_nocpv_belle_babar_cdf_graph.pdf used
 on input line 30.
 (pdftex.def)             Requested size: 182.09485pt x 182.09807pt.
 
-<./figs/finalplot_allcpv_no_belle_babar_graph_hfag_agamma.pdf, id=94, 569.12625
+<./figs/finalplot_allcpv_no_belle_babar_graph_hfag_agamma.pdf, id=99, 569.12625
 pt x 569.12625pt>
 File: ./figs/finalplot_allcpv_no_belle_babar_graph_hfag_agamma.pdf Graphic file
  (type pdf)
@@ -563,8 +569,8 @@ Package pdftex.def Info: ./figs/finalplot_allcpv_no_belle_babar_graph_hfag_agam
 ma.pdf used on input line 48.
 (pdftex.def)             Requested size: 182.09485pt x 182.09807pt.
 
-<./figs/finalplot_allcpv_no_belle_babar_graph_lhcb_agamma.pdf, id=95, 569.12625
-pt x 569.12625pt>
+<./figs/finalplot_allcpv_no_belle_babar_graph_lhcb_agamma.pdf, id=100, 569.1262
+5pt x 569.12625pt>
 File: ./figs/finalplot_allcpv_no_belle_babar_graph_lhcb_agamma.pdf Graphic file
  (type pdf)
 
@@ -573,8 +579,8 @@ Package pdftex.def Info: ./figs/finalplot_allcpv_no_belle_babar_graph_lhcb_agam
 ma.pdf used on input line 55.
 (pdftex.def)             Requested size: 182.09485pt x 182.09807pt.
 
-<./figs/finalplot_allcpv_no_belle_babar_cdf_graph_hfag_agamma.pdf, id=96, 569.1
-2625pt x 569.12625pt>
+<./figs/finalplot_allcpv_no_belle_babar_cdf_graph_hfag_agamma.pdf, id=101, 569.
+12625pt x 569.12625pt>
 File: ./figs/finalplot_allcpv_no_belle_babar_cdf_graph_hfag_agamma.pdf Graphic 
 file (type pdf)
 
@@ -583,8 +589,8 @@ Package pdftex.def Info: ./figs/finalplot_allcpv_no_belle_babar_cdf_graph_hfag_
 agamma.pdf used on input line 64.
 (pdftex.def)             Requested size: 182.09485pt x 182.09807pt.
 
-<./figs/finalplot_allcpv_no_belle_babar_cdf_graph_lhcb_agamma.pdf, id=97, 569.1
-2625pt x 569.12625pt>
+<./figs/finalplot_allcpv_no_belle_babar_cdf_graph_lhcb_agamma.pdf, id=102, 569.
+12625pt x 569.12625pt>
 File: ./figs/finalplot_allcpv_no_belle_babar_cdf_graph_lhcb_agamma.pdf Graphic 
 file (type pdf)
 
@@ -593,8 +599,8 @@ Package pdftex.def Info: ./figs/finalplot_allcpv_no_belle_babar_cdf_graph_lhcb_
 agamma.pdf used on input line 71.
 (pdftex.def)             Requested size: 182.09485pt x 182.09807pt.
 
-<./figs/finalplot_allcpv_no_belle_babar_graph_qop_phi_hfag_agamma.pdf, id=98, 5
-69.12625pt x 569.12625pt>
+<./figs/finalplot_allcpv_no_belle_babar_graph_qop_phi_hfag_agamma.pdf, id=103, 
+569.12625pt x 569.12625pt>
 File: ./figs/finalplot_allcpv_no_belle_babar_graph_qop_phi_hfag_agamma.pdf Grap
 hic file (type pdf)
 
@@ -603,8 +609,8 @@ Package pdftex.def Info: ./figs/finalplot_allcpv_no_belle_babar_graph_qop_phi_h
 fag_agamma.pdf used on input line 86.
 (pdftex.def)             Requested size: 182.09485pt x 182.09807pt.
 
-<./figs/finalplot_allcpv_no_belle_babar_graph_qop_phi_lhcb_agamma.pdf, id=99, 5
-69.12625pt x 569.12625pt>
+<./figs/finalplot_allcpv_no_belle_babar_graph_qop_phi_lhcb_agamma.pdf, id=104, 
+569.12625pt x 569.12625pt>
 File: ./figs/finalplot_allcpv_no_belle_babar_graph_qop_phi_lhcb_agamma.pdf Grap
 hic file (type pdf)
 
@@ -614,7 +620,7 @@ hcb_agamma.pdf used on input line 93.
 (pdftex.def)             Requested size: 182.09485pt x 182.09807pt.
 
 <./figs/finalplot_allcpv_no_belle_babar_cdf_graph_qop_phi_hfag_agamma.pdf, id=1
-00, 569.12625pt x 569.12625pt>
+05, 569.12625pt x 569.12625pt>
 File: ./figs/finalplot_allcpv_no_belle_babar_cdf_graph_qop_phi_hfag_agamma.pdf 
 Graphic file (type pdf)
 
@@ -624,7 +630,7 @@ hi_hfag_agamma.pdf used on input line 101.
 (pdftex.def)             Requested size: 182.09485pt x 182.09807pt.
 
 <./figs/finalplot_allcpv_no_belle_babar_cdf_graph_qop_phi_lhcb_agamma.pdf, id=1
-01, 569.12625pt x 569.12625pt>
+06, 569.12625pt x 569.12625pt>
 File: ./figs/finalplot_allcpv_no_belle_babar_cdf_graph_qop_phi_lhcb_agamma.pdf 
 Graphic file (type pdf)
 
@@ -632,7 +638,7 @@ Graphic file (type pdf)
 Package pdftex.def Info: ./figs/finalplot_allcpv_no_belle_babar_cdf_graph_qop_p
 hi_lhcb_agamma.pdf used on input line 108.
 (pdftex.def)             Requested size: 182.09485pt x 182.09807pt.
-) (./conclusion.tex) [3]
+) (./conclusion.tex)
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 108.
  [4] [5 <./figs/finalplot_nocpv__graph.pdf> <./figs/finalplot_nocpv_belle_babar
 _graph.pdf> <./figs/finalplot_nocpv_belle_babar_cdf_graph.pdf>] [6] [7 <./figs/
@@ -659,11 +665,11 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 108.
  ) 
 Here is how much of TeX's memory you used:
- 9990 strings out of 493633
- 149964 string characters out of 3143378
- 292290 words of memory out of 3000000
- 13039 multiletter control sequences out of 15000+200000
- 22645 words of font info for 106 fonts, out of 3000000 for 9000
+ 9958 strings out of 493633
+ 149376 string characters out of 3143378
+ 290290 words of memory out of 3000000
+ 13006 multiletter control sequences out of 15000+200000
+ 20076 words of font info for 97 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  36i,14n,38p,392b,528s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
@@ -677,18 +683,16 @@ ocal/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/l
 ocal/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
 al/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local
 /texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/te
-xlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texli
-ve/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/
-2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/20
-11/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/201
-1/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2011/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2011/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2011/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (9 pages, 1053222 bytes).
+xlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texli
+ve/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive
+/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/
+2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/20
+11/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2011
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on main.pdf (9 pages, 1036130 bytes).
 PDF statistics:
- 680 PDF objects out of 1000 (max. 8388607)
- 359 compressed objects within 4 object streams
+ 670 PDF objects out of 1000 (max. 8388607)
+ 351 compressed objects within 4 object streams
  29 named destinations out of 1000 (max. 500000)
- 17021 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 15485 words of extra memory for PDF output out of 17280 (max. 10000000)
 
