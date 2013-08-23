@@ -19,7 +19,7 @@
 int MixDrawer::pointsPerContour = 3600; 
 int MixDrawer::graphicsXIndex = 0; 
 int MixDrawer::graphicsYIndex = 1; 
-int MixDrawer::ymult = 1000; 
+int MixDrawer::ymult = 1; 
 
 MixDrawer::MixDrawer ()
   : directory("testing")
@@ -495,75 +495,87 @@ void MixDrawer::drawResult (MixingResult* dat, DrawOptions* dis, TCanvas* foo) {
 }
 
 void MixDrawer::findPoint (TGraph* ret, int idx, double angle, double errorDef, int par1, int par2) {
-  double fitpar[MixingResult::nParams];            
-  double fiterr[MixingResult::nParams];            
-  double chisq;
-  int npars = MixingResult::nParams;
+  //we're finding a point at a certain angle here, but we don't know where R is, so we have to iterate to find it.
+  double fitpar[MixingResult::nParams];//first get the parameters
+  double fiterr[MixingResult::nParams];//next get the error
+  double chisq;//initialize the chi2
+  int npars = MixingResult::nParams;//get the number of parameters
   
   for (int i = 0; i < MixingResult::nParams; ++i) {
-    MixingResult::minuit->GetParameter(i, fitpar[i], fiterr[i]);
+    MixingResult::minuit->GetParameter(i, fitpar[i], fiterr[i]);//get all the results
+    //std::cout<<"i = "<<i<<", fitpar["<<i<<"] = "<<fitpar[i]<<", fiterr["<<i<<"] = "<<fiterr[i]<<std::endl;
   }
   
-  MixChisqFcn(npars, 0, chisq, fitpar, 4);
+  MixChisqFcn(npars, 0, chisq, fitpar, 4);//get the chi2. Derivative (0) isn't used in the FCN, so it doesn't matter. What is flag=4?
 
-  double initX = fitpar[par1];
-  double initY = fitpar[par2]; 
-  double xincrement = cos(angle);
-  double yincrement = sin(angle); 
-  double minimum = 0;
-  double chiAtMinimum = chisq;
-  double chiAtSolution = chisq; 
-
-  double maximum = 0.0001; 
+  double initX = fitpar[par1];//this is the initial x position
+  double initY = fitpar[par2]; //this is the initial y position
+  double xincrement = cos(angle);//this is the cos of the angle we want
+  double yincrement = sin(angle); //sin of the angle we want
+  double minimum = 0;//minimum chi2
+  double chiAtMinimum = chisq; //chi2 at the minimum
+  double chiAtSolution = chisq; //chi2 at the current solution
+  //  std::cout<<"initX = "<<initX<<", initY = "<<initY<<", xincrement = "<<xincrement<<", yincrement = "<<yincrement<<std::endl;//ad 8/22/13
+  double maximum = 0.001; //this is the radius that we want to test
   double chiAtMaximum = chisq; 
-  while (chiAtMaximum < chiAtSolution + errorDef) {
+  while (chiAtMaximum < chiAtSolution + errorDef) {//break out of the loop as soon as we exceed the chi2. The error def is then the delta chi2
     maximum *= 2; 
-    fitpar[0] = initX + maximum*xincrement;
-    fitpar[1] = initY + maximum*yincrement;
-    MixChisqFcn(npars, 0, chisq, fitpar, 4);
+    fitpar[0] = initX + maximum*xincrement;//x+(r cos(angle))
+    fitpar[1] = initY + maximum*yincrement;//y+(r sin(angle)
+    MixChisqFcn(npars, 0, chisq, fitpar, 4);//check the fit
     chiAtMaximum = chisq; 
   }
-
-  static const double tolerance = 0.001; 
-  for (int i = 0; i < 1000; ++i) {
-    double currDist = minimum + (maximum - minimum)*0.5; 
-    fitpar[0] = initX + currDist*xincrement;
-    fitpar[1] = initY + currDist*yincrement;
+  //we have the maximum
+  //ret->SetPoint(idx, fitpar[0],fitpar[1]); 
+  //zero in for highter tolerance
+  static const double tolerance = 0.0001; //what is this?
+  for (int i = 0; i < 1000; ++i) {//iterate 1000 times
+    double currDist = minimum + (maximum - minimum)*0.5; //take mean of max and min
+    fitpar[0] = initX + currDist*xincrement;//x= x_0 +currDist*cos(angle)
+    fitpar[1] = initY + currDist*yincrement;//y= y_0+ currDist*sin(angle)
     MixChisqFcn(npars, 0, chisq, fitpar, 4);
-    if (chisq > chiAtSolution + errorDef) {
+    if (chisq > chiAtSolution + errorDef) {//if we found a better delta chi2
       maximum = currDist;
       chiAtMaximum = chisq;
     }
-    else {
+    else {//otherwise update the minimum
       minimum = currDist;
       chiAtMinimum = chisq;
     }
-    //if (0 == idx) std::cout << "Scan " << currDist << " " << (chisq - chiAtSolution) << " " << chiAtSolution << std::endl; 
+  
+    if (1 == idx) std::cout << "Scan: currDist =  " << currDist << ", detla Chi2 =  " << (chisq - chiAtSolution) << ",chi2 at solution =  " << chiAtSolution << std::endl; 
     assert(chiAtMaximum > chiAtMinimum);
     if (chiAtMaximum - chiAtMinimum < tolerance) break; 
   }
 
   double dist = minimum + 0.5*(maximum-minimum); 
-  //std::cout << "Found point " << initX + dist*xincrement << ", " << initY + dist*yincrement << std::endl;
+  std::cout << "Found point " << initX + dist*xincrement << ", " << initY + dist*yincrement << std::endl;
   ret->SetPoint(idx, initX + dist*xincrement, initY + dist*yincrement); 
+  
 }
 
 TGraph* MixDrawer::getEllipse (double errorDef) {
   MixingResult::minuit->SetErrorDef(errorDef);
   TGraph* ret = (TGraph*) MixingResult::minuit->Contour(pointsPerContour, graphicsXIndex, graphicsYIndex);
+  if (!ret){
+    delete ret;
+    ret = (TGraph*) MixingResult::minuit->Contour(pointsPerContour/2, graphicsXIndex, graphicsYIndex);
+  }
+  /*
   std::cout<<"!ret = "<<!ret<<std::endl;//ad 8/19/13
+  std::cout<<"calling rolf's find point"<<std::endl;//ad 8/22/13
   if(graphicsXIndex==0){
-  if ((!ret) || (ret->GetN() < pointsPerContour)) {
-    if (ret) delete ret;
-    ret = new TGraph(pointsPerContour); 
-
-    for (int i = 0; i < pointsPerContour; ++i) {
-      double angle = i*(6.28/pointsPerContour); 
-      findPoint(ret, i, angle, errorDef,graphicsXIndex,graphicsYIndex);
+    if ((!ret) || (ret->GetN() < pointsPerContour)) {
+      if (ret) delete ret;
+      ret = new TGraph(pointsPerContour); 
+      
+      for (int i = 0; i < pointsPerContour; ++i) {
+	double angle = i*(6.28/pointsPerContour); //angle over which we're sampling. 2pi/npoints * point we want
+	findPoint(ret, i, angle, errorDef,graphicsXIndex,graphicsYIndex);
+      }
     }
   }
-  }
-
+  */
   return ret; 
 }
 
@@ -973,3 +985,77 @@ void DrawOptions::setColor (std::string base, int mod) {
   }
   colour += mod; 
 }
+
+
+
+/*
+void MixDrawer::findPoint_adam (TGraph* ret, int idx, double angle, double errorDef, int par1, int par2) {
+  //we're finding a point at a certain angle here, but we don't know where R is, so we have to iterate to find it.
+  double fitpar[MixingResult::nParams];//first get the parameters
+  double fiterr[MixingResult::nParams];//next get the error
+  double chisq;//initialize the chi2
+  int npars = MixingResult::nParams;//get the number of parameters
+  
+  for (int i = 0; i < MixingResult::nParams; ++i) {
+    MixingResult::minuit->GetParameter(i, fitpar[i], fiterr[i]);//get all the results
+    //std::cout<<"i = "<<i<<", fitpar["<<i<<"] = "<<fitpar[i]<<", fiterr["<<i<<"] = "<<fiterr[i]<<std::endl;
+  }
+  
+  MixChisqFcn(npars, 0, chisq, fitpar, 4);//get the chi2. Derivative (0) isn't used in the FCN, so it doesn't matter. What is flag=4?
+
+  std::cout<<"FCN called. chi2 set to "<<chisq<<std::endl<<std::endl<<std::endl;
+  std::cout<<"initializing points"<<std::endl;
+  double initX = fitpar[par1];//this is the initial x position
+  double initY = fitpar[par2]; //this is the initial y position
+
+  double xincrement = cos(angle);//this is the cos of the angle we want
+  double yincrement = sin(angle); //sin of the angle we want
+  double minimum = 0;//minimum chi2
+  double chiAtMinimum = chisq; //chi2 at the minimum
+  double chiAtSolution = chisq; //chi2 at the current solution
+  //  std::cout<<"initX = "<<initX<<", initY = "<<initY<<", xincrement = "<<xincrement<<", yincrement = "<<yincrement<<std::endl;//ad 8/22/13
+  double maximum = TMath::Sqrt(initX*initX+initY*initY)+0.001; //initialize the radius plus epsilon
+  double chiAtMaximum = chisq; 
+  std::cout<<"initX = "<<initX<<", initY = "<<initY<<endl;
+  std::cout<<"cos(angle) = "<<xincrement<<std::endl;
+  std::cout<<"sin(angle) = "<<xincrement<<std::endl;
+  std::cout<<""
+    
+  while (chiAtMaximum-chiAtSolution< errorDef) {//break out of the loop as soon as we exceed the delta chi2. The error def is then the delta chi2
+    maximum *= 2; 
+    fitpar[0] = initX + maximum*xincrement;//(r+dr) cos(angle)
+    fitpar[1] = initY + maximum*yincrement;//(r+dr) sin(angle)
+    MixChisqFcn(npars, 0, chisq, fitpar, 4);//check the fit
+    
+    chiAtMaximum = chisq; 
+  }
+  //we have the maximum
+  
+
+  static const double tolerance = 0.001; //what is this?
+  for (int i = 0; i < 1000; ++i) {//iterate 1000 times
+    double currDist = minimum + (maximum - minimum)*0.5; //take mean of max and min
+    fitpar[0] = initX + currDist*xincrement;//x= x_0 +currDist*cos(angle)
+    fitpar[1] = initY + currDist*yincrement;//y= y_0+ currDist*sin(angle)
+    MixChisqFcn(npars, 0, chisq, fitpar, 4);
+    if (chisq > chiAtSolution + errorDef) {
+      maximum = currDist;
+      chiAtMaximum = chisq;
+    }
+    else {
+      minimum = currDist;
+      chiAtMinimum = chisq;
+    }
+  
+    //if (0 == idx) std::cout << "Scan " << currDist << " " << (chisq - chiAtSolution) << " " << chiAtSolution << std::endl; 
+    assert(chiAtMaximum > chiAtMinimum);
+    if (chiAtMaximum - chiAtMinimum < tolerance) break; 
+  }
+
+  double dist = minimum + 0.5*(maximum-minimum); 
+  //std::cout << "Found point " << initX + dist*xincrement << ", " << initY + dist*yincrement << std::endl;
+  //whole point here is to find from the point on the contour where the FCN is a minimum. I'm going to steal the code from mncont
+  
+  ret->SetPoint(idx, initX + dist*xincrement, initY + dist*yincrement); 
+}
+*/
