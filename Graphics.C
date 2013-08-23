@@ -527,7 +527,7 @@ void MixDrawer::findPoint (TGraph* ret, int idx, double angle, double errorDef, 
   }
   //we have the maximum
   //ret->SetPoint(idx, fitpar[0],fitpar[1]); 
-  //zero in for highter tolerance
+  // zero in for higher tolerance
   static const double tolerance = 0.0001; //what is this?
   for (int i = 0; i < 1000; ++i) {//iterate 1000 times
     double currDist = minimum + (maximum - minimum)*0.5; //take mean of max and min
@@ -543,7 +543,7 @@ void MixDrawer::findPoint (TGraph* ret, int idx, double angle, double errorDef, 
       chiAtMinimum = chisq;
     }
   
-    if (1 == idx) std::cout << "Scan: currDist =  " << currDist << ", detla Chi2 =  " << (chisq - chiAtSolution) << ",chi2 at solution =  " << chiAtSolution << std::endl; 
+    if (1 == idx) std::cout << "Scan: currDist =  " << currDist << ", delta Chi2 =  " << (chisq - chiAtSolution) << ",chi2 at solution =  " << chiAtSolution << std::endl; 
     assert(chiAtMaximum > chiAtMinimum);
     if (chiAtMaximum - chiAtMinimum < tolerance) break; 
   }
@@ -561,11 +561,31 @@ TGraph* MixDrawer::getEllipse (double errorDef) {
     delete ret;
     ret = (TGraph*) MixingResult::minuit->Contour(pointsPerContour/2, graphicsXIndex, graphicsYIndex);
   }
-  /*
-  std::cout<<"!ret = "<<!ret<<std::endl;//ad 8/19/13
-  std::cout<<"calling rolf's find point"<<std::endl;//ad 8/22/13
+
+  
+  std::cout<<"calling rolf's find point with errordef " << errorDef << std::endl;//ad 8/22/13
   if(graphicsXIndex==0){
     if ((!ret) || (ret->GetN() < pointsPerContour)) {
+      double fitpar[MixingResult::nParams];
+      double fiterr[MixingResult::nParams];
+      int npars = MixingResult::nParams;
+      for (int i = 0; i < MixingResult::nParams; ++i) MixingResult::minuit->GetParameter(i, fitpar[i], fiterr[i]);
+      double xp = 0;
+      double yp = 0;
+      double chisq = 0;
+      MixChisqFcn(npars, 0, chisq, fitpar, 4);
+      std::cout << "Initial chisquare for central point (" << fitpar[0] << ", " << fitpar[1] << ") " << chisq << std::endl;
+      for (int i = 0; i < ret->GetN(); ++i) {
+	ret->GetPoint(i, xp, yp);
+	fitpar[0] = xp;
+	fitpar[1] = yp;
+
+	MixChisqFcn(npars, 0, chisq, fitpar, 4);
+	
+	std::cout << "TGraph point " << i << " (" << xp << ", " << yp << ") " << chisq << std::endl; 
+      }
+
+      /*
       if (ret) delete ret;
       ret = new TGraph(pointsPerContour); 
       
@@ -573,9 +593,10 @@ TGraph* MixDrawer::getEllipse (double errorDef) {
 	double angle = i*(6.28/pointsPerContour); //angle over which we're sampling. 2pi/npoints * point we want
 	findPoint(ret, i, angle, errorDef,graphicsXIndex,graphicsYIndex);
       }
+      */
     }
   }
-  */
+  
   return ret; 
 }
 
