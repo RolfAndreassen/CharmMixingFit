@@ -7,7 +7,11 @@ available data. Figure~\ref{fig:xy_nocpv_variations} shows all variations for th
 no CPV allowed fits. Figure~\ref{fig:xy_all_variations} shows the results for a 
 subset of variations on All CPV allowed fits. 
 \subsection{No CP Violation Allowed}
-
+Table~\ref{table:nocpv_output_table} lists the results from the No CP Violation allowed
+global fit. As $A_\Gamma =0$ in the the case of No CPV, the data is not included in 
+this fit. Additionally, we take subsets of the data which do not include results from
+Belle, BaBar and CDF in order to explore the change in $\chi^2/$ndf of the global fit.
+\input{nocpv_output_table}
 \begin{figure}[htb]
   \begin{center}
     \begin{subfigure}[b]{0.4\textwidth}
@@ -20,14 +24,14 @@ subset of variations on All CPV allowed fits.
 
     \begin{subfigure}[b]{0.4\textwidth}
       \centering
-      \includegraphics[width=\textwidth]{finalplot_nocpv_belle_babar_graph.pdf}
+      \includegraphics[width=\textwidth]{finalplot_nocpv__belle_babar_graph.pdf}
       \caption{Two dimensional error ellipses for x and y from fit excluding Belle and BaBar $K\pi$ results.}
       \label{fig:xy_no_cpv_nobelle_babar}
     \end{subfigure}%
     \hspace{2mm}
     \begin{subfigure}[b]{0.4\textwidth}
       \centering
-      \includegraphics[width=\textwidth]{finalplot_nocpv_belle_babar_cdf_graph.pdf}
+      \includegraphics[width=\textwidth]{finalplot_nocpv__belle_babar_cdf_graph.pdf}
       \caption{Two dimensional error ellipses for x and y from fit excluding Belle, BaBar and CDF measurements.}
       \label{fig:xy_no_cpv_nocdf}
     \end{subfigure}%
@@ -36,11 +40,21 @@ subset of variations on All CPV allowed fits.
   \caption{Two dimensional error ellipses of $x$ and $y$ from fit for No CPV. Exclusion of the Belle and BaBar results drastically change the slope of the error ellipses. The differing colors represent the 1-5$\sigma$ contours.}
   \label{fig:xy_nocpv_variations}
 \end{figure}
-
-
+\subsection{No Direct CP Violation Allowed}
+Table~\ref{table:nodcpv_output_table} lists the results of the global fit of no direct
+CP violation. The final three columns of the table represent the effect of the 
+inclusion of the preliminary LHCb $A_\Gamma$ result in the global fit.
+The inlcusion of this result does not change the central values or errors substantially.
+\input{nodcpv_output_table}
 \subsection{All CP Violation Allowed}
-%%%%%%%%%%%%%%% XY %%%%%%%%%%%%%%%%%%%%%%%%%
+Table~\ref{table:allcpv_output_table} lists the results of the global All CP Violation
+allowed fit. Again, the latter columns list the differing subsets of the data to explore
+the variation in global $\chi^2/$ndf. The most noticable difference between all fits
+is the evaluation of $x$, which varies quite a bit with the inclusion of differing datasets.
 
+
+%%%%%%%%%%%%%%% XY %%%%%%%%%%%%%%%%%%%%%%%%%
+\input{allcpv_output_table}
 \begin{figure}[htb]
   \begin{center}
     \begin{subfigure}[b]{0.4\textwidth}
