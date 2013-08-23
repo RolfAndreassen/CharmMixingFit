@@ -15,6 +15,7 @@
 #include "TMath.h"
 #include "TPaveText.h"
 #include <cmath> 
+#include <vector> 
 
 int MixDrawer::pointsPerContour = 3600; 
 int MixDrawer::graphicsXIndex = 0; 
@@ -554,6 +555,68 @@ void MixDrawer::findPoint (TGraph* ret, int idx, double angle, double errorDef, 
   
 }
 
+bool intersect (TLine& one, TLine& two) {
+  // Here I have special-case knowledge that one is always horizontal. 
+  if ((two.IsHorizontal()) && (one.GetY1() != two.GetY1())) return false;
+  // So now they cannot be parallel, they must meet somewhere. 
+
+  double x1 = one.GetX1();
+  double x2 = one.GetX2();
+  double x3 = two.GetX1();
+  double x4 = two.GetX2();
+
+  double y1 = one.GetY1();
+  double y2 = one.GetY2();
+  double y3 = two.GetY1();
+  double y4 = two.GetY2();
+
+  double det = (x1 - x2)*(y3 - y4) - (y1 - y2)*(x3 - x4);
+  if (fabs(det) < 1e-12) return false; // Almost parallel
+
+  double xInter = (x1*y2 - y1*x2)*(x3 - x4) - (x1 - x2)*(x3*y4 - y3*x4);
+  double yInter = (x1*y2 - y1*x2)*(y3 - y4) - (y1 - y2)*(x3*y4 - y3*x4);
+
+  xInter /= det;
+  yInter /= det;
+
+  // Check that intersection occurs on line segment one. 
+  if (xInter < x1) return false;
+  if (xInter > x2) return false;
+  if (yInter < y1) return false;
+  if (yInter > y2) return false;  
+
+  // And segment two. 
+  if (xInter < x3) return false;
+  if (xInter > x4) return false;
+  if (yInter < y3) return false;
+  if (yInter > y4) return false;  
+
+  /*
+  std::cout << "Intersect of (" 
+	    << x1 << ", " << y1 << ") to (" << x2 << ", " << y2 << ") with ("
+	    << x3 << ", " << y3 << ") to (" << x4 << ", " << y4 << ") at point ("
+	    << xInter << ", " << yInter << ")\n"; 
+  */ 
+  return true; 
+}
+
+bool isWithin (double xp, double yp, TGraph* poly, int npoints) {
+  // Returns true if the point (xp, yp) is within the polygon
+  // described by the first npoints points of poly. 
+
+  if (npoints < 3) return false; 
+  int intersects = 0;
+  TLine one(xp, yp, xp+100000, yp);
+  for (int i = 1; i < npoints; ++i) {
+    double p1, p2, p3, p4;
+    poly->GetPoint(i-1, p1, p2);
+    poly->GetPoint(i,   p3, p4);
+    TLine two(p1, p2, p3, p4);
+    if (intersect(one, two)) intersects++; 
+  }
+  return (1 == intersects % 2);
+}
+
 TGraph* MixDrawer::getEllipse (double errorDef) {
   MixingResult::minuit->SetErrorDef(errorDef);
   TGraph* ret = (TGraph*) MixingResult::minuit->Contour(pointsPerContour, graphicsXIndex, graphicsYIndex);
@@ -561,39 +624,30 @@ TGraph* MixDrawer::getEllipse (double errorDef) {
     delete ret;
     ret = (TGraph*) MixingResult::minuit->Contour(pointsPerContour/2, graphicsXIndex, graphicsYIndex);
   }
-
   
   std::cout<<"calling rolf's find point with errordef " << errorDef << std::endl;//ad 8/22/13
   if(graphicsXIndex==0){
     if ((!ret) || (ret->GetN() < pointsPerContour)) {
-      double fitpar[MixingResult::nParams];
-      double fiterr[MixingResult::nParams];
-      int npars = MixingResult::nParams;
-      for (int i = 0; i < MixingResult::nParams; ++i) MixingResult::minuit->GetParameter(i, fitpar[i], fiterr[i]);
       double xp = 0;
       double yp = 0;
-      double chisq = 0;
-      MixChisqFcn(npars, 0, chisq, fitpar, 4);
-      std::cout << "Initial chisquare for central point (" << fitpar[0] << ", " << fitpar[1] << ") " << chisq << std::endl;
-      for (int i = 0; i < ret->GetN(); ++i) {
+      // Discard doubly-wrapped points. 
+      bool endOfLine = false; 
+      for (int i = 1; i < ret->GetN(); ++i) {
+	if (endOfLine) {
+	  ret->RemovePoint(i);
+	  i--;
+	  continue; 
+	}
 	ret->GetPoint(i, xp, yp);
-	fitpar[0] = xp;
-	fitpar[1] = yp;
-
-	MixChisqFcn(npars, 0, chisq, fitpar, 4);
-	
-	std::cout << "TGraph point " << i << " (" << xp << ", " << yp << ") " << chisq << std::endl; 
+	//std::cout << "Testing point " << i << " (" << xp << ", " << yp << ") ... ";
+	if (isWithin(xp, yp, ret, i-1)) {
+	  //std::cout << " discarding\n"; 
+	  ret->RemovePoint(i);
+	  i--;
+	  endOfLine = true; 
+	}
+	//else std::cout << " keeping\n"; 
       }
-
-      /*
-      if (ret) delete ret;
-      ret = new TGraph(pointsPerContour); 
-      
-      for (int i = 0; i < pointsPerContour; ++i) {
-	double angle = i*(6.28/pointsPerContour); //angle over which we're sampling. 2pi/npoints * point we want
-	findPoint(ret, i, angle, errorDef,graphicsXIndex,graphicsYIndex);
-      }
-      */
     }
   }
   
