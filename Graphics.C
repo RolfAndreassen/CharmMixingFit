@@ -8,6 +8,7 @@
 #include "TEllipse.h" 
 #include "TBox.h" 
 #include "TAxis.h"
+#include "TColor.h"
 #include "TGaxis.h"
 #include "TLine.h"
 #include "TLegend.h"
@@ -16,6 +17,7 @@
 #include "TPaveText.h"
 #include <cmath> 
 #include <vector> 
+#include <map>
 
 int MixDrawer::pointsPerContour = 3600; 
 int MixDrawer::graphicsXIndex = 0; 
@@ -256,7 +258,8 @@ void MixDrawer::draw () {
   if (drawmap[MixingResult::fitResult]) {
     if (MixingResult::isSensitive[MixingResult::WYE]) {
       if (MixingResult::isSensitive[MixingResult::EKS]) {
-	drawEllipse3(drawmap[MixingResult::fitResult], foo); 
+	//drawEllipse3(drawmap[MixingResult::fitResult], foo); 
+	drawEllipseForce(drawmap[MixingResult::fitResult], foo); 
 	//drawEllipse(drawmap[MixingResult::fitResult], foo); 
       }
       else {
@@ -267,7 +270,7 @@ void MixDrawer::draw () {
   }
 
   foo->SaveAs((directory + "/finalplot.png").c_str()); 
-  foo->SaveAs((directory + "/finalplot.pdf").c_str()); 
+  //foo->SaveAs((directory + "/finalplot.pdf").c_str()); 
   delete foo; 
 }
 
@@ -620,12 +623,9 @@ bool isWithin (double xp, double yp, TGraph* poly, int npoints) {
 TGraph* MixDrawer::getEllipse (double errorDef) {
   MixingResult::minuit->SetErrorDef(errorDef);
   TGraph* ret = (TGraph*) MixingResult::minuit->Contour(pointsPerContour, graphicsXIndex, graphicsYIndex);
-  if (!ret){
-    delete ret;
-    ret = (TGraph*) MixingResult::minuit->Contour(pointsPerContour/2, graphicsXIndex, graphicsYIndex);
-  }
-  
-  std::cout<<"calling rolf's find point with errordef " << errorDef << std::endl;//ad 8/22/13
+  if (!ret) return 0; 
+
+  std::cout<<"calling rolf's find point with errordef " << errorDef << std::endl;
   if(graphicsXIndex==0){
     if ((!ret) || (ret->GetN() < pointsPerContour)) {
       double xp = 0;
@@ -697,23 +697,137 @@ std::pair<TGraph*, TGraph*> MixDrawer::drawEllipse (DrawOptions* dis, TCanvas* f
   return ret; 
 }
 
-std::vector<TGraph*> MixDrawer::drawEllipse3 (DrawOptions* dis, TCanvas* foo) {
-  std::vector<TGraph*> ret(dis->numContours); 
+void MixDrawer::drawEllipseForce (DrawOptions* dis, TCanvas* foo) {
+  double fitpar[MixingResult::nParams];
+  double fiterr[MixingResult::nParams];
+  for (int p = 0; p < MixingResult::nParams; ++p) {
+    MixingResult::minuit->GetParameter(p, fitpar[p], fiterr[p]);
+  }
+
+  int colors[5];
+  colors[0] = kBlue;
+  colors[1] = kCyan-7;
+  colors[2] = 8;
+  colors[3] = 42;
+  colors[4] = 46;
+  TColor::SetPalette(5, colors); 
+
+
+  double XMIN = (xmax+11*xmin)/12;
+  double XMAX = (xmin+11*xmax)/12;
+  double YMIN = (ymax+11*ymin)/12;
+  double YMAX = (ymin+11*ymax)/12;
+  TH2F* histogram = new TH2F("hist", "", 1000, XMIN, XMAX, 1000, YMIN, YMAX); 
+  histogram->SetStats(false); 
+
+  char strbuf[100];
+  int dummy = MixingResult::nParams;
+  double chisq = 0;
+  MixChisqFcn(dummy, 0, chisq, fitpar, 4);
+  double centralChisq = chisq; 
+  MixingResult::minuit->FixParameter(0);
+  MixingResult::minuit->FixParameter(1);
+  MixingResult::minuit->SetErrorDef(1); 
+  MixingResult::minuit->SetPrintLevel(-1); 
+
+  for (int i = 1; i <= 1000; ++i) {
+    double xval = xmin + (i + 0.5)*(xmax - xmin)*0.001;
+    sprintf(strbuf, "SET PAR 1 %f", xval);
+    MixingResult::minuit->mncomd(strbuf, dummy);
+    assert(0 == dummy);
+    if (0 == i%25) std::cout << "Fitting line " << i << std::endl; 
+
+    for (int j = 1; j <= 1000; ++j) {
+      double yval = ymin + (j + 0.5)*(ymax - ymin)*0.001;
+      sprintf(strbuf, "SET PAR 2 %f", yval);
+      MixingResult::minuit->mncomd(strbuf, dummy);
+      assert(0 == dummy);
+      MixingResult::initialised = false; 
+      MixingResult::minuit->Migrad(); 
+      for (int p = 0; p < MixingResult::nParams; ++p) {
+	MixingResult::minuit->GetParameter(p, fitpar[p], fiterr[p]);
+      }
+      dummy = MixingResult::nParams;
+      MixChisqFcn(dummy, 0, chisq, fitpar, 4);
+      /*
+      if ((400 == j) && (0 == i%25)) std::cout << "Result for " << xval << ", " << yval << " : " 
+					       << chisq << " - "
+					       << centralChisq << " = "
+					       << (chisq-centralChisq) 
+					       << std::endl; 
+      */ 
+      chisq -= centralChisq;
+      if (chisq > fiveSigma) chisq = 0; // Indicates bad fit or out of interesting range
+      if (0 != MixingResult::minuit->GetStatus()) chisq = 0;
+      histogram->SetBinContent(i, j, chisq); 
+    }
+  }
 
   /*
-  for (int i = 2; i < MixingResult::NUMSENSE; ++i) {
-    bool sensitive = false; 
-    for (MixingResult::ResultIterator m = MixingResult::begin(); m != MixingResult::end(); ++m) {
-      if (!(*m)->isActive()) continue;
-      if (!(*m)->isSensitiveTo(i)) continue;
-      sensitive = true;
-      break;
+  for (int i = 2; i < 1000; ++i) {
+    for (int j = 2; j < 1000; ++j) {
+      if (0 < histogram->GetBinContent(i, j)) continue;
+      double avg = 0; 
+      //avg       += histogram->GetBinContent(i+0, j+1);
+      //avg       += histogram->GetBinContent(i+0, j-1);
+      avg       += histogram->GetBinContent(i+1, j+0);
+      avg       += histogram->GetBinContent(i-1, j+0);
+      avg *= 0.5;
+      histogram->SetBinContent(i, j, avg); 
     }
-    if (!sensitive) MixingResult::minuit->FixParameter(i);
   }
-  MixingResult::minuit->FixParameter(2);
-  MixingResult::minuit->FixParameter(3);
   */
+  for (int i = 2; i < 1000; ++i) {
+    for (int j = 2; j < 1000; ++j) {
+      double curr = histogram->GetBinContent(i, j);
+      if (0 == curr) continue;
+      // Values chosen for five-colour plot. 
+      if      (curr < oneSigma)   curr = 1;
+      else if (curr < twoSigma)   curr = 7;
+      else if (curr < threeSigma) curr = 15;
+      else if (curr < fourSigma)  curr = 20; 
+      else if (curr < fiveSigma)  curr = fiveSigma-1; 
+      
+      histogram->SetBinContent(i, j, curr); 
+    }
+  }
+
+  // Fix areas of bad fits. Take modal value of surrounding bins. 
+  for (int i = 2; i < 1000; ++i) {
+    for (int j = 2; j < 1000; ++j) {
+      if (0 < histogram->GetBinContent(i, j)) continue;
+      std::map<double, int> surrounds; 
+      for (int xp = -5; xp <= 5; ++xp) {
+	for (int yp = -1; yp <= 1; ++yp) {
+	  if ((0 == xp) && (0 == yp)) continue; 
+	  double area = histogram->GetBinContent(i+xp, j+yp);
+	  surrounds[area]++;
+	}
+      }
+      std::map<double, int>::iterator best = surrounds.begin(); 
+      for (std::map<double, int>::iterator c = surrounds.begin(); c != surrounds.end(); ++c) {
+	if ((*c).second < (*best).second) continue;
+	best = c; 
+      }
+
+      histogram->SetBinContent(i, j, (*best).first); 
+    }
+  }
+
+
+
+  histogram->Draw("col"); 
+}
+
+
+std::vector<TGraph*> MixDrawer::drawEllipse3 (DrawOptions* dis, TCanvas* foo) {
+  double fitpar[MixingResult::nParams];
+  double fiterr[MixingResult::nParams];
+  for (int i = 0; i < MixingResult::nParams; ++i) {
+    MixingResult::minuit->GetParameter(i, fitpar[i], fiterr[i]);
+  }
+
+  std::vector<TGraph*> ret(dis->numContours); 
   MixingResult::initialised = false; 
 
   std::cout << "Drawing " << dis->numContours << " ellipses\n";
@@ -721,44 +835,44 @@ std::vector<TGraph*> MixDrawer::drawEllipse3 (DrawOptions* dis, TCanvas* foo) {
   //  In 2 dimensions, an error ellipse nominally
   //  providing 68.27% coverage [equivalent to
   //  1 sigma in 1 dimension] has chisq=2.30
-  MixingResult::minuit->Migrad(); 
+  //MixingResult::minuit->Migrad(); 
   if(dis->numContours>4){
-    ret[4] = getEllipse(28.74);//5 sigma contour
+    ret[4] = getEllipse(fiveSigma);
     if(ret[4]) ret[4]->SetFillColor(46);
   }
 
+  //char strbuf[100];
+  //int dummy = 0; 
+
   if(dis->numContours>3){
-    ret[3]= getEllipse(19.33); //4 sigma contour
+    ret[3] = getEllipse(fourSigma); //4 sigma contour
     if(ret[3]) ret[3]->SetFillColor(42);
   }
 
+  /*
+  for (int i = 0; i < MixingResult::nParams; ++i) {
+    sprintf(strbuf, "SET PAR %i %f", i, fitpar[i]); 
+    MixingResult::minuit->mncomd(strbuf, dummy);
+    assert(0 == dummy); 
+  }
+  */ 
+
   if(dis->numContours>2){
-    ret[2] = getEllipse(11.83);//3 sigma in 2d
+    ret[2] = getEllipse(threeSigma);//3 sigma in 2d
     if (ret[2]) ret[2]->SetFillColor(8);
   }
-  ret[1] = getEllipse(6.18);
+  ret[1] = getEllipse(twoSigma);
   if (ret[1]) ret[1]->SetFillColor(kCyan-7);
-  ret[0] = getEllipse(2.30);
+  ret[0] = getEllipse(oneSigma);
   if (ret[0]) ret[0]->SetFillColor(kBlue);
-  for(unsigned int ell_num=(ret.size())-1; ell_num>0;ell_num-=1){
+
+  //ret[1]->RemovePoint(11);
+
+  for(unsigned int ell_num=(ret.size())-1; ell_num >= 1; --ell_num) {
     std::cout<<"drawing contour"<<ell_num<<std::endl;
-    if(ret[ell_num]) ret[ell_num]->Draw("if9");
+    if (ret[ell_num]) ret[ell_num]->Draw("if9");
   }
-  if(ret[0]) ret[0]->Draw("if9");
-  /*
-  if((dis->numContours>2) &&(ret[2])&&(ret[1])){
-    ret[2]->Draw("if9");
-    //std::cout<< "3sigma elipse drawn"<<std::endl;
-  }
-    if ((dis->numContours > 1) && (ret[1])) {
-      ret[1]->Draw("if9");
-    //std::cout << "Outer ellipse drawn\n"; 
-  }
-    if (ret[0]) {
-      ret[0]->Draw("if9");
-    //std::cout << "Inner ellipse drawn\n"; 
-  }
-  */
+  ret[0]->Draw("if9");
   MixingResult::minuit->SetErrorDef(1.00);
   return ret; 
 }
