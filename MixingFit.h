@@ -9,11 +9,18 @@
 #include "TMatrixTSym.h"
 #include "TMinuit.h" 
 #include <iostream> 
+#include "TH2F.h"
 class TCanvas; 
 class TGraph; 
 
 //typedef __float128 matrixfp;  // I wish.
 typedef double matrixfp;  
+
+extern double fiveSigma;
+extern double fourSigma;
+extern double threeSigma;
+extern double twoSigma;
+extern double oneSigma;
 
 void MixChisqFcn (int& npar, double* deriv, double& func, double param[], int flag);
 
@@ -124,6 +131,7 @@ private:
   void findPoint (TGraph* ret, int idx, double angle, double errorDef, int par1, int par2);//ad 8/19/13 
   std::pair<TGraph*, TGraph*> drawEllipse (DrawOptions* dis, TCanvas* foo);
   std::vector<TGraph*> drawEllipse3 (DrawOptions* dis, TCanvas* foo);//ad 8/18/13
+  void drawEllipseForce (DrawOptions* dis, TCanvas* foo); 
   void drawYbar (MixingResult* dat, DrawOptions* dis, TCanvas* foo);
   void drawBand (MixingResult* dat, DrawOptions* dis, TCanvas* foo);
   void drawAnnulus (MixingResult* dat, DrawOptions* dis, TCanvas* foo);

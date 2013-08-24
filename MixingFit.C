@@ -29,6 +29,13 @@ bool special_alex_fit = false; // If true, we fit for x_12, y_12, phi_12.
 bool skipGraphics = false; 
 char strbuffer[1000]; 
 
+double fiveSigma  = 28.74;
+double fourSigma  = 19.33;
+double threeSigma = 11.83;
+double twoSigma   =  6.18;
+double oneSigma   =  2.30;
+
+
 MixingResult::MixingResult (const char* n, 
 			    const char* rtype, 
 			    const char* ptype, 
@@ -1001,6 +1008,9 @@ int main (int argc, char** argv) {
     }
     else if (lineType == "pointsPerContour") {
       grpOpts >> MixDrawer::pointsPerContour; 
+    }
+    else if (lineType == "contours") {
+      grpOpts >> fiveSigma >> fourSigma >> threeSigma >> twoSigma >> oneSigma; 
     }
     else if (lineType == "endfile") break; 
   }
