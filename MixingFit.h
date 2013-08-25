@@ -137,6 +137,7 @@ private:
   void drawAnnulus (MixingResult* dat, DrawOptions* dis, TCanvas* foo);
   std::map<MixingResult*, DrawOptions*> drawmap; 
 
+  double runFit (); 
 };
 
 #endif

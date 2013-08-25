@@ -697,21 +697,30 @@ std::pair<TGraph*, TGraph*> MixDrawer::drawEllipse (DrawOptions* dis, TCanvas* f
   return ret; 
 }
 
-void MixDrawer::drawEllipseForce (DrawOptions* dis, TCanvas* foo) {
-  double fitpar[MixingResult::nParams];
-  double fiterr[MixingResult::nParams];
+double MixDrawer::runFit () {
+  static double fitpar[10];
+  static double fiterr[10];
+  static int npar = MixingResult::nParams;
+  MixingResult::initialised = false; 
+  MixingResult::minuit->Migrad(); 
   for (int p = 0; p < MixingResult::nParams; ++p) {
     MixingResult::minuit->GetParameter(p, fitpar[p], fiterr[p]);
   }
+  double chisq = 0; 
+  MixChisqFcn(npar, 0, chisq, fitpar, 4);
+  return chisq;
+}
 
-  int colors[5];
-  colors[0] = kBlue;
-  colors[1] = kCyan-7;
-  colors[2] = 8;
-  colors[3] = 42;
-  colors[4] = 46;
-  TColor::SetPalette(5, colors); 
-
+void MixDrawer::drawEllipseForce (DrawOptions* dis, TCanvas* foo) {
+  double fitpar[MixingResult::nParams];
+  double orgpar[MixingResult::nParams];
+  double wrkpar[MixingResult::nParams];
+  double fiterr[MixingResult::nParams];
+  for (int p = 0; p < MixingResult::nParams; ++p) {
+    MixingResult::minuit->GetParameter(p, fitpar[p], fiterr[p]);
+    orgpar[p] = fitpar[p]; 
+    wrkpar[p] = fitpar[p]; 
+  }
 
   double XMIN = (xmax+11*xmin)/12;
   double XMAX = (xmin+11*xmax)/12;
@@ -719,10 +728,15 @@ void MixDrawer::drawEllipseForce (DrawOptions* dis, TCanvas* foo) {
   double YMAX = (ymin+11*ymax)/12;
   TH2F* histogram = new TH2F("hist", "", 1000, XMIN, XMAX, 1000, YMIN, YMAX); 
   histogram->SetStats(false); 
+  TH2F* edmhist = new TH2F("edmhist", "", 1000, XMIN, XMAX, 1000, YMIN, YMAX); 
+  edmhist->SetStats(false); 
+  TH1F edm1d("edm1d", "", 1000, 0, 0.00001); 
+  
 
   char strbuf[100];
   int dummy = MixingResult::nParams;
   double chisq = 0;
+  double maxEdm = 0; 
   MixChisqFcn(dummy, 0, chisq, fitpar, 4);
   double centralChisq = chisq; 
   MixingResult::minuit->FixParameter(0);
@@ -731,36 +745,62 @@ void MixDrawer::drawEllipseForce (DrawOptions* dis, TCanvas* foo) {
   MixingResult::minuit->SetPrintLevel(-1); 
 
   for (int i = 1; i <= 1000; ++i) {
+    //for (int i = 100; i <= 400; ++i) {
+    double prevChisq = 1000; 
     double xval = xmin + (i + 0.5)*(xmax - xmin)*0.001;
     sprintf(strbuf, "SET PAR 1 %f", xval);
     MixingResult::minuit->mncomd(strbuf, dummy);
     assert(0 == dummy);
     if (0 == i%25) std::cout << "Fitting line " << i << std::endl; 
-
-    for (int j = 1; j <= 1000; ++j) {
+    //for (int j = 200; j <= 1000; ++j) {
+      for (int j = 2; j <= 1000; ++j) {
       double yval = ymin + (j + 0.5)*(ymax - ymin)*0.001;
       sprintf(strbuf, "SET PAR 2 %f", yval);
       MixingResult::minuit->mncomd(strbuf, dummy);
       assert(0 == dummy);
-      MixingResult::initialised = false; 
-      MixingResult::minuit->Migrad(); 
-      for (int p = 0; p < MixingResult::nParams; ++p) {
-	MixingResult::minuit->GetParameter(p, fitpar[p], fiterr[p]);
+      chisq = runFit() - centralChisq;
+
+      if (chisq > fiveSigma) {
+	std::cout << "Bad fit for (" << i << ", " << j << ") " << chisq << ", retrying with last working set.\n";
+	for (int p = 3; p <= 8; ++p) {
+	  sprintf(strbuf, "SET PAR %i %f", p, wrkpar[p-1]);
+	  MixingResult::minuit->mncomd(strbuf, dummy);
+	  assert(0 == dummy);
+	}
+	chisq = runFit() - centralChisq;
+	if (chisq > 2*fiveSigma) {
+	  std::cout << "  Still bad, " << chisq << ", retrying with central values.\n";
+	  for (int p = 3; p <= 8; ++p) {
+	    sprintf(strbuf, "SET PAR %i %f", p, orgpar[p-1]);
+	    MixingResult::minuit->mncomd(strbuf, dummy);
+	    assert(0 == dummy);
+	  }
+	  chisq = runFit() - centralChisq;
+	  if (chisq > 3*fiveSigma) {
+	    std::cout << "  Final fit is " << chisq << ", giving up.\n"; 
+	    chisq = 0; // Give up
+	  }
+	  else for (int p = 0; p < MixingResult::nParams; ++p) MixingResult::minuit->GetParameter(p, wrkpar[p], fiterr[p]);
+	}
+	else for (int p = 0; p < MixingResult::nParams; ++p) MixingResult::minuit->GetParameter(p, wrkpar[p], fiterr[p]);
       }
-      dummy = MixingResult::nParams;
-      MixChisqFcn(dummy, 0, chisq, fitpar, 4);
-      /*
-      if ((400 == j) && (0 == i%25)) std::cout << "Result for " << xval << ", " << yval << " : " 
-					       << chisq << " - "
-					       << centralChisq << " = "
-					       << (chisq-centralChisq) 
-					       << std::endl; 
-      */ 
-      chisq -= centralChisq;
-      if (chisq > fiveSigma) chisq = 0; // Indicates bad fit or out of interesting range
-      if (0 != MixingResult::minuit->GetStatus()) chisq = 0;
+      else for (int p = 0; p < MixingResult::nParams; ++p) MixingResult::minuit->GetParameter(p, wrkpar[p], fiterr[p]);
+      
+      double fmin, fedm, errdef;
+      int nparx, istat; 
+      MixingResult::minuit->mnstat(fmin, fedm, errdef, dummy, nparx, istat);
+      if (3 > istat) chisq = 0; 
+      //if (fedm > 0.001) chisq = 0; 
+      //if (chisq >= 1.5*prevChisq) chisq = 0;
+
+      if (chisq > 0) prevChisq = chisq; 
       histogram->SetBinContent(i, j, chisq); 
+      edmhist->SetBinContent(i, j, fedm);
+      edm1d.Fill(fedm); 
+      maxEdm = (fedm > maxEdm ? fedm : maxEdm); 
+      //break; 
     }
+    //break; 
   }
 
   /*
@@ -777,6 +817,7 @@ void MixDrawer::drawEllipseForce (DrawOptions* dis, TCanvas* foo) {
     }
   }
   */
+
   for (int i = 2; i < 1000; ++i) {
     for (int j = 2; j < 1000; ++j) {
       double curr = histogram->GetBinContent(i, j);
@@ -792,15 +833,45 @@ void MixDrawer::drawEllipseForce (DrawOptions* dis, TCanvas* foo) {
     }
   }
 
+  // Search for bad fits no found by earlier methods. For each bin, is it an outlier in its region?
+  /*
+  for (int i = 2; i < 1000; ++i) {
+    for (int j = 2; j < 1000; ++j) {
+      double curr = histogram->GetBinContent(i, j);
+      if (0 == curr) continue;
+      std::map<double, int> surrounds; 
+      for (int xp = -1; xp <= 1; ++xp) {
+	for (int yp = -1; yp <= 1; ++yp) {
+	  if ((0 == xp) && (0 == yp)) continue; 
+	  double area = histogram->GetBinContent(i+xp, j+yp);
+	  if (0 == area) continue; 
+	  surrounds[area]++;
+	}
+      }
+      if (0 < surrounds[curr]) continue; 
+      
+      histogram->SetBinContent(i, j, 0); 
+    }
+    }*/
+
   // Fix areas of bad fits. Take modal value of surrounding bins. 
   for (int i = 2; i < 1000; ++i) {
     for (int j = 2; j < 1000; ++j) {
       if (0 < histogram->GetBinContent(i, j)) continue;
+      // Right edge detection
+      int numNonzero = 0;
+      for (int xp = 1; xp <= 10; ++xp) {
+	if (0 == histogram->GetBinContent(i+xp, j)) continue;
+	numNonzero++;
+      }
+      if (0 == numNonzero) continue; // We're at a right edge. 
+	
       std::map<double, int> surrounds; 
-      for (int xp = -5; xp <= 5; ++xp) {
+      for (int xp = -1; xp <= 1; ++xp) {
 	for (int yp = -1; yp <= 1; ++yp) {
 	  if ((0 == xp) && (0 == yp)) continue; 
 	  double area = histogram->GetBinContent(i+xp, j+yp);
+	  if (0 == area) continue; 
 	  surrounds[area]++;
 	}
       }
@@ -814,7 +885,20 @@ void MixDrawer::drawEllipseForce (DrawOptions* dis, TCanvas* foo) {
     }
   }
 
+  edmhist->GetZaxis()->SetRangeUser(0, 0.00001); 
+  edmhist->Draw("colz"); 
+  foo->SaveAs("edms.png"); 
 
+  edm1d.Draw();
+  foo->SaveAs("edm1d.png"); 
+
+  int colors[5];
+  colors[0] = kBlue;
+  colors[1] = kCyan-7;
+  colors[2] = 8;
+  colors[3] = 42;
+  colors[4] = 46;
+  TColor::SetPalette(5, colors); 
 
   histogram->Draw("col"); 
 }
