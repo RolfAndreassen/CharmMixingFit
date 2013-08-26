@@ -185,6 +185,7 @@ double MixingResult::calcEpsilon (double x,
   a_m /= (qoverp*qoverp + poverq*poverq);
   switch (myType) {
   case PLAINX: ret = (x - measurement); break;
+  case XSQUARE: ret = (x*x - measurement); break;
   case PLAINY: 
   case YCP:    
     ret  = (qoverp + poverq)*y*cos(phi);
@@ -497,6 +498,7 @@ bool MixingResult::isSensitiveTo (int param) const {
   case WYE: 
     if (AGAMMA   == myType) return ((ALL_CPV == allowcpv) || ((INDIRECT_CPV == allowcpv) && (QP_FREE == fit_for_phi))); 
     if (PLAINX   == myType) return false;
+    if (XSQUARE  == myType) return false;
     if (RDM      == myType) return false; 
     if (RDP      == myType) return false; 
     if (COSANGLE == myType) return false;
@@ -545,7 +547,8 @@ bool MixingResult::isSensitiveTo (int param) const {
 
 MixingResult::ResultType MixingResult::getResultType (std::string n) {
   if (n == "plainx")   return PLAINX;
-  if (n == "plainy")   return PLAINY; 
+  if (n == "plainy")   return PLAINY;
+  if (n == "xsquare")   return XSQUARE; 
   if (n == "xprime")   return XPRIME;
   if (n == "xprimem")  return XPRIME_M;
   if (n == "xprimep")  return XPRIME_P;
