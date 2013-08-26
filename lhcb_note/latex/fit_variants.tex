@@ -5,7 +5,7 @@ related mixing parameters:
 \begin{itemize}
 \item $x$ and $y$, the normalised mass and width differences
 \item $R_D^+$ and $R_D^-$, the ratios of rates
-\item $\delta$, the strong phase difference
+\item $\delta$, the strong phase difference in the $D^0\to K\pi$ channel
 \item $|q/p|$ and $\phi$, the magnitude and phase of the indirect CP violation. 
 \end{itemize}
 The observed inputs, however, are not all direct measurements of these
@@ -40,10 +40,11 @@ and fit only for $x$, $y$, $\delta$, and $R_D$.
 in addition, the four parameters $x$, $y$, $\phi$ and $|q/p|$ are related 
 (in the limit that CPV is small) by the constraint
 \begin{eqnarray}
-|q/p| &=& 1 - \frac{y}{x}\tan\phi\\
+%|q/p| &=& 1 - \frac{y}{x}\tan\phi\\
+|q/p| &=& \sqrt{\frac{x - y\tan\phi}{x + y\tan\phi}}\\
 \phi &=& \tan^{-1}\left(\frac{1-|q/p|^2}{1+|q/p|^2}\frac{x}{y}\right)
 \end{eqnarray}
-Thus we have two variants on this fit:
+Thus, to extract errors on both variables, we have two variants on this fit:
 \begin{description}
 \item[2a] Here we allow $|q/p|$ to float and calculate $\phi$
 from the constraint. 
@@ -64,7 +65,7 @@ to float.
 \end{itemize}
 
 In addition, we do a fit not allowing direct CP violation, in which the
-free parameters are the underlying\footnote{See Kagan and Sokoloff, \url{http://arxiv.org/abs/0907.3917}.}
+free parameters are the underlying\footnote{See Kagan and Sokoloff, Phys.Rev.D80:076008 (2009), \url{http://arxiv.org/abs/0907.3917}.}
 $x_{12}$, $y_{12}$, and $\phi$. These parameters are related
 (in the limit of no direct CP violation) to $|q/p|$, $x$, $y$ and $\phi$ (no subscripts!) as follows:
 \begin{eqnarray}
@@ -80,7 +81,7 @@ y &=& \frac{1}{\sqrt{2}}
 \phi &=& -\frac{1}{2}\frac{\sin(2\phi_{12})}{\cos(2\phi_{12})+\frac{y_{12}^2}{x_{12}^2}}.
 \end{eqnarray}
 Our approach in this fit is to allow MINUIT to believe that the parameters $x_{12}$, $y_{12}$,
-and $\phi_{12}$ are free, but interpret them internally as giving rise to the 
-non-underlying parameters $x$, $y$, $\phi$, and $|q/p|$, and use these
+and $\phi_{12}$ are free, but calculate the
+non-underlying\footnote{Overlying?} parameters $x$, $y$, $\phi$, and $|q/p|$, and use these
 values in the calculation of $\chi^2$, as outlined for the other fits. 
 
