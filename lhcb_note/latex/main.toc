@@ -1,8 +1,10 @@
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}
 \contentsline {section}{\numberline {2}Chi-square calculation}{1}{section.2}
 \contentsline {section}{\numberline {3}Fit variants}{2}{section.3}
-\contentsline {section}{\numberline {4}Measurements Used}{3}{section.4}
+\contentsline {section}{\numberline {4}Measurements Used}{4}{section.4}
 \contentsline {section}{\numberline {5}Results}{4}{section.5}
 \contentsline {subsection}{\numberline {5.1}No CP Violation Allowed}{4}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}All CP Violation Allowed}{4}{subsection.5.2}
-\contentsline {section}{\numberline {6}Conclusion}{4}{section.6}
+\contentsline {subsection}{\numberline {5.2}No Direct CP Violation Allowed}{6}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}All CP Violation Allowed}{7}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}All CP Violation Allowed, Fit for $x_{12},y_{12},\phi _{12}$}{8}{subsection.5.4}
+\contentsline {section}{\numberline {6}Conclusion}{9}{section.6}
