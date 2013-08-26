@@ -161,7 +161,8 @@ double MixingResult::calcEpsilon (double x,
   else {
     switch (fit_for_phi) {
     case MixingResult::PHI_FREE:
-      qoverp = 1 - (y/x)*tan(phi);
+      //qoverp = 1 - (y/x)*tan(phi);
+      qoverp = sqrt((x-y*tan(phi))/(x+y*tan(phi))); 
       // This is eqn 20 of Grossman/Nir/Perez. It assumes small CPV, ie |sin(phi_12)|<<1.
       // NB! This function's 'phi' is not the same as 'phi_12'! 
       break;
