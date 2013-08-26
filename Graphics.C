@@ -761,7 +761,7 @@ void MixDrawer::drawEllipseForce (DrawOptions* dis, TCanvas* foo) {
       chisq = runFit() - centralChisq;
 
       if (chisq > fiveSigma) {
-	std::cout << "Bad fit for (" << i << ", " << j << ") " << chisq << ", retrying with last working set.\n";
+	//std::cout << "Bad fit for (" << i << ", " << j << ") " << chisq << ", retrying with last working set.\n";
 	for (int p = 3; p <= 8; ++p) {
 	  sprintf(strbuf, "SET PAR %i %f", p, wrkpar[p-1]);
 	  MixingResult::minuit->mncomd(strbuf, dummy);
@@ -769,7 +769,7 @@ void MixDrawer::drawEllipseForce (DrawOptions* dis, TCanvas* foo) {
 	}
 	chisq = runFit() - centralChisq;
 	if (chisq > 2*fiveSigma) {
-	  std::cout << "  Still bad, " << chisq << ", retrying with central values.\n";
+	  //std::cout << "  Still bad, " << chisq << ", retrying with central values.\n";
 	  for (int p = 3; p <= 8; ++p) {
 	    sprintf(strbuf, "SET PAR %i %f", p, orgpar[p-1]);
 	    MixingResult::minuit->mncomd(strbuf, dummy);
@@ -777,7 +777,7 @@ void MixDrawer::drawEllipseForce (DrawOptions* dis, TCanvas* foo) {
 	  }
 	  chisq = runFit() - centralChisq;
 	  if (chisq > 3*fiveSigma) {
-	    std::cout << "  Final fit is " << chisq << ", giving up.\n"; 
+	    //std::cout << "  Final fit is " << chisq << ", giving up.\n"; 
 	    chisq = 0; // Give up
 	  }
 	  else for (int p = 0; p < MixingResult::nParams; ++p) MixingResult::minuit->GetParameter(p, wrkpar[p], fiterr[p]);
@@ -828,6 +828,7 @@ void MixDrawer::drawEllipseForce (DrawOptions* dis, TCanvas* foo) {
       else if (curr < threeSigma) curr = 15;
       else if (curr < fourSigma)  curr = 20; 
       else if (curr < fiveSigma)  curr = fiveSigma-1; 
+      else curr = 0; 
       
       histogram->SetBinContent(i, j, curr); 
     }
