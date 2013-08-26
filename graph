@@ -4,5 +4,6 @@ yaxis 1 y
 directory testing
 # name1 name2 drawtype basecolour modcolour numContours
 include fitresult           none           special blue   0 5
-pointsPerContour 3600 
+pointsPerContour 32
+contours 28.741 19.331 11.83 6.182 2.30   
 endfile 
