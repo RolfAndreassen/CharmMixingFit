@@ -259,7 +259,8 @@ void MixDrawer::draw () {
     if (MixingResult::isSensitive[MixingResult::WYE]) {
       if (MixingResult::isSensitive[MixingResult::EKS]) {
 	//drawEllipse3(drawmap[MixingResult::fitResult], foo); 
-	drawEllipseForce(drawmap[MixingResult::fitResult], foo); 
+	//	drawEllipseForce(drawmap[MixingResult::fitResult], foo); 
+	drawEllipseForce_Adam(drawmap[MixingResult::fitResult], foo); 
 	//drawEllipse(drawmap[MixingResult::fitResult], foo); 
       }
       else {
@@ -269,8 +270,8 @@ void MixDrawer::draw () {
     }
   }
 
-  foo->SaveAs((directory + "/finalplot.png").c_str()); 
-  //foo->SaveAs((directory + "/finalplot.pdf").c_str()); 
+    foo->SaveAs((directory + "/finalplot.png").c_str()); 
+    foo->SaveAs((directory + "/finalplot.pdf").c_str()); 
   delete foo; 
 }
 
@@ -722,10 +723,10 @@ void MixDrawer::drawEllipseForce (DrawOptions* dis, TCanvas* foo) {
     wrkpar[p] = fitpar[p]; 
   }
 
-  double XMIN = (xmax+11*xmin)/12;
-  double XMAX = (xmin+11*xmax)/12;
-  double YMIN = (ymax+11*ymin)/12;
-  double YMAX = (ymin+11*ymax)/12;
+  double XMIN = (xmax+11*xmin)/12;//why??
+  double XMAX = (xmin+11*xmax)/12;//why??
+  double YMIN = (ymax+11*ymin)/12;//why??
+  double YMAX = (ymin+11*ymax)/12;//why??
   TH2F* histogram = new TH2F("hist", "", 1000, XMIN, XMAX, 1000, YMIN, YMAX); 
   histogram->SetStats(false); 
   TH2F* edmhist = new TH2F("edmhist", "", 1000, XMIN, XMAX, 1000, YMIN, YMAX); 
@@ -754,7 +755,7 @@ void MixDrawer::drawEllipseForce (DrawOptions* dis, TCanvas* foo) {
     if (0 == i%25) std::cout << "Fitting line " << i << std::endl; 
     //for (int j = 200; j <= 1000; ++j) {
       for (int j = 2; j <= 1000; ++j) {
-      double yval = ymin + (j + 0.5)*(ymax - ymin)*0.001;
+	double yval = ymin + (j + 0.5)*(ymax - ymin)*0.001;
       sprintf(strbuf, "SET PAR 2 %f", yval);
       MixingResult::minuit->mncomd(strbuf, dummy);
       assert(0 == dummy);
@@ -823,11 +824,15 @@ void MixDrawer::drawEllipseForce (DrawOptions* dis, TCanvas* foo) {
       double curr = histogram->GetBinContent(i, j);
       if (0 == curr) continue;
       // Values chosen for five-colour plot. 
-      if      (curr < oneSigma)   curr = 1;
-      else if (curr < twoSigma)   curr = 7;
-      else if (curr < threeSigma) curr = 15;
-      else if (curr < fourSigma)  curr = 20; 
-      else if (curr < fiveSigma)  curr = fiveSigma-1; 
+      if      (curr < oneSigma)   curr = 10;
+      //else if (curr < twoSigma)   curr = 7;
+      else if (curr < twoSigma)   curr = 21;
+      //else if (curr < threeSigma) curr = 15;
+      else if (curr < threeSigma) curr = 31;
+      //else if (curr < fourSigma)  curr = 20; 
+      else if (curr < fourSigma)  curr = 41; 
+      //else if (curr < fiveSigma)  curr = fiveSigma-1; 
+      else if (curr < fiveSigma)  curr = 51; 
       else curr = 0; 
       
       histogram->SetBinContent(i, j, curr); 
@@ -893,17 +898,222 @@ void MixDrawer::drawEllipseForce (DrawOptions* dis, TCanvas* foo) {
   edm1d.Draw();
   foo->SaveAs("edm1d.png"); 
 
-  int colors[5];
-  colors[0] = kBlue;
-  colors[1] = kCyan-7;
-  colors[2] = 8;
-  colors[3] = 42;
-  colors[4] = 46;
-  TColor::SetPalette(5, colors); 
+  int colors_new[5];
+  colors_new[0] = kBlue;
+  colors_new[1] = kCyan-7;
+  colors_new[2] = 8;
+  colors_new[3] = 42;
+  colors_new[4] = 46;
+  TColor::SetPalette(5, colors_new); 
 
   histogram->Draw("col"); 
 }
 
+void MixDrawer::drawEllipseForce_Adam (DrawOptions* dis, TCanvas* foo) {
+  int nbins(100);//changeable number of bins
+  double fitpar[MixingResult::nParams];
+  double orgpar[MixingResult::nParams];
+  double wrkpar[MixingResult::nParams];
+  double fiterr[MixingResult::nParams];
+  for (int p = 0; p < MixingResult::nParams; ++p) {//Get all the parameters
+    MixingResult::minuit->GetParameter(p, fitpar[p], fiterr[p]);
+    orgpar[p] = fitpar[p]; 
+    wrkpar[p] = fitpar[p]; 
+  }
+
+  double XMIN = (xmax+11*xmin)/12;//why??
+  double XMAX = (xmin+11*xmax)/12;//why??
+  double YMIN = (ymax+11*ymin)/12;//why??
+  double YMAX = (ymin+11*ymax)/12;//why??
+  
+  TH2F* histogram = new TH2F("hist", "", nbins, XMIN, XMAX, nbins, YMIN, YMAX); 
+  //this is the final histogram we want to draw, so that'll be ok.
+  
+  histogram->SetStats(false); 
+  TH2F* edmhist = new TH2F("edmhist", "", nbins, XMIN, XMAX, nbins, YMIN, YMAX); //this is a graphical view of the estimated distance to minimum
+  edmhist->SetStats(false); 
+  TH1F edm1d("edm1d", "", nbins, 0, 0.00001); //This is the projection
+  
+
+  char strbuf[100];
+  int dummy = MixingResult::nParams;
+  double chisq = 0;
+  double maxEdm = 0; 
+  MixChisqFcn(dummy, 0, chisq, fitpar, 4);
+  double centralChisq = chisq;
+  std::cout<<"centralChisq="<<centralChisq<<std::endl;
+  MixingResult::minuit->FixParameter(0);
+  MixingResult::minuit->FixParameter(1);
+  MixingResult::minuit->SetErrorDef(1); //Reset Error Definition
+  MixingResult::minuit->SetPrintLevel(-1); //let's not spit out all the shit.
+
+  for (int i = 1; i <= nbins; ++i) {
+    //for (int i = 100; i <= 400; ++i) {
+    double prevChisq = 1000; 
+    double xval = xmin + (i + 0.5)*(xmax - xmin)/((double) nbins);//this is the grid position in x
+    sprintf(strbuf, "SET PAR 1 %f", xval);
+    MixingResult::minuit->mncomd(strbuf, dummy);
+    assert(0 == dummy);
+    if (0 == i%25) std::cout << "Fitting line " << i << std::endl; 
+    //for (int j = 200; j <= 1000; ++j) {
+      for (int j = 2; j <= nbins; ++j) {
+	double yval = ymin + (j + 0.5)*(ymax - ymin)/((double) nbins);//this is the grid position in y
+      sprintf(strbuf, "SET PAR 2 %f", yval);
+      MixingResult::minuit->mncomd(strbuf, dummy);
+      assert(0 == dummy);
+      chisq = runFit() - centralChisq;
+
+      if (chisq > fiveSigma) {
+	//std::cout << "Bad fit for (" << i << ", " << j << ") " << chisq << ", retrying with last working set.\n";
+	for (int p = 3; p <= 8; ++p) {
+	  sprintf(strbuf, "SET PAR %i %f", p, wrkpar[p-1]);
+	  MixingResult::minuit->mncomd(strbuf, dummy);
+	  assert(0 == dummy);
+	}
+	chisq = runFit() - centralChisq;
+	if (chisq > 2*fiveSigma) {
+	  //std::cout << "  Still bad, " << chisq << ", retrying with central values.\n";
+	  for (int p = 3; p <= 8; ++p) {
+	    sprintf(strbuf, "SET PAR %i %f", p, orgpar[p-1]);
+	    MixingResult::minuit->mncomd(strbuf, dummy);
+	    assert(0 == dummy);
+	  }
+	  chisq = runFit() - centralChisq;
+	  if (chisq > 3*fiveSigma) {
+	    //std::cout << "  Final fit is " << chisq << ", giving up.\n"; 
+	    chisq = 0; // Give up
+	  }
+	  else for (int p = 0; p < MixingResult::nParams; ++p) MixingResult::minuit->GetParameter(p, wrkpar[p], fiterr[p]);
+	}
+	else for (int p = 0; p < MixingResult::nParams; ++p) MixingResult::minuit->GetParameter(p, wrkpar[p], fiterr[p]);
+      }
+      else for (int p = 0; p < MixingResult::nParams; ++p) MixingResult::minuit->GetParameter(p, wrkpar[p], fiterr[p]);
+      
+      double fmin, fedm, errdef;
+      int nparx, istat; 
+      MixingResult::minuit->mnstat(fmin, fedm, errdef, dummy, nparx, istat);
+      if (3 > istat) chisq = 0; 
+      //if (fedm > 0.001) chisq = 0; 
+      //if (chisq >= 1.5*prevChisq) chisq = 0;
+
+      if (chisq > 0) prevChisq = chisq; 
+      histogram->SetBinContent(i, j, chisq); 
+      edmhist->SetBinContent(i, j, fedm);
+      edm1d.Fill(fedm); 
+      maxEdm = (fedm > maxEdm ? fedm : maxEdm); 
+      //break; 
+    }
+    //break; 
+  }
+
+  /*
+  for (int i = 2; i < 1000; ++i) {
+    for (int j = 2; j < 1000; ++j) {
+      if (0 < histogram->GetBinContent(i, j)) continue;
+      double avg = 0; 
+      //avg       += histogram->GetBinContent(i+0, j+1);
+      //avg       += histogram->GetBinContent(i+0, j-1);
+      avg       += histogram->GetBinContent(i+1, j+0);
+      avg       += histogram->GetBinContent(i-1, j+0);
+      avg *= 0.5;
+      histogram->SetBinContent(i, j, avg); 
+    }
+  }
+  */
+
+  for (int i = 2; i < nbins; ++i) {
+    for (int j = 2; j < nbins; ++j) {
+      double curr = histogram->GetBinContent(i, j);
+      if (0 == curr) continue;
+      // Values chosen for five-colour plot. 
+      if      (curr < oneSigma)   curr = 8;
+      //else if (curr < twoSigma)   curr = 7;
+      else if (curr < twoSigma)   curr = 20;
+      //else if (curr < threeSigma) curr = 15;
+      else if (curr < threeSigma) curr = 29;
+      //else if (curr < fourSigma)  curr = 20; 
+      else if (curr < fourSigma)  curr = 40;
+      //else if (curr < fiveSigma)  curr = fiveSigma-1; 
+      else if (curr < fiveSigma)  curr = 50;
+      else curr = 0; 
+      
+      histogram->SetBinContent(i, j, curr); 
+    }
+  }
+
+  // Search for bad fits no found by earlier methods. For each bin, is it an outlier in its region?
+  /*
+  for (int i = 2; i < 1000; ++i) {
+    for (int j = 2; j < 1000; ++j) {
+      double curr = histogram->GetBinContent(i, j);
+      if (0 == curr) continue;
+      std::map<double, int> surrounds; 
+      for (int xp = -1; xp <= 1; ++xp) {
+	for (int yp = -1; yp <= 1; ++yp) {
+	  if ((0 == xp) && (0 == yp)) continue; 
+	  double area = histogram->GetBinContent(i+xp, j+yp);
+	  if (0 == area) continue; 
+	  surrounds[area]++;
+	}
+      }
+      if (0 < surrounds[curr]) continue; 
+      
+      histogram->SetBinContent(i, j, 0); 
+    }
+    }*/
+
+  // Fix areas of bad fits. Take modal value of surrounding bins. 
+  for (int i = 2; i < nbins; ++i) {
+    for (int j = 2; j < nbins; ++j) {
+      if (0 < histogram->GetBinContent(i, j)) continue;
+      // Right edge detection
+      int numNonzero = 0;
+      for (int xp = 1; xp <= 5; ++xp) {
+	if (0 == histogram->GetBinContent(i+xp, j)) continue;
+	numNonzero++;
+      }
+      if (0 == numNonzero) continue; // We're at a right edge. 
+	
+      std::map<double, int> surrounds; //nearest neighbor approximation
+      for (int xp = -1; xp <= 1; ++xp) {
+	for (int yp = -1; yp <= 1; ++yp) {
+	  if ((0 == xp) && (0 == yp)) continue; 
+	  double area = histogram->GetBinContent(i+xp, j+yp);
+	  if (0 == area) continue; 
+	  surrounds[area]++;
+	}
+      }
+      std::map<double, int>::iterator best = surrounds.begin(); 
+      for (std::map<double, int>::iterator c = surrounds.begin(); c != surrounds.end(); ++c) {
+	if ((*c).second < (*best).second) continue;
+	best = c; 
+      }
+
+      histogram->SetBinContent(i, j, (*best).first); 
+    }
+  }
+
+  edmhist->GetZaxis()->SetRangeUser(0, 0.00001); 
+  edmhist->Draw("colz"); 
+  foo->SaveAs("edms.png"); 
+
+  edm1d.Draw();
+  foo->SaveAs("edm1d.png"); 
+
+  int colors_new[5];
+  colors_new[0] = kBlue;
+  colors_new[1] = kCyan-7;
+  colors_new[2] = 8;
+  colors_new[3] = 42;
+  colors_new[4] = 46;
+  colors_new[5] = 10;
+  colors_new[6] = 10;
+  colors_new[7]= 10;
+   
+  TColor::SetPalette(8, colors_new); 
+
+  histogram->Draw("colz"); 
+}
 
 std::vector<TGraph*> MixDrawer::drawEllipse3 (DrawOptions* dis, TCanvas* foo) {
   double fitpar[MixingResult::nParams];

@@ -132,6 +132,7 @@ private:
   std::pair<TGraph*, TGraph*> drawEllipse (DrawOptions* dis, TCanvas* foo);
   std::vector<TGraph*> drawEllipse3 (DrawOptions* dis, TCanvas* foo);//ad 8/18/13
   void drawEllipseForce (DrawOptions* dis, TCanvas* foo); 
+  void drawEllipseForce_Adam (DrawOptions* dis, TCanvas* foo); 
   void drawYbar (MixingResult* dat, DrawOptions* dis, TCanvas* foo);
   void drawBand (MixingResult* dat, DrawOptions* dis, TCanvas* foo);
   void drawAnnulus (MixingResult* dat, DrawOptions* dis, TCanvas* foo);
