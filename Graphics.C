@@ -915,12 +915,19 @@ void MixDrawer::drawEllipseForce_Adam (DrawOptions* dis, TCanvas* foo) {
   double orgpar[MixingResult::nParams];
   double wrkpar[MixingResult::nParams];
   double fiterr[MixingResult::nParams];
+
   for (int p = 0; p < MixingResult::nParams; ++p) {//Get all the parameters
     MixingResult::minuit->GetParameter(p, fitpar[p], fiterr[p]);
     orgpar[p] = fitpar[p]; 
     wrkpar[p] = fitpar[p]; 
   }
 
+  TGraph* the_central_val = new TGraph(1);
+  std::cout<<"set central val graph to (x,y) = ("<<orgpar[0]<<","<<orgpar[1]<<")"<<std::endl;
+  the_central_val->SetPoint(0,orgpar[0],orgpar[1]);
+  the_central_val->SetMarkerStyle(kFullDotLarge);
+  the_central_val->SetMarkerColor(kMagenta);
+  
   double XMIN = (xmax+11*xmin)/12;//why??
   double XMAX = (xmin+11*xmax)/12;//why??
   double YMIN = (ymax+11*ymin)/12;//why??
@@ -1026,15 +1033,15 @@ void MixDrawer::drawEllipseForce_Adam (DrawOptions* dis, TCanvas* foo) {
       double curr = histogram->GetBinContent(i, j);
       if (0 == curr) continue;
       // Values chosen for five-colour plot. 
-      if      (curr < oneSigma)   curr = 8;
+      if      (curr < oneSigma)   curr = 5;
       //else if (curr < twoSigma)   curr = 7;
-      else if (curr < twoSigma)   curr = 20;
+      else if (curr < twoSigma)   curr = 15;
       //else if (curr < threeSigma) curr = 15;
-      else if (curr < threeSigma) curr = 29;
+      else if (curr < threeSigma) curr = 25;
       //else if (curr < fourSigma)  curr = 20; 
-      else if (curr < fourSigma)  curr = 40;
+      else if (curr < fourSigma)  curr = 35;
       //else if (curr < fiveSigma)  curr = fiveSigma-1; 
-      else if (curr < fiveSigma)  curr = 50;
+      else if (curr < fiveSigma)  curr = 45;
       else curr = 0; 
       
       histogram->SetBinContent(i, j, curr); 
@@ -1092,7 +1099,7 @@ void MixDrawer::drawEllipseForce_Adam (DrawOptions* dis, TCanvas* foo) {
       histogram->SetBinContent(i, j, (*best).first); 
     }
   }
-
+  histogram->GetZaxis()->SetRangeUser(0,80);
   edmhist->GetZaxis()->SetRangeUser(0, 0.00001); 
   edmhist->Draw("colz"); 
   foo->SaveAs("edms.png"); 
@@ -1112,7 +1119,8 @@ void MixDrawer::drawEllipseForce_Adam (DrawOptions* dis, TCanvas* foo) {
    
   TColor::SetPalette(8, colors_new); 
 
-  histogram->Draw("colz"); 
+  histogram->Draw("col"); 
+  the_central_val->Draw("samep");
 }
 
 std::vector<TGraph*> MixDrawer::drawEllipse3 (DrawOptions* dis, TCanvas* foo) {
