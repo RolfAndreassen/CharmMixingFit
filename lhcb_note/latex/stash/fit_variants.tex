@@ -1,0 +1,86 @@
+\section{Fit variants}
+\label{sec:fit_variants}
+In full generality, we wish to fit for no less than seven underlying
+related mixing parameters:
+\begin{itemize}
+\item $x$ and $y$, the normalised mass and width differences
+\item $R_D^+$ and $R_D^-$, the ratios of rates
+\item $\delta$, the strong phase difference
+\item $|q/p|$ and $\phi$, the magnitude and phase of the indirect CP violation. 
+\end{itemize}
+The observed inputs, however, are not all direct measurements of these
+quantities. From $D^0\to K_S\pi\pi$ we get direct measurements of $x$, $y$, $|q/p|$ and $\phi$;
+$D^0\to K\pi$ results also yield $R_D^\pm$ directly, although sometimes quoted
+as $R_D = \frac{1}{2}(R_D^+ + R_D^-)$ and $A_D = \frac{R_D^+ - R_D^-}{R_D^+ + R_D^-}$.
+However, we also measure the derived parameters $x'^{2(\pm)}$, $y'^{(\pm)}$, $y_{CP}$, and $A_\Gamma$,
+defined as:
+\begin{eqnarray}
+x' &=& x\cos\delta + y\sin\delta \\
+y' &=& y\cos\delta - x\sin\delta \\
+x'^{\pm} &=& \left(\frac{1\pm A_M}{1\mp A_M}\right)^{1/4}\left(x'\cos\phi \pm y'\sin\phi\right) \\
+y'^{\pm} &=& \left(\frac{1\pm A_M}{1\mp A_M}\right)^{1/4}\left(y'\cos\phi \mp x'\sin\phi\right) \\
+2y_{CP}  &=& \left(|q/p|+|p/q|\right)y\cos\phi - \left(|q/p|-|p/q|\right)x\sin\phi\\
+2A_\Gamma  &=& \left(|q/p|-|p/q|\right)y\cos\phi - \left(|q/p|+|p/q|\right)x\sin\phi\\
+\end{eqnarray}
+where the helper quantity $A_M$ is given by
+\begin{eqnarray}
+A_M &=& \frac{|q/p|^2 - |p/q|^2}{|q/p|^2 + |p/q|^2}. 
+\end{eqnarray}
+
+To calculate $\vec\epsilon$, then, we take in a vector of proposed mixing parameters
+from MINUIT, calculate the resulting observable parameters from the equations above, 
+and subtract the actually observed numbers.
+
+In addition to the fully-general fit allowing all these variables to float, 
+there are some variants imposing different no-CPV constraints:
+\begin{itemize}
+\item No CP violation. In this fit we set $|q/p|=1$, $\phi=0$, and $R_D^+=R_D^-$, 
+and fit only for $x$, $y$, $\delta$, and $R_D$. 
+\item No direct CP violation. With no direct CP violation, $R_D^+=R_D^-$;
+in addition, the four parameters $x$, $y$, $\phi$ and $|q/p|$ are related 
+(in the limit that CPV is small) by the constraint
+\begin{eqnarray}
+|q/p| &=& 1 - \frac{y}{x}\tan\phi\\
+\phi &=& \tan^{-1}\left(\frac{1-|q/p|^2}{1+|q/p|^2}\frac{x}{y}\right)
+\end{eqnarray}
+Thus we have two variants on this fit:
+\begin{description}
+\item[2a] Here we allow $|q/p|$ to float and calculate $\phi$
+from the constraint. 
+\item[2b] We allow $\phi$ to float and calculate $|q/p|$ from the constraint. 
+\end{description}
+\item All CPV allowed. As $A_D$ is quite
+small, the contribution of a new physics phase to $\phi$ is below
+our current sensitivity; consequently the constraint above is a reasonable
+approximation. We therefore run three variants of the all-CPV-allowed 
+scenario:
+\begin{description}
+\item[3a] All parameters float, no constraint.
+\item[3b] $\phi$ is calculated from $|q/p|$ as above, rather than allowed to float.
+$R_D^+$ and $R_D^-$ are both free, as before.
+\item[3c] As in 3b, but with $|q/p|$ calculated from the constraint and $\phi$ allowed
+to float.
+\end{description}
+\end{itemize}
+
+In addition, we do a fit not allowing direct CP violation, in which the
+free parameters are the underlying\footnote{See Kagan and Sokoloff, \url{http://arxiv.org/abs/0907.3917}.}
+$x_{12}$, $y_{12}$, and $\phi_{12}$. These parameters are related
+(in the limit of no direct CP violation) to $|q/p|$, $x$, $y$ and $\phi$ (no subscripts!) as follows:
+\begin{eqnarray}
+x &=& \frac{1}{\sqrt{2}}\mathrm{sgn}(\cos\phi_{12})
+\sqrt{x_{12}^2 - y_{12}^2 + |x_{12}^2+y_{12}^2| - 4x_{12}^2y_{12}^2\sin^2(\phi_{12})} \\
+%
+y &=& \frac{1}{\sqrt{2}}
+\sqrt{y_{12}^2 - x_{12}^2 + |x_{12}^2+y_{12}^2| - 4x_{12}^2y_{12}^2\sin^2(\phi_{12})} \\
+%
+|q/p| &=& \left(\frac{x_{12}^2+y_{12}^2+2x_{12}y_{12}\sin(\phi_{12})}
+{x_{12}^2+y_{12}^2-2x_{12}y_{12}\sin(\phi_{12})}\right)^{1/4}\\
+%
+\phi &=& -\frac{1}{2}\frac{\sin(2\phi_{12})}{\cos(2\phi_{12})+\frac{y_{12}^2}{x_{12}^2}}.
+\end{eqnarray}
+Our approach in this fit is to allow MINUIT to believe that the parameters $x_{12}$, $y_{12}$,
+and $\phi_{12}$ are free, but interpret them internally as giving rise to the 
+non-underlying parameters $x$, $y$, $\phi$, and $|q/p|$, and use these
+values in the calculation of $\chi^2$, as outlined for the other fits. 
+

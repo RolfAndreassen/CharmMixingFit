@@ -1,0 +1,1298 @@
+fitresult : 0 +/- 0 (0, 0, 0) 1 plainx 0 none 3 
+hfag_ycp : 0.00866 +/- 0.00155 (0.00155, 0, 0) 1 ycp 2 none 3 
+hfag_agamma : -0.00022 +/- 0.00161 (0.00161, 0, 0) 1 agamma 3 none 3 
+lhcb_agamma_kk : -0.00035 +/- 0.000631506 (0.00062, 0.00012, 0) 1 agamma 3 none 3 
+lhcb_agamma_pipi : 0.00033 +/- 0.00106921 (0.00106, 0.00014, 0) 1 agamma 3 none 3 
+lhcb_rd : 0.003568 +/- 6.67308e-05 (5.8e-05, 3.3e-05, 0) 1 rsubd 16 none 3 
+lhcb_yprime_p : 0.00446 +/- 0.00105688 (0.00089, 0.00057, 0) 1 yprimep 8 kpi 0 
+lhcb_xp2_p : 7.7e-05 +/- 5.43783e-05 (4.6e-05, 2.9e-05, 0) 1 xprimep 5 kpi 0 
+lhcb_yprime_m : 0.00517 +/- 0.00106231 (0.00089, 0.00058, 0) 1 yprimem 9 kpi 0 
+lhcb_xp2_m : 3.2e-05 +/- 5.57584e-05 (4.7e-05, 3e-05, 0) 1 xprimem 6 kpi 0 
+belle_kspipi_x : 0.00811 +/- 0.00334 (0.00334, 0, 0) 1 plainx 0 none 3 
+belle_kspipi_y : 0.00309 +/- 0.00281 (0.00281, 0, 0) 1 plainy 1 none 3 
+belle_qoverp : 0.95 +/- 0.241661 (0.22, 0.1, 0) 1 qoverp 18 none 3 
+belle_phi : -0.035 +/- 0.210238 (0.19, 0.09, 0) 1 phi 19 none 3 
+cleo_cosd : 0.81 +/- 0.208806 (0.2, 0.06, 0) 1 cosangle 10 kpi 0 
+cleo_sind : -0.01 +/- 0.411947 (0.41, 0.04, 0) 1 sinangle 11 kpi 0 
+cleo_rd : 0.00533 +/- 0.00116078 (0.00107, 0.00045, 0) 1 rsubd 16 none 3 
+cleo_xp2 : 0.0006 +/- 0.00254951 (0.0023, 0.0011, 0) 1 xprime 4 kpi 0 
+cleo_yprime : 0.042 +/- 0.0223607 (0.02, 0.01, 0) 1 yprime 7 kpi 0 
+cdf_rd : 0.00304 +/- 0.00055 (0.00055, 0, 0) 1 rsubd 16 none 3 
+cdf_xp2 : -0.00012 +/- 0.00035 (0.00035, 0, 0) 1 xprime 4 kpi 0 
+cdf_yprime : 0.0085 +/- 0.0076 (0.0076, 0, 0) 1 yprime 7 kpi 0 
+belle_rd : 0.00364 +/- 0.00018 (0.00018, 0, 0) 1 rsubd 16 none 3 
+belle_xp2_m : 6e-05 +/- 0.00034 (0.00034, 0, 0) 1 xprimem 6 kpi 0 
+belle_yprime_m : 0.002 +/- 0.0054 (0.0054, 0, 0) 1 yprimem 9 kpi 0 
+belle_xp2_p : 0.00032 +/- 0.00037 (0.00037, 0, 0) 1 xprimep 5 kpi 0 
+belle_yprime_p : -0.0012 +/- 0.0058 (0.0058, 0, 0) 1 yprimep 8 kpi 0 
+babar_rd : 0.00303 +/- 0.000189 (0.000189, 0, 0) 1 rsubd 16 none 3 
+babar_xp2_m : -0.0002 +/- 0.0005 (0.0005, 0, 0) 1 xprimem 6 kpi 0 
+babar_yprime_m : 0.0096 +/- 0.0075 (0.0075, 0, 0) 1 yprimem 9 kpi 0 
+babar_xp2_p : -0.00024 +/- 0.00052 (0.00052, 0, 0) 1 xprimep 5 kpi 0 
+babar_yprime_p : 0.0098 +/- 0.0078 (0.0078, 0, 0) 1 yprimep 8 kpi 0 
+babar_kspipi_x : 0.0016 +/- 0.00271477 (0.0023, 0.0012, 0.0008) 1 plainx 0 none 3 
+babar_kspipi_y : 0.0057 +/- 0.00248596 (0.002, 0.0013, 0.0007) 1 plainy 1 none 3 
+Activating result: hfag_ycp
+Activating result: lhcb_xp2_m
+Activating result: lhcb_yprime_m
+Activating result: lhcb_rd
+Activating result: lhcb_xp2_p
+Activating result: lhcb_yprime_p
+Activating result: belle_kspipi_x
+Activating result: belle_kspipi_y
+Activating result: belle_qoverp
+Activating result: belle_phi
+Activating result: cleo_cosd
+Activating result: cleo_sind
+Activating result: cdf_rd
+Activating result: cdf_xp2
+Activating result: cdf_yprime
+Activating result: babar_kspipi_x
+Activating result: babar_kspipi_y
+Activating result: hfag_agamma
+Activating result: lhcb_agamma_kk
+Activating result: lhcb_agamma_pipi
+Following results will be used in fit: 
+  hfag_ycp
+  hfag_agamma
+  lhcb_agamma_kk
+  lhcb_agamma_pipi
+  lhcb_rd
+  lhcb_yprime_p
+  lhcb_xp2_p
+  lhcb_yprime_m
+  lhcb_xp2_m
+  belle_kspipi_x
+  belle_kspipi_y
+  belle_qoverp
+  belle_phi
+  cleo_cosd
+  cleo_sind
+  cdf_rd
+  cdf_xp2
+  cdf_yprime
+  babar_kspipi_x
+  babar_kspipi_y
+lhcb_rd is sensitive to x
+hfag_ycp is sensitive to y
+lhcb_yprime_p is sensitive to deltaKpi
+lhcb_rd is sensitive to rsubdm
+hfag_ycp is sensitive to qoverp
+ PARAMETER DEFINITIONS:
+    NO.   NAME         VALUE      STEP SIZE      LIMITS
+     1 x            1.20000e-03  1.00000e-04   -1.00000e-01  1.50000e-01
+     2 y            7.00000e-03  1.00000e-04   -1.00000e-01  1.50000e-01
+     3 deltaKpi     3.00000e-01  1.00000e-02   -1.60000e+00  2.60000e+00
+     4 deltaKpipi0   3.90000e-01  1.00000e-02   -3.00000e+00  2.00000e+00
+ **********
+ **    1 **FIX           4
+ **********
+ PARAMETER DEFINITIONS:
+    NO.   NAME         VALUE      STEP SIZE      LIMITS
+     5 phi          0.00000e+00  1.00000e-03   -3.15000e+00  3.15000e+00
+ **********
+ **    2 **FIX           5
+ **********
+ PARAMETER DEFINITIONS:
+    NO.   NAME         VALUE      STEP SIZE      LIMITS
+     6 rsubdm       3.40000e-03  1.00000e-04   -1.00000e-02  1.00000e-02
+     7 rsubdp       3.40000e-03  1.00000e-04   -1.00000e-02  1.00000e-02
+ **********
+ **    3 **FIX           7
+ **********
+ PARAMETER DEFINITIONS:
+    NO.   NAME         VALUE      STEP SIZE      LIMITS
+     8 qoverp       1.00000e+00  1.00000e-02    2.50000e-01  1.90000e+00
+ **********
+ **    4 **SET STR            2
+ **********
+ NOW USING STRATEGY  2: MAKE SURE MINIMUM TRUE, ERRORS CORRECT  
+ **********
+ **    5 **MIGRAD
+ **********
+ FIRST CALL TO USER FUNCTION AT NEW START POINT, WITH IFLAG=4.
+ START MIGRAD MINIMIZATION.  STRATEGY  2.  CONVERGENCE WHEN EDM .LT. 1.00e-04
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -6.4888e-02  8.8340e-02  1.6933e-01  1.0005e+00  3.8067e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.068695 TO DIAGONAL.
+ FCN=36.1766 FROM HESSE     STATUS=NOT POSDEF     41 CALLS          42 TOTAL
+                     EDM=29.4449    STRATEGY= 2      ERR MATRIX NOT POS-DEF
+  EXT PARAMETER                APPROXIMATE        STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  x            1.20000e-03   5.60122e-03   3.81636e-04   2.51323e+02
+   2  y            7.00000e-03   2.70724e-04   9.07587e-05  -1.25426e+03
+   3  deltaKpi     3.00000e-01   4.67870e-01   1.85311e-03   8.44981e+01
+   4  deltaKpipi0   3.90000e-01     fixed    
+   5  phi          0.00000e+00     fixed    
+   6  rsubdm       3.40000e-03   2.84612e-05   1.52274e-04  -2.73604e+03
+   7  rsubdp       3.40000e-03     fixed    
+   8  qoverp       1.00000e+00   1.92901e-02   2.24018e-03   3.78574e+01
+ MIGRAD MINIMIZATION HAS CONVERGED.
+ MIGRAD WILL VERIFY CONVERGENCE AND ERROR MATRIX.
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+ FCN=19.3925 FROM MIGRAD    STATUS=CONVERGED     241 CALLS         242 TOTAL
+                     EDM=3.6094e-07    STRATEGY= 2      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  x            4.84515e-03   1.78199e-03   1.12149e-05   9.95761e-03
+   2  y            6.79664e-03   1.02979e-03   2.05619e-06   2.59712e-04
+   3  deltaKpi     3.18695e-01   2.02105e-01   2.04967e-05  -8.15996e-03
+   4  deltaKpipi0   3.90000e-01     fixed    
+   5  phi          0.00000e+00     fixed    
+   6  rsubdm       3.55553e-03   4.64061e-05   3.54827e-06  -2.78094e-03
+   7  rsubdp       3.40000e-03     fixed    
+   8  qoverp       9.92893e-01   1.31169e-02   3.50738e-05   9.18251e-03
+ EXTERNAL ERROR MATRIX.    NDIM=  25    NPAR=  5    ERR DEF=1
+  3.176e-06 -1.850e-07 -7.160e-05  4.097e-08  2.544e-06 
+ -1.850e-07  1.060e-06  2.019e-04  1.685e-08  7.444e-08 
+ -7.160e-05  2.019e-04  4.097e-02  4.189e-06 -2.654e-05 
+  4.097e-08  1.685e-08  4.189e-06  2.154e-09  2.936e-08 
+  2.544e-06  7.444e-08 -2.654e-05  2.936e-08  1.721e-04 
+ PARAMETER  CORRELATION COEFFICIENTS  
+       NO.  GLOBAL      1      2      3      6      8
+        1  0.93607   1.000 -0.101 -0.199  0.495  0.109
+        2  0.99371  -0.101  1.000  0.969  0.353  0.006
+        3  0.99539  -0.199  0.969  1.000  0.446 -0.010
+        6  0.94602   0.495  0.353  0.446  1.000  0.048
+        8  0.11163   0.109  0.006 -0.010  0.048  1.000
+ i, outpar[i], err[i] =  0:  0.00484515 +- 0.00178199
+ i, outpar[i], err[i] =  1:  0.00679664 +- 0.00102979
+ i, outpar[i], err[i] =  2:  0.318695 +- 0.202105
+ i, outpar[i], err[i] =  3:  0.39 +- 0
+ i, outpar[i], err[i] =  4:  0 +- 0
+ i, outpar[i], err[i] =  5:  0.00355553 +- 4.64061e-05
+ i, outpar[i], err[i] =  6:  0.0034 +- 0
+ i, outpar[i], err[i] =  7:  0.992893 +- 0.0131169
+MixDrawer::graphicsXIndex = 0
+name = fitresult
+toDraw->getName() = fitresult
+name = none
+prevOpt->numContours = 5
+-------------------------
+Set LHCb Style - Feb 2012
+-------------------------
+Drawing 5 ellipses
+ **********
+ **    6 **MIGRAD
+ **********
+ START MIGRAD MINIMIZATION.  STRATEGY  2.  CONVERGENCE WHEN EDM .LT. 1.00e-04
+ FCN=19.3925 FROM MIGRAD    STATUS=INITIATE       10 CALLS         252 TOTAL
+                     EDM=1.79983e-07    STRATEGY= 2      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  x            4.84515e-03   1.78199e-03   1.12149e-05   9.90946e-03
+   2  y            6.79664e-03   1.02979e-03   2.05619e-06   2.61753e-04
+   3  deltaKpi     3.18695e-01   2.02105e-01   2.04967e-05  -8.15069e-03
+   4  deltaKpipi0   3.90000e-01     fixed    
+   5  phi          0.00000e+00     fixed    
+   6  rsubdm       3.55553e-03   4.64061e-05   3.54827e-06  -2.78271e-03
+   7  rsubdp       3.40000e-03     fixed    
+   8  qoverp       9.92893e-01   1.31169e-02   3.50738e-05   9.17910e-03
+ MIGRAD MINIMIZATION HAS CONVERGED.
+ MIGRAD WILL VERIFY CONVERGENCE AND ERROR MATRIX.
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+ FCN=19.3925 FROM MIGRAD    STATUS=CONVERGED      58 CALLS         300 TOTAL
+                     EDM=6.54815e-11    STRATEGY= 2      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  x            4.84488e-03   1.78204e-03   1.12063e-05  -6.09152e-04
+   2  y            6.79705e-03   1.02973e-03   2.05612e-06   2.09094e-04
+   3  deltaKpi     3.18779e-01   2.02089e-01   2.04527e-05   4.51782e-05
+   4  deltaKpipi0   3.90000e-01     fixed    
+   5  phi          0.00000e+00     fixed    
+   6  rsubdm       3.55554e-03   4.64048e-05   3.54832e-06   8.98810e-05
+   7  rsubdp       3.40000e-03     fixed    
+   8  qoverp       9.92892e-01   1.31173e-02   3.50138e-05   1.11549e-05
+ EXTERNAL ERROR MATRIX.    NDIM=  25    NPAR=  5    ERR DEF=1
+  3.176e-06 -1.851e-07 -7.166e-05  4.097e-08  2.545e-06 
+ -1.851e-07  1.060e-06  2.019e-04  1.685e-08  7.441e-08 
+ -7.166e-05  2.019e-04  4.097e-02  4.187e-06 -2.659e-05 
+  4.097e-08  1.685e-08  4.187e-06  2.153e-09  2.937e-08 
+  2.545e-06  7.441e-08 -2.659e-05  2.937e-08  1.721e-04 
+ PARAMETER  CORRELATION COEFFICIENTS  
+       NO.  GLOBAL      1      2      3      6      8
+        1  0.93612   1.000 -0.101 -0.199  0.495  0.109
+        2  0.99371  -0.101  1.000  0.969  0.353  0.006
+        3  0.99539  -0.199  0.969  1.000  0.446 -0.010
+        6  0.94602   0.495  0.353  0.446  1.000  0.048
+        8  0.11166   0.109  0.006 -0.010  0.048  1.000
+initx = 0.00484488
+ **********
+ **    7 **SET ERRDEF       28.74
+ **********
+ START MNCONTOUR CALCULATION OF 3600 POINTS ON CONTOUR.
+ EACH POINT IS A MINIMUM WITH RESPECT TO THE OTHER   3 VARIABLE PARAMETERS.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 16045.1 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.8842e+01  1.0002e+00  2.0842e+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 18.863086 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.01321 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -7.6452e-02  1.0000e+00  2.0764e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.078529 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 33386.8 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.0997e+01  9.9839e-01  1.2999e+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 11.010340 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.01739 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 3 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 18372.4 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -6.7487e+01  1.9609e-01  7.0291e+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 67.557126 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 3 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 189.176 added to diagonal of error matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 3 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.04171 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -8.0677e-02  4.5201e-01  2.6287e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.083305 TO DIAGONAL.
+ MINUIT WARNING IN MNContour 
+ ============== Cannot find midpoint, try closer.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 2 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.00027 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 14434.3 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -2.8061e+01  1.0000e+00  3.0061e+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 28.090967 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.04792 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -6.3235e-04  9.9999e-01  2.0006e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.002633 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 4173.34 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -6.3219e-01  1.0029e+00  2.6293e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.634817 TO DIAGONAL.
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -3.0448e-01  9.6970e-01  2.3348e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.306817 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 762.604 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.5846e+00  1.0193e+00  3.5653e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 1.588172 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.00247 added to diagonal of error matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.03617 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 3 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 741.662 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 5172.07 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -3.3196e+00  9.9945e-01  5.3202e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 3.324947 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.00082 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.2008e-01  9.9954e-01  2.1205e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.122202 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 28475.7 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.4653e+01  1.0001e+00  1.6653e+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 14.669647 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.01364 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 3 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 134.991 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -3.7637e-01  5.2624e-01  2.8501e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.379217 TO DIAGONAL.
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -2.3649e+00  3.0194e-01  5.0630e+00
+ MINUIT WARNING IN MIGRAD  
+ ============== MATRIX FORCED POS-DEF BY ADDING 2.369972 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 6840.56 added to diagonal of error matrix
+ MINUIT WARNING IN MNContour 
+ ============== Cannot find midpoint, try closer.
+ MINUIT WARNING IN MNContour 
+ ============== Cannot find midpoint, try closer.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 8409.6 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 3 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 23081.1 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -5.7952e+01  9.9994e-01  5.9952e+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 58.011658 TO DIAGONAL.
+ MINUIT WARNING IN MNContour 
+ ============== Cannot find midpoint, try closer.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 6507.57 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 3 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 25659.6 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.3837e-01  9.9991e-01  2.1385e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.140506 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.01036 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 20971.9 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -4.0526e+01  2.9842e-01  4.3227e+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 40.569119 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1 added to diagonal of error matrix
+ MNCONT CANNOT FIND NEXT POINT ON CONTOUR.  ONLY  30 POINTS FOUND.
+ Y-AXIS: PARAMETER   2  y
+                         X-AXIS: PARAMETER   1  x
+   30 POINTS ON CONTOUR.   FMIN=  1.93925e+01   ERRDEF=       28.7
+         xyxy
+     1 -5.97903e-03  6.60929e-03             16  1.31101e-02  5.83470e-03
+     2 -5.75811e-03  5.46926e-03             17  1.28445e-02  7.34102e-03
+     3 -5.14928e-03  4.48041e-03             18  1.26338e-02  7.84667e-03
+     4 -2.87551e-03  4.25565e-03             19  1.17259e-02  9.19730e-03
+     5 -9.59915e-04  4.71595e-03             20  1.00609e-02  1.05846e-02
+     6  1.00574e-03  4.58340e-03             21  8.79161e-03  1.12397e-02
+     7  2.70014e-03  3.87968e-03             22  7.43956e-03  1.17004e-02
+     8  4.14733e-03  2.75191e-03             23  4.61406e-03  1.20649e-02
+     9  5.51804e-03  1.47733e-03             24  3.52621e-03  1.04265e-02
+    10  7.32211e-03  9.78589e-04             25  1.64801e-03  1.10096e-02
+    11  9.35408e-03  1.31450e-03             26  7.24753e-05  1.10396e-02
+    12  1.11925e-02  2.24289e-03             27 -1.49899e-03  1.09225e-02
+    13  1.16034e-02  2.57813e-03             28 -3.06216e-03  1.03932e-02
+    14  1.25867e-02  3.80633e-03             29 -4.45811e-03  9.51280e-03
+    15  1.29777e-02  4.78716e-03             30 -5.54086e-03  8.22987e-03
+calling adam's find point with errordef 28.74
+testing
+initX = 0.00484488, initY = 0.00679705
+ **********
+ **    8 **SET ERRDEF       19.33
+ **********
+ START MNCONTOUR CALCULATION OF 3600 POINTS ON CONTOUR.
+ EACH POINT IS A MINIMUM WITH RESPECT TO THE OTHER   3 VARIABLE PARAMETERS.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 5714.07 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -4.3023e+00  1.0005e+00  6.3018e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 4.308564 TO DIAGONAL.
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -5.5499e-02  1.0000e+00  2.0555e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.057554 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 1049.86 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.4421e+00  1.0045e+00  3.4377e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 1.445588 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.08493 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -3.6054e+00  9.9956e-01  5.6059e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 3.611053 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 673.895 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -6.0924e+00  9.9954e-01  8.0929e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 6.100537 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 26.5497 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -3.9712e-01  9.9790e-01  2.3992e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.399520 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.07639 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 448.681 added to diagonal of error matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.00499 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.0075e-01  2.2752e-02  3.0780e+00
+ MINUIT WARNING IN MIGRAD  
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.103831 TO DIAGONAL.
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -9.5049e-01  9.9659e-01  2.9539e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.953443 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 820.538 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -3.7967e+01  9.9990e-01  3.9967e+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 38.006904 TO DIAGONAL.
+ MINUIT WARNING IN MNContour 
+ ============== Cannot find midpoint, try closer.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 3 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 476.899 added to diagonal of error matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 3 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.27072 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 5280.93 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -5.2841e+00  9.9991e-01  7.2842e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 5.291405 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.00041 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -7.2443e-03  2.0585e-02  2.9867e+00
+ MINUIT WARNING IN MIGRAD  
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.010231 TO DIAGONAL.
+ MINUIT WARNING IN MNContour 
+ ============== Cannot find midpoint, try closer.
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -9.4309e+00  1.0000e+00  1.1431e+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 9.442365 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 1972.47 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -7.7566e-01  1.0004e+00  2.7752e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.778431 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 2 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.00004 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 2093.9 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -9.8717e-02  1.0001e+00  2.0986e+00
+ MINUIT WARNING IN MIGRAD  
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.100815 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 33.6341 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -6.9579e-01  9.9831e-01  2.6975e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.698491 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.05839 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 450.835 added to diagonal of error matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.00493 added to diagonal of error matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 2 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.01054 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -9.2545e-02  9.9717e-01  2.0954e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.094641 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 2 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.03283 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 381.384 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -2.1211e+01  9.9953e-01  2.3211e+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 21.234088 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 3 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 72636.1 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -4.7616e+00  1.0000e+00  6.7616e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 4.768320 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 2 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 3 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.39168 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 2285.39 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 11751.9 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 3 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 31257.3 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -5.9865e+01  9.9997e-01  6.1865e+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 59.926881 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.00127 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 960.61 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -4.0284e+01  7.6478e-01  4.2519e+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 40.326470 TO DIAGONAL.
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -8.2571e-02  8.4011e-01  2.2425e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.084813 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 2 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 3 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.00078 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 3 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 13289.6 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.3668e+02  1.0004e+00  1.3868e+02
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 136.816917 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 2 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.04899 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 3 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 2323.07 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -7.9267e+00  6.2373e-01  1.0303e+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 7.936994 TO DIAGONAL.
+ MINUIT WARNING IN MNContour 
+ ============== Cannot find midpoint, try closer.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 3 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 48769.3 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.7065e+00  1.0000e+00  3.7065e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 1.710250 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 3 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.00197 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 2379.81 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -3.9990e-02  9.9926e-01  2.0407e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.042031 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.00087 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 12207.7 added to diagonal of error matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.02983 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 43496.7 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.0938e+02  1.0000e+00  1.1138e+02
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 109.493366 TO DIAGONAL.
+ MNCONT CANNOT FIND NEXT POINT ON CONTOUR.  ONLY  22 POINTS FOUND.
+ Y-AXIS: PARAMETER   2  y
+                         X-AXIS: PARAMETER   1  x
+   22 POINTS ON CONTOUR.   FMIN=  1.93925e+01   ERRDEF=       19.3
+         xyxy
+     1 -4.03500e-03  6.77104e-03             12  1.15707e-02  7.22636e-03
+     2 -3.33982e-03  5.08497e-03             13  1.09967e-02  8.31218e-03
+     3 -1.51870e-03  4.98713e-03             14  9.19389e-03  9.93692e-03
+     4  1.55237e-03  4.69958e-03             15  8.12082e-03  1.04742e-02
+     5  2.91181e-03  4.06859e-03             16  5.13068e-03  4.25486e-03
+     6  4.13814e-03  3.20699e-03             17  4.68895e-03  7.68287e-03
+     7  6.89351e-03  2.05726e-03             18  4.65097e-03  1.11390e-02
+     8  8.58487e-03  2.32483e-03             19  2.46987e-03  9.58735e-03
+     9  1.01324e-02  3.05782e-03             20 -1.84321e-04  9.93400e-03
+    10  1.13308e-02  4.32984e-03             21 -2.68233e-03  9.04971e-03
+    11  1.17859e-02  6.01717e-03             22 -3.21954e-03  8.59820e-03
+ MINUIT WARNING IN MIGRAD  
+ ============== VARIABLE3 IS AT ITS LOWER ALLOWED LIMIT.
+calling adam's find point with errordef 19.33
+testing
+initX = 0.00484488, initY = 0.00679705
+ **********
+ **    9 **SET ERRDEF       11.83
+ **********
+ START MNCONTOUR CALCULATION OF 3600 POINTS ON CONTOUR.
+ EACH POINT IS A MINIMUM WITH RESPECT TO THE OTHER   3 VARIABLE PARAMETERS.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 10349.3 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.2234e+02  1.0000e+00  1.2434e+02
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 122.463535 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 3 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 918.89 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 3640 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -8.4511e-01  9.9686e-01  2.8482e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.847954 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 3233.86 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -2.6085e-01  1.0000e+00  2.2609e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.263115 TO DIAGONAL.
+ MINUIT WARNING IN MNContour 
+ ============== Cannot find midpoint, try closer.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 2 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.00131 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 19014.6 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -3.4774e+01  9.9996e-01  3.6774e+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 34.810501 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 1277.28 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -3.7645e-01  1.0056e+00  2.3709e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.378823 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.00147 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 4581.06 added to diagonal of error matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 2 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 3 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 11071.5 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -4.4251e+01  1.0000e+00  4.6251e+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 44.297310 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.00067 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 3 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 70509 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.4406e+01  4.5983e-01  1.6946e+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 14.422582 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 3 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.0926 added to diagonal of error matrix
+ MINUIT WARNING IN MNContour 
+ ============== Cannot find midpoint, try closer.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 2032.93 added to diagonal of error matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.00082 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -3.4179e-03  1.0034e+00  2.0000e+00
+ MINUIT WARNING IN MIGRAD  
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.005418 TO DIAGONAL.
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -2.2157e-01  9.9988e-01  2.2217e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.223792 TO DIAGONAL.
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -5.6707e-01  9.9987e-01  2.5672e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.569639 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 1362.12 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.9296e+00  1.0005e+00  3.9291e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 1.933536 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.1756 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 10477 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -9.4702e+00  1.0003e+00  1.1470e+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 9.481622 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 895.084 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -3.1427e+01  9.9990e-01  3.3427e+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 31.460802 TO DIAGONAL.
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.8104e+00  9.9954e-01  3.8108e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 1.814178 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 2502.53 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.0097e+01  9.9987e-01  1.2097e+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 10.109379 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.00237 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.0804e+00  1.0010e+00  3.0794e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 1.083447 TO DIAGONAL.
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.2540e+00  9.9851e-01  3.2555e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 1.257296 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 2815.9 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -5.1653e-01  1.0042e+00  2.5123e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.519046 TO DIAGONAL.
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.0223e-01  9.9943e-01  2.1028e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.104337 TO DIAGONAL.
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -2.4228e-02  9.9974e-01  2.0245e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.026252 TO DIAGONAL.
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.2128e-02  9.6912e-01  2.0430e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.014171 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 7928.7 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -5.1491e+01  9.9994e-01  5.3491e+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 51.544390 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 7930.17 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -5.2304e+01  9.9998e-01  5.4304e+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 52.357855 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 7930.17 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -5.2304e+01  9.9998e-01  5.4304e+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 52.357855 TO DIAGONAL.
+ MINUIT WARNING IN MNContour 
+ ============== Cannot find midpoint, try closer.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 13437.5 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -2.6343e+00  9.9981e-01  4.6345e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 2.638961 TO DIAGONAL.
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -5.2743e-03  1.0000e+00  2.0053e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.007280 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 2 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.00526 added to diagonal of error matrix
+ MNCONT CANNOT FIND NEXT POINT ON CONTOUR.  ONLY  26 POINTS FOUND.
+ Y-AXIS: PARAMETER   2  y
+                         X-AXIS: PARAMETER   1  x
+   26 POINTS ON CONTOUR.   FMIN=  1.93925e+01   ERRDEF=       11.8
+         xyxy
+     1 -1.49728e-03  5.70209e-03             14 -4.16802e-04  8.52187e-03
+     2  4.96800e-04  5.26797e-03             15 -1.66586e-03  7.69391e-03
+     3  2.43893e-03  4.64111e-03             16 -1.88630e-03  6.21167e-03
+     4  4.22913e-03  3.63160e-03             17  6.70911e-04  5.23334e-03
+     5  6.21688e-03  3.10927e-03             18  2.52090e-03  4.60234e-03
+     6  8.93506e-03  3.81320e-03             19  4.22033e-03  3.63666e-03
+     7  9.99445e-03  4.80871e-03             20  4.13355e-03  5.61341e-03
+     8  1.04122e-02  6.20113e-03             21  3.34909e-03  7.42991e-03
+     9  9.64841e-03  8.16216e-03             22  8.71332e-03  9.02094e-03
+    10  7.38344e-03  9.72318e-03             23  3.21849e-03  1.00761e-02
+    11  4.67655e-03  1.02127e-02             24  7.56213e-04  9.09812e-03
+    12  3.18571e-03  1.00698e-02             25 -1.33317e-03  8.03888e-03
+    13  1.71905e-03  8.51717e-03             26 -1.98038e-03  6.91017e-03
+ MINUIT WARNING IN MIGRAD  
+ ============== VARIABLE3 IS AT ITS LOWER ALLOWED LIMIT.
+calling adam's find point with errordef 11.83
+testing
+initX = 0.00484488, initY = 0.00679705
+ **********
+ **   10 **SET ERRDEF        6.18
+ **********
+ START MNCONTOUR CALCULATION OF 3600 POINTS ON CONTOUR.
+ EACH POINT IS A MINIMUM WITH RESPECT TO THE OTHER   3 VARIABLE PARAMETERS.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 3577.07 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -9.8501e-01  9.9816e-01  2.9869e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.987994 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.08286 added to diagonal of error matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.00295 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 241.123 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -4.4612e+00  1.0002e+00  6.4610e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 4.467668 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.00875 added to diagonal of error matrix
+ MINUIT WARNING IN MNContour 
+ ============== Cannot find midpoint, try closer.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 5664.66 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -5.0103e+01  9.9974e-01  5.2103e+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 50.154779 TO DIAGONAL.
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -6.8304e-02  1.0000e+00  2.0683e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.070372 TO DIAGONAL.
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -6.0521e-03  1.0000e+00  2.0060e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.008058 TO DIAGONAL.
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.8616e-01  9.9999e-01  2.1862e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.188349 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 1843.36 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -5.0185e+00  1.0002e+00  7.0183e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 5.025533 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.00146 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 236.257 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -9.1309e-01  1.0006e+00  2.9125e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.916006 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.0089 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -3.0046e-01  9.9997e-01  2.3005e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.302757 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 2 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.01373 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -5.2355e-03  9.9995e-01  2.0053e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.007241 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 249.087 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.6830e+01  9.9989e-01  1.8831e+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 16.849234 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 1356.8 added to diagonal of error matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.00744 added to diagonal of error matrix
+ MINUIT WARNING IN MNContour 
+ ============== Cannot find midpoint, try closer.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 1180.3 added to diagonal of error matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.00209 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 265.602 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.3170e+01  9.9885e-01  1.5171e+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 13.185406 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.02266 added to diagonal of error matrix
+ MINUIT WARNING IN MNContour 
+ ============== Cannot find midpoint, try closer.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 734.773 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -5.1122e+00  9.9999e-01  7.1122e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 5.119298 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.21771 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 1060.42 added to diagonal of error matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.0023 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 41.3438 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.8185e+01  9.9845e-01  2.0187e+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 18.205543 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 3 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 1.90365e+06 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.0825e+02  9.9999e-01  1.1025e+02
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 108.363219 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 3 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 1.89865e+06 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.0290e+02  9.9999e-01  1.0490e+02
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 103.009571 TO DIAGONAL.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 3 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 1.89865e+06 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -1.0281e+02  9.9999e-01  1.0481e+02
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 102.916526 TO DIAGONAL.
+ MINUIT WARNING IN MNContour 
+ ============== Cannot find midpoint, try closer.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 910.655 added to diagonal of error matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.00261 added to diagonal of error matrix
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 410.342 added to diagonal of error matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.00537 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -3.4947e-01  2.1933e-01  3.1301e+00
+ MINUIT WARNING IN MIGRAD  
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.352602 TO DIAGONAL.
+ MNCONT CANNOT FIND NEXT POINT ON CONTOUR.  ONLY  25 POINTS FOUND.
+ Y-AXIS: PARAMETER   2  y
+                         X-AXIS: PARAMETER   1  x
+   25 POINTS ON CONTOUR.   FMIN=  1.93925e+01   ERRDEF=       6.18
+         xyxy
+     1  2.56581e-04  6.43590e-03             14  8.83517e-03  7.09794e-03
+     2  6.22117e-04  5.72259e-03             15  8.47000e-03  7.72214e-03
+     3  1.36844e-03  5.43032e-03             16  7.96428e-03  8.22976e-03
+     4  2.07017e-03  5.16638e-03             17  7.36905e-03  8.62868e-03
+     5  2.76055e-03  4.87404e-03             18  6.73123e-03  8.92180e-03
+     6  3.44242e-03  4.57637e-03             19  6.23349e-03  9.08150e-03
+     7  4.14587e-03  4.33409e-03             20  4.69109e-03  9.28176e-03
+     8  5.62103e-03  4.14814e-03             21  3.23873e-03  9.10590e-03
+     9  6.70727e-03  4.25348e-03             22  2.24924e-03  8.75746e-03
+    10  7.73979e-03  4.60691e-03             23  1.35405e-03  8.21052e-03
+    11  8.61218e-03  5.32102e-03             24  6.20068e-04  7.43777e-03
+    12  8.88087e-03  5.82506e-03             25  3.65991e-04  6.96308e-03
+    13  8.97505e-03  6.38842e-03
+calling adam's find point with errordef 6.18
+testing
+initX = 0.00484488, initY = 0.00679705
+ **********
+ **   11 **SET ERRDEF         2.3
+ **********
+ START MNCONTOUR CALCULATION OF 3600 POINTS ON CONTOUR.
+ EACH POINT IS A MINIMUM WITH RESPECT TO THE OTHER   3 VARIABLE PARAMETERS.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 3159.47 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -7.5039e+00  1.0001e+00  9.5038e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 7.513360 TO DIAGONAL.
+ MINUIT WARNING IN MIGRAD  
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN MIGRAD  
+ ============== 1.03732 added to diagonal of error matrix
+ MINUIT WARNING IN MNContour 
+ ============== Cannot find midpoint, try closer.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element 1 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ============== 6015.86 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -2.5533e+00  1.0012e+00  4.5521e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 2.557832 TO DIAGONAL.
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -7.3138e-02  9.9655e-01  2.0766e+00
+ MINUIT WARNING IN MIGRAD  
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.075215 TO DIAGONAL.
+ MNCONT CANNOT FIND NEXT POINT ON CONTOUR.  ONLY   4 POINTS FOUND.
+ Y-AXIS: PARAMETER   2  y
+                         X-AXIS: PARAMETER   1  x
+    4 POINTS ON CONTOUR.   FMIN=  1.93925e+01   ERRDEF=        2.3
+         xyxy
+     1  2.06315e-03  6.76501e-03              3  7.43388e-03  6.57752e-03
+     2  5.21024e-03  5.20058e-03              4  4.71275e-03  8.32532e-03
+calling adam's find point with errordef 2.3
+testing
+initX = 0.00484488, initY = 0.00679705
+drawing contour4
+drawing contour3
+drawing contour2
+drawing contour1
+ **********
+ **   12 **SET ERRDEF           1
+ **********

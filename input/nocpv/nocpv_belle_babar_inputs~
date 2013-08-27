@@ -48,7 +48,9 @@ correlation belle_rd belle_xp2 0.655
 correlation belle_rd belle_yprime -0.834
 correlation belle_xp2 belle_yprime -0.909
 #
-fitlist hfag_ycp lhcb_xp2 lhcb_yprime lhcb_rd hfag_kspipi_x hfag_kspipi_y cleo_cosd cleo_sind cdf_rd cdf_xp2 cdf_yprime babar_rd babar_xp2 babar_yprime belle_rd belle_xp2 belle_yprime endline 
+#fitlist hfag_ycp lhcb_xp2 lhcb_yprime lhcb_rd hfag_kspipi_x hfag_kspipi_y cleo_cosd cleo_sind cdf_rd cdf_xp2 cdf_yprime babar_rd babar_xp2 babar_yprime belle_rd belle_xp2 belle_yprime endline 
+#don't fit for belle or babar
+fitlist hfag_ycp lhcb_xp2 lhcb_yprime lhcb_rd hfag_kspipi_x hfag_kspipi_y cleo_cosd cleo_sind cdf_rd cdf_xp2 cdf_yprime endline 
 use_hfag_convention yes 
 #silent
 endfile 

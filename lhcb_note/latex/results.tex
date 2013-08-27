@@ -17,11 +17,17 @@ Belle, BaBar and CDF in order to explore the change in $\chi^2/$ndf of the globa
     \begin{subfigure}[b]{0.4\textwidth}
       \centering
       \includegraphics[width=\textwidth]{finalplot_nocpv__graph.pdf}
-      \caption{Two dimensional error ellipses for x and y using all available measurements.}
+      \caption{Two dimensional error ellipses for x and y using all measurements listed in Table~\ref{table:nocpv_output_table}.}
+      \label{fig:xy_no_cpv_}
+    \end{subfigure}%
+    \begin{subfigure}[b]{0.4\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{finalplot_nocpv__babar_graph.pdf}
+      \caption{Two dimensional error ellipses for x and y using all available measurements except the .}
       \label{fig:xy_no_cpv_}
     \end{subfigure}%
     %\hspace{2mm}
-
+    
     \begin{subfigure}[b]{0.4\textwidth}
       \centering
       \includegraphics[width=\textwidth]{finalplot_nocpv__belle_babar_graph.pdf}
@@ -45,7 +51,48 @@ Table~\ref{table:nodcpv_output_table} lists the results of the global fit of no 
 CP violation. The final three columns of the table represent the effect of the 
 inclusion of the preliminary LHCb $A_\Gamma$ result in the global fit.
 The inlcusion of this result does not change the central values or errors substantially.
+
 \input{nodcpv_output_table}
+
+\begin{figure}[htb]
+  \begin{center}
+    \begin{subfigure}[b]{0.4\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{finalplot_nodcpv__.pdf}
+      \caption{Two dimensional error ellipses for x and y from fit to all listed data.}
+      \label{fig:all_nodcpv}
+    \end{subfigure}%
+    \hspace{2mm}
+    \begin{subfigure}[b]{0.4\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{finalplot_nodcpv___hfag_agamma.pdf}
+      \caption{Two dimensional error ellipses for x and y from fit to all data except LHCb $A_\Gamma$.}
+      \label{fig:all_nodcpv_no_lhcb_agamma}
+    \end{subfigure}%
+    \\
+%%%%%%%%%
+    %\hspace{2mm}
+    \begin{subfigure}[b]{0.4\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{finalplot_nodcpv__nobelle_babar_.pdf}
+      \caption{x vs y for Data excluding Belle and Babar $K \pi$ results.}
+      \label{fig:nodcpv_no_belle_babar}
+    \end{subfigure}%
+    \hspace{2mm}
+    \begin{subfigure}[b]{0.4\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{finalplot_nodcpv__nobelle_babar__hfag_agamma.pdf}
+      \caption{Two dimensional error ellipses for x and y for No Direct CPV, excluding Belle and BaBar $K\pi$ results, and excluding LHCb $A_\Gamma$.}
+      \label{fig:nodcpv_no_belle_babar_no_lhcb_agamma}
+    \end{subfigure}%
+    %\vspace*{-1.0cm}
+  \end{center}
+  \caption{Two dimensional error ellipses of fit for All CPV including differing sets of data for $x$ vs $y$. The biggest differences come from including the CDF result, which elongates the error ellipses. The differing colors represent the 1-5$\sigma$ contours.}
+  \label{fig:xy_nodcpv_variations}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{All CP Violation Allowed}
 Table~\ref{table:allcpv_output_table} lists the results of the global All CP Violation
 allowed fit. Again, the latter columns list the differing subsets of the data to explore
@@ -54,43 +101,43 @@ is the evaluation of $x$, which varies quite a bit with the inclusion of differi
 
 
 %%%%%%%%%%%%%%% XY %%%%%%%%%%%%%%%%%%%%%%%%%
-\input{allcpv_output_table}
-\begin{figure}[htb]
-  \begin{center}
-    \begin{subfigure}[b]{0.4\textwidth}
-      \centering
-      \includegraphics[width=\textwidth]{finalplot_allcpv_no_belle_babar_graph_hfag_agamma.pdf}
-      \caption{Two dimensional error ellipses for x and y from fit excluding Belle and BaBar $K\pi$ results. Does not include latest $A_\Gamma$ result of LHCb.}
-      \label{fig:xy_all_cpv_no_agamma}
-    \end{subfigure}%
-    \hspace{2mm}
-    \begin{subfigure}[b]{0.4\textwidth}
-      \centering
-      \includegraphics[width=\textwidth]{finalplot_allcpv_no_belle_babar_graph_lhcb_agamma.pdf}
-      \caption{Two dimensional error ellipses for x and y from fit excluding Belle and BaBar $K\pi$ results. Include latest $A_\Gamma$ result of LHCb.}
-      \label{fig:xy_all_cpv_with_agamma}
-    \end{subfigure}%
-    \\
-%%%%%%%%%
-    %\hspace{2mm}
-    \begin{subfigure}[b]{0.4\textwidth}
-      \centering
-      \includegraphics[width=\textwidth]{finalplot_allcpv_no_belle_babar_cdf_graph_hfag_agamma.pdf}
-      \caption{Two dimensional error ellipses for x and y from fit excluding Belle, BaBar and CDF $K\pi$ results. Does not include latest $A_\Gamma$ result of LHCb.}
-      \label{fig:xy_all_cpv_no_agamma}
-    \end{subfigure}%
-    \hspace{2mm}
-    \begin{subfigure}[b]{0.4\textwidth}
-      \centering
-      \includegraphics[width=\textwidth]{finalplot_allcpv_no_belle_babar_cdf_graph_lhcb_agamma.pdf}
-      \caption{Two dimensional error ellipses for x and y from fit excluding Belle, BaBar and CDF $K\pi$ results. Include latest $A_\Gamma$ result of LHCb.}
-      \label{fig:xy_all_cpv_with_agamma}
-    \end{subfigure}%
-    %\vspace*{-1.0cm}
-  \end{center}
-  \caption{Two dimensional error ellipses of fit for All CPV including differing sets of data for $x$ vs $y$. The biggest differences come from including the CDF result, which elongates the error ellipses. The differing colors represent the 1-5$\sigma$ contours.}
-  \label{fig:xy_all_variations}
-\end{figure}
+%\input{allcpv_output_table}
+%\begin{figure}[htb]
+%  \begin{center}
+%    \begin{subfigure}[b]{0.4\textwidth}
+%      \centering
+%      \includegraphics[width=\textwidth]{finalplot_allcpv_no_belle_babar_graph_hfag_agamma.pdf}
+%      \caption{Two dimensional error ellipses for x and y from fit excluding Belle and BaBar $K\pi$ results. Does not include latest $A_\Gamma$ result of LHCb.}
+%      \label{fig:xy_all_cpv_no_agamma}
+%    \end{subfigure}%
+%    \hspace{2mm}
+%    \begin{subfigure}[b]{0.4\textwidth}
+%      \centering
+%      \includegraphics[width=\textwidth]{finalplot_allcpv_no_belle_babar_graph_lhcb_agamma.pdf}
+%      \caption{Two dimensional error ellipses for x and y from fit excluding Belle and BaBar $K\pi$ results. Include latest $A_\Gamma$ result of LHCb.}
+%      \label{fig:xy_all_cpv_with_agamma}
+%    \end{subfigure}%
+%    \\
+%%%%%%%%%%
+%    %\hspace{2mm}
+%    \begin{subfigure}[b]{0.4\textwidth}
+%      \centering
+%      \includegraphics[width=\textwidth]{finalplot_allcpv_no_belle_babar_cdf_graph_hfag_agamma.pdf}
+%      \caption{Two dimensional error ellipses for x and y from fit excluding Belle, BaBar and CDF $K\pi$ results. Does not include latest $A_\Gamma$ result of LHCb.}
+%      \label{fig:xy_all_cpv_no_agamma}
+%    \end{subfigure}%
+%    \hspace{2mm}
+%    \begin{subfigure}[b]{0.4\textwidth}
+%      \centering
+%      \includegraphics[width=\textwidth]{finalplot_allcpv_no_belle_babar_cdf_graph_lhcb_agamma.pdf}
+%      \caption{Two dimensional error ellipses for x and y from fit excluding Belle, BaBar and CDF $K\pi$ results. Include latest $A_\Gamma$ result of LHCb.}
+%      \label{fig:xy_all_cpv_with_agamma}
+%    \end{subfigure}%
+%    %\vspace*{-1.0cm}
+%  \end{center}
+%  \caption{Two dimensional error ellipses of fit for All CPV including differing sets of data for $x$ vs $y$. The biggest differences come from including the CDF result, which elongates the error ellipses. The differing colors represent the 1-5$\sigma$ contours.}
+%  \label{fig:xy_all_variations}
+%\end{figure}
 
 %%%%%%%%%%%%%%%% Q/P %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[tb]

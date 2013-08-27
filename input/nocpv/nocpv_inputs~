@@ -1,0 +1,68 @@
+# Results have these parameters, in order:
+# name        : Used for internal reference and in correlations, eg hfag_ycp
+# result_type : Kind of measurement, eg y_CP, plainx, cosangle 
+# prime_type  : Refers to the type of delta involved, eg kpi, kpipi
+# value       : The actual measurement
+# stat        : Statistical error
+# syst        : Systematic error
+# modl        : Model error
+# coefficient : Used when the result is an allowed band; denotes the slope of the band
+#
+result hfag_ycp           ycp none 0.008660 0.001550 0.0000 0.0000 1.00
+#
+result lhcb_xp2           xprime kpi  0.000055 0.000042 0.000026 0.000 1.00
+result lhcb_yprime        yprime kpi  0.004810 0.000850 0.000530 0.000 1.00
+result lhcb_rd            rsubdm none 0.003568 0.000058 0.000033 0.000 1.00
+#
+result hfag_kspipi_x      plainx none 0.00419 0.00211 0.000 0.000 1.00
+result hfag_kspipi_y      plainy none 0.00456 0.00186 0.000 0.000 1.00
+#
+result cleo_rd            rsubd    none  0.00533 0.00107 0.00045 0.0 1.0
+result cleo_x2            xsquare  kpi   0.0006 0.0023 0.0011 0.0 1.0
+result cleo_y        	  plainy   kpi   0.042  0.02   0.01   0.0 1.0
+result cleo_cosd          cosangle kpi  0.81 0.200 0.060 0.000 1.00
+result cleo_sind          sinangle kpi -0.01 0.410 0.040 0.000 1.00
+#
+result cdf_rd             rsubdm none 0.00304 0.00055 0.0 0.0 1.0 
+result cdf_xp2            xprime kpi -0.00012 0.00035 0.0 0.0 1.0
+result cdf_yprime         yprime kpi  0.0085  0.0076  0.0 0.0 1.0
+#
+result belle_rd           rsubdm none 0.00364 0.00017 0.0 0.0 1.0
+result belle_xp2          xprime kpi  0.00018 0.00022 0.0 0.0 1.0
+result belle_yprime       yprime kpi  0.0006  0.0040  0.0 0.0 1.0
+#
+result babar_rd           rsubdm none 0.00303 0.00016 0.0001 0.0 1.0
+result babar_xp2          xprime kpi -0.00022 0.00030 0.00021 0.0 1.0
+result babar_yprime       yprime kpi  0.0097  0.0044  0.0031 0.0 1.0
+#
+correlation cleo_rd     cleo_x2     0.000
+correlation cleo_rd     cleo_y      0.000
+correlation cleo_rd     cleo_cosd  -0.420
+correlation cleo_rd     cleo_sind   0.010
+correlation cleo_x2    	cleo_y 	   -0.730
+correlation cleo_x2    	cleo_cosd   0.390
+correlation cleo_x2    	cleo_sind   0.020
+correlation cleo_y     	cleo_cosd  -0.530
+correlation cleo_y     	cleo_sind  -0.030
+correlation cleo_cosd   cleo_sind   0.040
+#
+correlation lhcb_rd lhcb_yprime -0.953
+correlation lhcb_rd lhcb_xp2 0.869
+correlation lhcb_yprime lhcb_xp2 -0.967
+#
+correlation cdf_rd cdf_xp2 0.923
+correlation cdf_rd cdf_yprime -0.971
+correlation cdf_xp2 cdf_yprime -0.984 
+#
+correlation babar_rd babar_xp2 0.77
+correlation babar_rd babar_yprime -0.87
+correlation babar_xp2 babar_yprime -0.94 
+#
+correlation belle_rd belle_xp2 0.655
+correlation belle_rd belle_yprime -0.834
+correlation belle_xp2 belle_yprime -0.909
+#
+fitlist hfag_ycp lhcb_xp2 lhcb_yprime lhcb_rd hfag_kspipi_x hfag_kspipi_y cleo_cosd cleo_sind cdf_rd cdf_xp2 cdf_yprime babar_rd babar_xp2 babar_yprime belle_rd belle_xp2 belle_yprime endline 
+use_hfag_convention yes 
+#silent
+endfile 

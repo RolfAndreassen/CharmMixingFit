@@ -99,10 +99,8 @@ correlation belle_qoverp   belle_phi      -0.266
 #
 correlation babar_kspipi_x babar_kspipi_y 0.0615
 #
-#fitlist hfag_ycp lhcb_xp2_m lhcb_yprime_m lhcb_rd lhcb_xp2_p lhcb_yprime_p belle_kspipi_x belle_kspipi_y belle_qoverp belle_phi cleo_cosd cleo_sind cdf_rd cdf_xp2 cdf_yprime babar_rd babar_xp2_m babar_yprime_m babar_xp2_p babar_yprime_p belle_rd belle_xp2_m belle_yprime_m belle_xp2_p belle_yprime_p babar_kspipi_x babar_kspipi_y hfag_agamma endline 
+fitlist hfag_ycp hfag_agamma lhcb_agamma_kk lhcb_agamma_pipi lhcb_rd lhcb_yprime_p lhcb_xp2_p lhcb_yprime_m lhcb_xp2_m belle_kspipi_x belle_kspipi_y belle_qoverp belle_phi cleo_cosd cleo_sind cleo_rd cleo_xp2 cleo_yprime cdf_rd cdf_xp2 cdf_yprime babar_rd babar_xp2_m babar_yprime_m babar_xp2_p babar_yprime_p belle_rd belle_xp2_m belle_yprime_m belle_xp2_p belle_yprime_p babar_kspipi_x babar_kspipi_y  endline 
 #
-# No Belle or BaBar Kpi
-fitlist hfag_ycp lhcb_xp2_m lhcb_yprime_m lhcb_rd lhcb_xp2_p lhcb_yprime_p belle_kspipi_x belle_kspipi_y belle_qoverp belle_phi cleo_cosd cleo_sind cdf_rd cdf_xp2 cdf_yprime babar_kspipi_x babar_kspipi_y hfag_agamma endline 
 use_hfag_convention
 allow_indirect_cpv
 fit_for_qp 
