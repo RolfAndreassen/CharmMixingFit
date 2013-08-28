@@ -24,7 +24,7 @@ bool printChisq = false; //do you want to print the chi2 at every step (dump thi
 bool use_hfag_convention = true; //hfag convention for the sign of the primes?
 bool special_invert = false; //do rolf's inversion?
 MixingResult::CpvAllowed allowcpv = MixingResult::NOCPV; //the type of cpv allowed i.e. direct, indirect, etc
-MixingResult::ConstraintType fit_for_phi = MixingResult::BOTH_FREE; // Fit for phi, |q/p|, or both. 
+MixingResult::ConstraintType fit_for_which = MixingResult::BOTH_FREE; // Fit for phi, |q/p|, or both. 
 bool special_alex_fit = false; // If true, we fit for x_12, y_12, phi_12. 
 bool skipGraphics = false; 
 char strbuffer[1000]; 
@@ -159,7 +159,7 @@ double MixingResult::calcEpsilon (double x,
     phi = rphi; 
   }
   else {
-    switch (fit_for_phi) {
+    switch (fit_for_which) {
     case MixingResult::PHI_FREE:
       //qoverp = 1 - (y/x)*tan(phi);
       qoverp = sqrt((x-y*tan(phi))/(x+y*tan(phi))); 
@@ -488,7 +488,7 @@ bool MixingResult::isSensitiveTo (int param) const {
   switch (param) {
   case EKS: 
     if (YCP      == myType) return (ALL_CPV == allowcpv); 
-    if (AGAMMA   == myType) return ((ALL_CPV == allowcpv) || ((INDIRECT_CPV == allowcpv) && (MixingResult::PHI_FREE == fit_for_phi))); 
+    if (AGAMMA   == myType) return ((ALL_CPV == allowcpv) || ((INDIRECT_CPV == allowcpv) && (MixingResult::PHI_FREE == fit_for_which))); 
     if (PLAINY   == myType) return false; 
     if (RDM      == myType) return false;
     if (RDP      == myType) return false;
@@ -497,7 +497,7 @@ bool MixingResult::isSensitiveTo (int param) const {
     if (ANGLE    == myType) return false;
     return true; 
   case WYE: 
-    if (AGAMMA   == myType) return ((ALL_CPV == allowcpv) || ((INDIRECT_CPV == allowcpv) && (QP_FREE == fit_for_phi))); 
+    if (AGAMMA   == myType) return ((ALL_CPV == allowcpv) || ((INDIRECT_CPV == allowcpv) && (QP_FREE == fit_for_which))); 
     if (PLAINX   == myType) return false;
     if (XSQUARE  == myType) return false;
     if (RDM      == myType) return false; 
@@ -513,7 +513,7 @@ bool MixingResult::isSensitiveTo (int param) const {
     if (NODCPV != myType) return (KPIPI0 == myPrime); 
     return false;
   case PHI_12:
-    if ((INDIRECT_CPV == allowcpv) && (QP_FREE == fit_for_phi)) return false; 
+    if ((INDIRECT_CPV == allowcpv) && (QP_FREE == fit_for_which)) return false; 
     if (NOCPV == allowcpv) return false; 
     if (AGAMMA   == myType) return true;
     if (YCP      == myType) return true;
@@ -531,7 +531,7 @@ bool MixingResult::isSensitiveTo (int param) const {
     return (RDM == myType);    
   case MAGQOVERP:
     if (NOCPV == allowcpv) return false; 
-    if ((INDIRECT_CPV == allowcpv) && (MixingResult::PHI_FREE == fit_for_phi)) return false; 
+    if ((INDIRECT_CPV == allowcpv) && (MixingResult::PHI_FREE == fit_for_which)) return false; 
     if (special_alex_fit)   return false; 
     if (AGAMMA   == myType) return true;
     if (YCP      == myType) return true;
@@ -730,12 +730,12 @@ int main (int argc, char** argv) {
     }
     else if (lineType == "allow_indirect_cpv") {
       allowcpv = MixingResult::INDIRECT_CPV; 
-      fit_for_phi = MixingResult::QP_FREE; 
+      fit_for_which = MixingResult::QP_FREE; 
     }
     else if (lineType == "allow_all_cpv") allowcpv = MixingResult::ALL_CPV; 
     else if (lineType == "use_hfag_convention") use_hfag_convention = true;
-    else if (lineType == "fit_for_qp") fit_for_phi = MixingResult::QP_FREE;
-    else if (lineType == "fit_for_phi") fit_for_phi = MixingResult::PHI_FREE;
+    else if (lineType == "fit_for_qp") fit_for_which = MixingResult::QP_FREE;
+    else if (lineType == "fit_for_which") fit_for_which = MixingResult::PHI_FREE;
     else if (lineType == "special_alex_fit") special_alex_fit = true; 
     else if (lineType == "skipGraphics") skipGraphics = true; 
     else if (lineType == "use_block_diag") {
@@ -771,8 +771,8 @@ int main (int argc, char** argv) {
   }
 
   if (3 < argc) {
-    if (std::string(argv[3]) == "qp")  fit_for_phi = MixingResult::QP_FREE;
-    if (std::string(argv[3]) == "phi") fit_for_phi = MixingResult::PHI_FREE;
+    if (std::string(argv[3]) == "qp")  fit_for_which = MixingResult::QP_FREE;
+    if (std::string(argv[3]) == "phi") fit_for_which = MixingResult::PHI_FREE;
   }
 
   double par[MixingResult::nParams];               
