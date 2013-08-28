@@ -735,7 +735,7 @@ int main (int argc, char** argv) {
     else if (lineType == "allow_all_cpv") allowcpv = MixingResult::ALL_CPV; 
     else if (lineType == "use_hfag_convention") use_hfag_convention = true;
     else if (lineType == "fit_for_qp") fit_for_which = MixingResult::QP_FREE;
-    else if (lineType == "fit_for_which") fit_for_which = MixingResult::PHI_FREE;
+    else if (lineType == "fit_for_phi") fit_for_which = MixingResult::PHI_FREE;
     else if (lineType == "special_alex_fit") special_alex_fit = true; 
     else if (lineType == "skipGraphics") skipGraphics = true; 
     else if (lineType == "use_block_diag") {
