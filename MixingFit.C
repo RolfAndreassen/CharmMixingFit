@@ -681,6 +681,7 @@ int main (int argc, char** argv) {
 	     <<"\\hline \\hline"<<std::endl;
 
 
+  bool which_override = false; 
   while (!fitOpts.eof()) {
     fitOpts >> token; 
     if (token[0] == '#') {
@@ -730,12 +731,12 @@ int main (int argc, char** argv) {
     }
     else if (lineType == "allow_indirect_cpv") {
       allowcpv = MixingResult::INDIRECT_CPV; 
-      fit_for_which = MixingResult::QP_FREE; 
+      if (!which_override) fit_for_which = MixingResult::QP_FREE; 
     }
     else if (lineType == "allow_all_cpv") allowcpv = MixingResult::ALL_CPV; 
     else if (lineType == "use_hfag_convention") use_hfag_convention = true;
-    else if (lineType == "fit_for_qp") fit_for_which = MixingResult::QP_FREE;
-    else if (lineType == "fit_for_phi") fit_for_which = MixingResult::PHI_FREE;
+    else if (lineType == "fit_for_qp") {fit_for_which = MixingResult::QP_FREE; which_override = true;}
+    else if (lineType == "fit_for_phi") {fit_for_which = MixingResult::PHI_FREE; which_override = true;} 
     else if (lineType == "special_alex_fit") special_alex_fit = true; 
     else if (lineType == "skipGraphics") skipGraphics = true; 
     else if (lineType == "use_block_diag") {
