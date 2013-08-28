@@ -723,10 +723,10 @@ void MixDrawer::drawEllipseForce (DrawOptions* dis, TCanvas* foo) {
     wrkpar[p] = fitpar[p]; 
   }
 
-  double XMIN = (xmax+11*xmin)/12;//why??
-  double XMAX = (xmin+11*xmax)/12;//why??
-  double YMIN = (ymax+11*ymin)/12;//why??
-  double YMAX = (ymin+11*ymax)/12;//why??
+  double XMIN = (xmax+11*xmin)/12; // To get nice axis labels. 
+  double XMAX = (xmin+11*xmax)/12;
+  double YMIN = (ymax+11*ymin)/12;
+  double YMAX = (ymin+11*ymax)/12;
   TH2F* histogram = new TH2F("hist", "", 1000, XMIN, XMAX, 1000, YMIN, YMAX); 
   histogram->SetStats(false); 
   TH2F* edmhist = new TH2F("edmhist", "", 1000, XMIN, XMAX, 1000, YMIN, YMAX); 
@@ -749,14 +749,14 @@ void MixDrawer::drawEllipseForce (DrawOptions* dis, TCanvas* foo) {
     //for (int i = 100; i <= 400; ++i) {
     double prevChisq = 1000; 
     double xval = xmin + (i + 0.5)*(xmax - xmin)*0.001;
-    sprintf(strbuf, "SET PAR 1 %f", xval);
+    sprintf(strbuf, "SET PAR %i %f", graphicsXIndex+1, xval);
     MixingResult::minuit->mncomd(strbuf, dummy);
     assert(0 == dummy);
     if (0 == i%25) std::cout << "Fitting line " << i << std::endl; 
     //for (int j = 200; j <= 1000; ++j) {
-      for (int j = 2; j <= 1000; ++j) {
-	double yval = ymin + (j + 0.5)*(ymax - ymin)*0.001;
-      sprintf(strbuf, "SET PAR 2 %f", yval);
+    for (int j = 2; j <= 1000; ++j) {
+      double yval = ymin + (j + 0.5)*(ymax - ymin)*0.001;
+      sprintf(strbuf, "SET PAR %i %f", graphicsYIndex+1, yval);
       MixingResult::minuit->mncomd(strbuf, dummy);
       assert(0 == dummy);
       chisq = runFit() - centralChisq;
@@ -949,8 +949,8 @@ void MixDrawer::drawEllipseForce_Adam (DrawOptions* dis, TCanvas* foo) {
   MixChisqFcn(dummy, 0, chisq, fitpar, 4);
   double centralChisq = chisq;
   std::cout<<"centralChisq="<<centralChisq<<std::endl;
-  MixingResult::minuit->FixParameter(0);
-  MixingResult::minuit->FixParameter(1);
+  MixingResult::minuit->FixParameter(graphicsXIndex);
+  MixingResult::minuit->FixParameter(graphicsYIndex);
   MixingResult::minuit->SetErrorDef(1); //Reset Error Definition
   MixingResult::minuit->SetPrintLevel(-1); //let's not spit out all the shit.
 
@@ -958,21 +958,23 @@ void MixDrawer::drawEllipseForce_Adam (DrawOptions* dis, TCanvas* foo) {
     //for (int i = 100; i <= 400; ++i) {
     double prevChisq = 1000; 
     double xval = xmin + (i + 0.5)*(xmax - xmin)/((double) nbins);//this is the grid position in x
-    sprintf(strbuf, "SET PAR 1 %f", xval);
+    sprintf(strbuf, "SET PAR %i %f", graphicsXIndex+1, xval);
     MixingResult::minuit->mncomd(strbuf, dummy);
     assert(0 == dummy);
     if (0 == i%25) std::cout << "Fitting line " << i << std::endl; 
     //for (int j = 200; j <= 1000; ++j) {
-      for (int j = 2; j <= nbins; ++j) {
-	double yval = ymin + (j + 0.5)*(ymax - ymin)/((double) nbins);//this is the grid position in y
-      sprintf(strbuf, "SET PAR 2 %f", yval);
+    for (int j = 2; j <= nbins; ++j) {
+      double yval = ymin + (j + 0.5)*(ymax - ymin)/((double) nbins);//this is the grid position in y
+      sprintf(strbuf, "SET PAR %i %f", graphicsYIndex+1, yval);
       MixingResult::minuit->mncomd(strbuf, dummy);
       assert(0 == dummy);
       chisq = runFit() - centralChisq;
 
       if (chisq > fiveSigma) {
 	//std::cout << "Bad fit for (" << i << ", " << j << ") " << chisq << ", retrying with last working set.\n";
-	for (int p = 3; p <= 8; ++p) {
+	for (int p = 1; p <= 8; ++p) {
+	  if (p == graphicsXIndex+1) continue;
+	  if (p == graphicsYIndex+1) continue;
 	  sprintf(strbuf, "SET PAR %i %f", p, wrkpar[p-1]);
 	  MixingResult::minuit->mncomd(strbuf, dummy);
 	  assert(0 == dummy);
@@ -980,7 +982,9 @@ void MixDrawer::drawEllipseForce_Adam (DrawOptions* dis, TCanvas* foo) {
 	chisq = runFit() - centralChisq;
 	if (chisq > 2*fiveSigma) {
 	  //std::cout << "  Still bad, " << chisq << ", retrying with central values.\n";
-	  for (int p = 3; p <= 8; ++p) {
+	  for (int p = 1; p <= 8; ++p) {
+	    if (p == graphicsXIndex+1) continue;
+	    if (p == graphicsYIndex+1) continue;
 	    sprintf(strbuf, "SET PAR %i %f", p, orgpar[p-1]);
 	    MixingResult::minuit->mncomd(strbuf, dummy);
 	    assert(0 == dummy);
