@@ -1,6 +1,8 @@
-size  -0.005 -0.005 0.015 0.015
+#size  -0.005 -0.005 0.015 0.015
+size  0.0 -1.35 0.016 1.35
 xaxis 0 x
-yaxis 1 y
+#yaxis 1 y
+yaxis 4 phi
 directory testing
 # name1 name2 drawtype basecolour modcolour numContours
 include fitresult           none           special blue   0 5
