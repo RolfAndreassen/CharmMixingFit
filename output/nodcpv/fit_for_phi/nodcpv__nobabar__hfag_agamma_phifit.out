@@ -1,0 +1,176 @@
+fitresult : 0 +/- 0 (0, 0, 0) 1 plainx 0 none 3 
+hfag_ycp : 0.00866 +/- 0.00155 (0.00155, 0, 0) 1 ycp 2 none 3 
+hfag_agamma : -0.00022 +/- 0.00161 (0.00161, 0, 0) 1 agamma 3 none 3 
+lhcb_agamma_kk : -0.00035 +/- 0.000631506 (0.00062, 0.00012, 0) 1 agamma 3 none 3 
+lhcb_agamma_pipi : 0.00033 +/- 0.00106921 (0.00106, 0.00014, 0) 1 agamma 3 none 3 
+lhcb_rd : 0.003568 +/- 6.67308e-05 (5.8e-05, 3.3e-05, 0) 1 rsubd 16 none 3 
+lhcb_yprime_p : 0.00446 +/- 0.00105688 (0.00089, 0.00057, 0) 1 yprimep 8 kpi 0 
+lhcb_xp2_p : 7.7e-05 +/- 5.43783e-05 (4.6e-05, 2.9e-05, 0) 1 xprimep 5 kpi 0 
+lhcb_yprime_m : 0.00517 +/- 0.00106231 (0.00089, 0.00058, 0) 1 yprimem 9 kpi 0 
+lhcb_xp2_m : 3.2e-05 +/- 5.57584e-05 (4.7e-05, 3e-05, 0) 1 xprimem 6 kpi 0 
+belle_kspipi_x : 0.00811 +/- 0.00334 (0.00334, 0, 0) 1 plainx 0 none 3 
+belle_kspipi_y : 0.00309 +/- 0.00281 (0.00281, 0, 0) 1 plainy 1 none 3 
+belle_qoverp : 0.95 +/- 0.241661 (0.22, 0.1, 0) 1 qoverp 18 none 3 
+belle_phi : -0.035 +/- 0.210238 (0.19, 0.09, 0) 1 phi 19 none 3 
+cleo_rd : 0.00533 +/- 0.00116078 (0.00107, 0.00045, 0) 1 rsubd 16 none 3 
+cleo_x2 : 0.0006 +/- 0.00254951 (0.0023, 0.0011, 0) 1 xsquare 20 kpi 0 
+cleo_y : 0.042 +/- 0.0223607 (0.02, 0.01, 0) 1 plainy 1 kpi 0 
+cleo_cosd : 0.81 +/- 0.208806 (0.2, 0.06, 0) 1 cosangle 10 kpi 0 
+cleo_sind : -0.01 +/- 0.411947 (0.41, 0.04, 0) 1 sinangle 11 kpi 0 
+cdf_rd : 0.00304 +/- 0.00055 (0.00055, 0, 0) 1 rsubd 16 none 3 
+cdf_xp2 : -0.00012 +/- 0.00035 (0.00035, 0, 0) 1 xprime 4 kpi 0 
+cdf_yprime : 0.0085 +/- 0.0076 (0.0076, 0, 0) 1 yprime 7 kpi 0 
+belle_rd : 0.00364 +/- 0.00018 (0.00018, 0, 0) 1 rsubd 16 none 3 
+belle_xp2_m : 6e-05 +/- 0.00034 (0.00034, 0, 0) 1 xprimem 6 kpi 0 
+belle_yprime_m : 0.002 +/- 0.0054 (0.0054, 0, 0) 1 yprimem 9 kpi 0 
+belle_xp2_p : 0.00032 +/- 0.00037 (0.00037, 0, 0) 1 xprimep 5 kpi 0 
+belle_yprime_p : -0.0012 +/- 0.0058 (0.0058, 0, 0) 1 yprimep 8 kpi 0 
+babar_rd : 0.00303 +/- 0.000189 (0.000189, 0, 0) 1 rsubd 16 none 3 
+babar_xp2_m : -0.0002 +/- 0.0005 (0.0005, 0, 0) 1 xprimem 6 kpi 0 
+babar_yprime_m : 0.0096 +/- 0.0075 (0.0075, 0, 0) 1 yprimem 9 kpi 0 
+babar_xp2_p : -0.00024 +/- 0.00052 (0.00052, 0, 0) 1 xprimep 5 kpi 0 
+babar_yprime_p : 0.0098 +/- 0.0078 (0.0078, 0, 0) 1 yprimep 8 kpi 0 
+babar_kspipi_x : 0.0016 +/- 0.00271477 (0.0023, 0.0012, 0.0008) 1 plainx 0 none 3 
+babar_kspipi_y : 0.0057 +/- 0.00248596 (0.002, 0.0013, 0.0007) 1 plainy 1 none 3 
+Activating result: hfag_ycp
+Activating result: hfag_agamma
+Activating result: lhcb_rd
+Activating result: lhcb_yprime_p
+Activating result: lhcb_xp2_p
+Activating result: lhcb_yprime_m
+Activating result: lhcb_xp2_m
+Activating result: belle_kspipi_x
+Activating result: belle_kspipi_y
+Activating result: belle_qoverp
+Activating result: belle_phi
+Activating result: cleo_cosd
+Activating result: cleo_sind
+Activating result: cleo_rd
+Activating result: cleo_x2
+Activating result: cleo_y
+Activating result: cdf_rd
+Activating result: cdf_xp2
+Activating result: cdf_yprime
+Activating result: belle_rd
+Activating result: belle_xp2_m
+Activating result: belle_yprime_m
+Activating result: belle_xp2_p
+Activating result: belle_yprime_p
+Activating result: babar_kspipi_x
+Activating result: babar_kspipi_y
+Following results will be used in fit: 
+  hfag_ycp
+  hfag_agamma
+  lhcb_rd
+  lhcb_yprime_p
+  lhcb_xp2_p
+  lhcb_yprime_m
+  lhcb_xp2_m
+  belle_kspipi_x
+  belle_kspipi_y
+  belle_qoverp
+  belle_phi
+  cleo_rd
+  cleo_x2
+  cleo_y
+  cleo_cosd
+  cleo_sind
+  cdf_rd
+  cdf_xp2
+  cdf_yprime
+  belle_rd
+  belle_xp2_m
+  belle_yprime_m
+  belle_xp2_p
+  belle_yprime_p
+  babar_kspipi_x
+  babar_kspipi_y
+hfag_agamma is sensitive to x
+hfag_ycp is sensitive to y
+lhcb_yprime_p is sensitive to deltaKpi
+hfag_ycp is sensitive to phi
+lhcb_rd is sensitive to rsubdm
+ PARAMETER DEFINITIONS:
+    NO.   NAME         VALUE      STEP SIZE      LIMITS
+     1 x            1.20000e-03  1.00000e-04   -1.00000e-01  1.50000e-01
+     2 y            7.00000e-03  1.00000e-04   -1.00000e-01  1.50000e-01
+     3 deltaKpi     3.00000e-01  1.00000e-02   -1.60000e+00  2.60000e+00
+     4 deltaKpipi0   3.90000e-01  1.00000e-02   -3.00000e+00  2.00000e+00
+ **********
+ **    1 **FIX           4
+ **********
+ PARAMETER DEFINITIONS:
+    NO.   NAME         VALUE      STEP SIZE      LIMITS
+     5 phi          0.00000e+00  1.00000e-03   -3.15000e+00  3.15000e+00
+     6 rsubdm       3.40000e-03  1.00000e-04   -1.00000e-02  1.00000e-02
+     7 rsubdp       3.40000e-03  1.00000e-04   -1.00000e-02  1.00000e-02
+ **********
+ **    2 **FIX           7
+ **********
+ PARAMETER DEFINITIONS:
+    NO.   NAME         VALUE      STEP SIZE      LIMITS
+     8 qoverp       1.00000e+00  1.00000e-02    2.50000e-01  1.90000e+00
+ **********
+ **    3 **FIX           8
+ **********
+ **********
+ **    4 **SET STR            2
+ **********
+ NOW USING STRATEGY  2: MAKE SURE MINIMUM TRUE, ERRORS CORRECT  
+ **********
+ **    5 **MIGRAD
+ **********
+ FIRST CALL TO USER FUNCTION AT NEW START POINT, WITH IFLAG=4.
+ START MIGRAD MINIMIZATION.  STRATEGY  2.  CONVERGENCE WHEN EDM .LT. 1.00e-04
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -5.6997e-02  9.0213e-02  1.7413e-01  1.0036e+00  3.7890e+00
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.060786 TO DIAGONAL.
+ FCN=49.0044 FROM HESSE     STATUS=NOT POSDEF     41 CALLS          42 TOTAL
+                     EDM=45.2141    STRATEGY= 2      ERR MATRIX NOT POS-DEF
+  EXT PARAMETER                APPROXIMATE        STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  x            1.20000e-03   5.70960e-03   4.42601e-04   2.40799e+02
+   2  y            7.00000e-03   2.68491e-04   1.05315e-04  -1.22417e+03
+   3  deltaKpi     3.00000e-01   4.56894e-01   2.13325e-03   9.51984e+01
+   4  deltaKpipi0   3.90000e-01     fixed    
+   5  phi          0.00000e+00   4.48624e-03   1.19224e-04  -6.51463e+02
+   6  rsubdm       3.40000e-03   2.95639e-05   1.77783e-04  -2.97089e+03
+   7  rsubdp       3.40000e-03     fixed    
+   8  qoverp       1.00000e+00     fixed    
+ MIGRAD MINIMIZATION HAS CONVERGED.
+ MIGRAD WILL VERIFY CONVERGENCE AND ERROR MATRIX.
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+ FCN=28.1998 FROM MIGRAD    STATUS=CONVERGED     239 CALLS         240 TOTAL
+                     EDM=4.31204e-07    STRATEGY= 2      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  x            5.32789e-03   1.73517e-03   1.63990e-05   2.63276e-02
+   2  y            6.56316e-03   9.24500e-04   2.44610e-06  -4.23905e-01
+   3  deltaKpi     2.83936e-01   1.71125e-01   2.36089e-05   3.51783e-02
+   4  deltaKpipi0   3.90000e-01     fixed    
+   5  phi          4.85972e-03   1.02998e-02   8.58608e-06  -1.72007e-01
+   6  rsubdm       3.57058e-03   4.66322e-05   4.27729e-06  -1.80543e-01
+   7  rsubdp       3.40000e-03     fixed    
+   8  qoverp       1.00000e+00     fixed    
+ EXTERNAL ERROR MATRIX.    NDIM=  25    NPAR=  5    ERR DEF=1
+  3.011e-06  6.807e-09 -7.518e-06  1.033e-06  4.692e-08 
+  6.807e-09  8.547e-07  1.531e-04 -7.410e-07  1.343e-08 
+ -7.518e-06  1.531e-04  2.935e-02 -1.278e-04  3.649e-06 
+  1.033e-06 -7.410e-07 -1.278e-04  1.061e-04  1.037e-08 
+  4.692e-08  1.343e-08  3.649e-06  1.037e-08  2.175e-09 
+ PARAMETER  CORRELATION COEFFICIENTS  
+       NO.  GLOBAL      1      2      3      5      6
+        1  0.89695   1.000  0.004 -0.025  0.058  0.580
+        2  0.99228   0.004  1.000  0.967 -0.078  0.312
+        3  0.99401  -0.025  0.967  1.000 -0.072  0.457
+        5  0.09874   0.058 -0.078 -0.072  1.000  0.022
+        6  0.94581   0.580  0.312  0.457  0.022  1.000
+ i, outpar[i], err[i] =  0:  0.00532789 +- 0.00173517
+ i, outpar[i], err[i] =  1:  0.00656316 +- 0.0009245
+ i, outpar[i], err[i] =  2:  0.283936 +- 0.171125
+ i, outpar[i], err[i] =  3:  0.39 +- 0
+ i, outpar[i], err[i] =  4:  0.00485972 +- 0.0102998
+ i, outpar[i], err[i] =  5:  0.00357058 +- 4.66322e-05
+ i, outpar[i], err[i] =  6:  0.0034 +- 0
+ i, outpar[i], err[i] =  7:  1 +- 0

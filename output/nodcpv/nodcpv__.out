@@ -12,11 +12,11 @@ belle_kspipi_x : 0.00811 +/- 0.00334 (0.00334, 0, 0) 1 plainx 0 none 3
 belle_kspipi_y : 0.00309 +/- 0.00281 (0.00281, 0, 0) 1 plainy 1 none 3 
 belle_qoverp : 0.95 +/- 0.241661 (0.22, 0.1, 0) 1 qoverp 18 none 3 
 belle_phi : -0.035 +/- 0.210238 (0.19, 0.09, 0) 1 phi 19 none 3 
+cleo_rd : 0.00533 +/- 0.00116078 (0.00107, 0.00045, 0) 1 rsubd 16 none 3 
+cleo_x2 : 0.0006 +/- 0.00254951 (0.0023, 0.0011, 0) 1 xsquare 20 kpi 0 
+cleo_y : 0.042 +/- 0.0223607 (0.02, 0.01, 0) 1 plainy 1 kpi 0 
 cleo_cosd : 0.81 +/- 0.208806 (0.2, 0.06, 0) 1 cosangle 10 kpi 0 
 cleo_sind : -0.01 +/- 0.411947 (0.41, 0.04, 0) 1 sinangle 11 kpi 0 
-cleo_rd : 0.00533 +/- 0.00116078 (0.00107, 0.00045, 0) 1 rsubd 16 none 3 
-cleo_xp2 : 0.0006 +/- 0.00254951 (0.0023, 0.0011, 0) 1 xprime 4 kpi 0 
-cleo_yprime : 0.042 +/- 0.0223607 (0.02, 0.01, 0) 1 yprime 7 kpi 0 
 cdf_rd : 0.00304 +/- 0.00055 (0.00055, 0, 0) 1 rsubd 16 none 3 
 cdf_xp2 : -0.00012 +/- 0.00035 (0.00035, 0, 0) 1 xprime 4 kpi 0 
 cdf_yprime : 0.0085 +/- 0.0076 (0.0076, 0, 0) 1 yprime 7 kpi 0 
@@ -48,8 +48,8 @@ Activating result: belle_phi
 Activating result: cleo_cosd
 Activating result: cleo_sind
 Activating result: cleo_rd
-Activating result: cleo_xp2
-Activating result: cleo_yprime
+Activating result: cleo_x2
+Activating result: cleo_y
 Activating result: cdf_rd
 Activating result: cdf_xp2
 Activating result: cdf_yprime
@@ -79,11 +79,11 @@ Following results will be used in fit:
   belle_kspipi_y
   belle_qoverp
   belle_phi
+  cleo_rd
+  cleo_x2
+  cleo_y
   cleo_cosd
   cleo_sind
-  cleo_rd
-  cleo_xp2
-  cleo_yprime
   cdf_rd
   cdf_xp2
   cdf_yprime
@@ -139,57 +139,57 @@ hfag_ycp is sensitive to qoverp
  FIRST CALL TO USER FUNCTION AT NEW START POINT, WITH IFLAG=4.
  START MIGRAD MINIMIZATION.  STRATEGY  2.  CONVERGENCE WHEN EDM .LT. 1.00e-04
  EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
-        -6.6257e-02  9.5164e-02  1.8255e-01  1.0005e+00  3.7880e+00
+        -6.3742e-02  9.4194e-02  1.8092e-01  1.0005e+00  3.7881e+00
  MINUIT WARNING IN HESSE   
- ============== MATRIX FORCED POS-DEF BY ADDING 0.070045 TO DIAGONAL.
- FCN=47.3779 FROM HESSE     STATUS=NOT POSDEF     41 CALLS          42 TOTAL
-                     EDM=50.2695    STRATEGY= 2      ERR MATRIX NOT POS-DEF
+ ============== MATRIX FORCED POS-DEF BY ADDING 0.067530 TO DIAGONAL.
+ FCN=47.1271 FROM HESSE     STATUS=NOT POSDEF     41 CALLS          42 TOTAL
+                     EDM=50.7476    STRATEGY= 2      ERR MATRIX NOT POS-DEF
   EXT PARAMETER                APPROXIMATE        STEP         FIRST   
   NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
-   1  x            1.20000e-03   5.75921e-03   4.35548e-04   3.06459e+02
-   2  y            7.00000e-03   2.54189e-04   1.03516e-04  -1.40479e+03
-   3  deltaKpi     3.00000e-01   4.51641e-01   2.08654e-03   1.07792e+02
+   1  x            1.20000e-03   5.74374e-03   4.34452e-04   2.92673e+02
+   2  y            7.00000e-03   2.57480e-04   1.03247e-04  -1.40569e+03
+   3  deltaKpi     3.00000e-01   4.53682e-01   2.08420e-03   1.05065e+02
    4  deltaKpipi0   3.90000e-01     fixed    
    5  phi          0.00000e+00     fixed    
-   6  rsubdm       3.40000e-03   2.90641e-05   1.75881e-04  -3.19109e+03
+   6  rsubdm       3.40000e-03   2.91656e-05   1.75425e-04  -3.19089e+03
    7  rsubdp       3.40000e-03     fixed    
-   8  qoverp       1.00000e+00   1.92139e-02   2.54102e-03   3.69044e+01
+   8  qoverp       1.00000e+00   1.92383e-02   2.53511e-03   3.69044e+01
  MIGRAD MINIMIZATION HAS CONVERGED.
  MIGRAD WILL VERIFY CONVERGENCE AND ERROR MATRIX.
  COVARIANCE MATRIX CALCULATED SUCCESSFULLY
- FCN=24.8569 FROM MIGRAD    STATUS=CONVERGED     210 CALLS         211 TOTAL
-                     EDM=7.04912e-06    STRATEGY= 2      ERROR MATRIX ACCURATE 
+ FCN=24.2399 FROM MIGRAD    STATUS=CONVERGED     249 CALLS         250 TOTAL
+                     EDM=1.22798e-06    STRATEGY= 2      ERROR MATRIX ACCURATE 
   EXT PARAMETER                                   STEP         FIRST   
   NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
-   1  x            5.18989e-03   1.74646e-03   1.83698e-05  -9.20419e-03
-   2  y            6.34135e-03   9.04256e-04   2.29716e-06  -1.28341e+00
-   3  deltaKpi     2.46565e-01   1.76289e-01   2.35799e-05   8.37127e-02
+   1  x            5.34321e-03   1.72602e-03   1.49471e-05  -1.21737e-01
+   2  y            6.55551e-03   9.25601e-04   2.27346e-06   1.16613e+00
+   3  deltaKpi     2.88332e-01   1.70099e-01   2.18166e-05  -1.17099e-01
    4  deltaKpipi0   3.90000e-01     fixed    
    5  phi          0.00000e+00     fixed    
-   6  rsubdm       3.57121e-03   4.57128e-05   4.04863e-06  -5.45707e-01
+   6  rsubdm       3.57873e-03   4.65116e-05   4.00133e-06   7.07625e-01
    7  rsubdp       3.40000e-03     fixed    
-   8  qoverp       9.93143e-01   1.25438e-02   3.76526e-05   3.05694e-02
+   8  qoverp       9.93294e-01   1.21909e-02   3.61372e-05   3.27919e-02
  EXTERNAL ERROR MATRIX.    NDIM=  25    NPAR=  5    ERR DEF=1
-  3.050e-06 -2.054e-08 -1.594e-07  4.553e-08  2.630e-06 
- -2.054e-08  8.177e-07  1.541e-04  1.153e-08  1.352e-07 
- -1.594e-07  1.541e-04  3.115e-02  3.682e-06  1.840e-05 
-  4.553e-08  1.153e-08  3.682e-06  2.090e-09  3.439e-08 
-  2.630e-06  1.352e-07  1.840e-05  3.439e-08  1.574e-04 
+  2.979e-06  7.850e-09 -9.267e-06  4.634e-08  2.454e-06 
+  7.850e-09  8.568e-07  1.524e-04  1.341e-08  1.393e-07 
+ -9.267e-06  1.524e-04  2.900e-02  3.581e-06  6.336e-06 
+  4.634e-08  1.341e-08  3.581e-06  2.163e-09  3.314e-08 
+  2.454e-06  1.393e-07  6.336e-06  3.314e-08  1.486e-04 
  PARAMETER  CORRELATION COEFFICIENTS  
        NO.  GLOBAL      1      2      3      6      8
-        1  0.85256   1.000 -0.013 -0.001  0.570  0.120
-        2  0.99197  -0.013  1.000  0.966  0.279  0.012
-        3  0.99369  -0.001  0.966  1.000  0.456  0.008
-        6  0.94286   0.570  0.279  0.456  1.000  0.060
-        8  0.12214   0.120  0.012  0.008  0.060  1.000
- i, outpar[i], err[i] =  0:  0.00518989 +- 0.00174646
- i, outpar[i], err[i] =  1:  0.00634135 +- 0.000904256
- i, outpar[i], err[i] =  2:  0.246565 +- 0.176289
+        1  0.90008   1.000  0.005 -0.032  0.577  0.117
+        2  0.99231   0.005  1.000  0.967  0.311  0.012
+        3  0.99402  -0.032  0.967  1.000  0.452  0.003
+        6  0.94486   0.577  0.311  0.452  1.000  0.058
+        8  0.11865   0.117  0.012  0.003  0.058  1.000
+ i, outpar[i], err[i] =  0:  0.00534321 +- 0.00172602
+ i, outpar[i], err[i] =  1:  0.00655551 +- 0.000925601
+ i, outpar[i], err[i] =  2:  0.288332 +- 0.170099
  i, outpar[i], err[i] =  3:  0.39 +- 0
  i, outpar[i], err[i] =  4:  0 +- 0
- i, outpar[i], err[i] =  5:  0.00357121 +- 4.57128e-05
+ i, outpar[i], err[i] =  5:  0.00357873 +- 4.65116e-05
  i, outpar[i], err[i] =  6:  0.0034 +- 0
- i, outpar[i], err[i] =  7:  0.993143 +- 0.0125438
+ i, outpar[i], err[i] =  7:  0.993294 +- 0.0121909
 MixDrawer::graphicsXIndex = 0
 name = fitresult
 toDraw->getName() = fitresult
@@ -198,8 +198,8 @@ prevOpt->numContours = 5
 -------------------------
 Set LHCb Style - Feb 2012
 -------------------------
-set central val graph to (x,y) = (0.00518989,0.00634135)
-centralChisq=24.8569
+set central val graph to (x,y) = (0.00534321,0.00655551)
+centralChisq=24.2399
  **********
  **    6 **FIX           1
  **********

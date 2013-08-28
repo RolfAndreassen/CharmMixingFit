@@ -25,11 +25,11 @@ result belle_kspipi_y      plainy none    0.00309 0.00281 0.000 0.000 1.00
 result belle_qoverp        qoverp none    0.95    0.22    0.10   0.000 1.00
 result belle_phi           phi    none   -0.035   0.19    0.09   0.000 1.00
 #
+result cleo_rd            rsubd    none  0.00533 0.00107 0.00045 0.0 1.0
+result cleo_x2            xsquare  kpi   0.0006 0.0023 0.0011 0.0 1.0
+result cleo_y        	  plainy   kpi   0.042  0.02   0.01   0.0 1.0
 result cleo_cosd          cosangle kpi  0.81 0.200 0.060 0.000 1.00
 result cleo_sind          sinangle kpi -0.01 0.410 0.040 0.000 1.00
-result cleo_rd            rsubd    none  0.00533 0.00107 0.00045 0.0 1.0
-result cleo_xp2           xprime   kpi   0.0006 0.0023 0.0011 0.0 1.0
-result cleo_yprime        yprime   kpi   0.042  0.02   0.01   0.0 1.0
 #
 result cdf_rd             rsubd  none 0.00304 0.00055 0.0 0.0 1.0 
 result cdf_xp2            xprime kpi -0.00012 0.00035 0.0 0.0 1.0
@@ -79,15 +79,15 @@ correlation belle_rd    belle_xp2_p     0.655
 correlation belle_rd    belle_yprime_p -0.834
 correlation belle_xp2_p belle_yprime_p -0.909
 #
-correlation cleo_rd     cleo_xp2     0.000
-correlation cleo_rd     cleo_yprime  0.000
+correlation cleo_rd     cleo_x2      0.000
+correlation cleo_rd     cleo_y       0.000
 correlation cleo_rd     cleo_cosd   -0.420
 correlation cleo_rd     cleo_sind    0.010
-correlation cleo_xp2    cleo_yprime -0.730
-correlation cleo_xp2    cleo_cosd    0.390
-correlation cleo_xp2    cleo_sind    0.020
-correlation cleo_yprime cleo_cosd   -0.530
-correlation cleo_yprime cleo_sind   -0.030
+correlation cleo_x2    	cleo_y 	    -0.730
+correlation cleo_x2    	cleo_cosd    0.390
+correlation cleo_x2    	cleo_sind    0.020
+correlation cleo_y 	cleo_cosd   -0.530
+correlation cleo_y 	cleo_sind   -0.030
 correlation cleo_cosd   cleo_sind    0.040
 #
 correlation belle_kspipi_x belle_kspipi_y -0.007
@@ -99,10 +99,8 @@ correlation belle_qoverp   belle_phi      -0.266
 #
 correlation babar_kspipi_x babar_kspipi_y 0.0615
 #
-#fitlist hfag_ycp lhcb_xp2_m lhcb_yprime_m lhcb_rd lhcb_xp2_p lhcb_yprime_p belle_kspipi_x belle_kspipi_y belle_qoverp belle_phi cleo_cosd cleo_sind cdf_rd cdf_xp2 cdf_yprime babar_rd babar_xp2_m babar_yprime_m babar_xp2_p babar_yprime_p belle_rd belle_xp2_m belle_yprime_m belle_xp2_p belle_yprime_p babar_kspipi_x babar_kspipi_y hfag_agamma lhcb_agamma_kk lhcb_agamma_pipi endline 
-#
-# No Belle or BaBar Kpi
-fitlist hfag_ycp lhcb_xp2_m lhcb_yprime_m lhcb_rd lhcb_xp2_p lhcb_yprime_p belle_kspipi_x belle_kspipi_y belle_qoverp belle_phi cleo_cosd cleo_sind cdf_rd cdf_xp2 cdf_yprime babar_kspipi_x babar_kspipi_y hfag_agamma endline 
+fitlist hfag_ycp hfag_agamma lhcb_rd lhcb_yprime_p lhcb_xp2_p lhcb_yprime_m lhcb_xp2_m belle_kspipi_x belle_kspipi_y belle_qoverp belle_phi cleo_cosd cleo_sind cleo_rd cleo_x2 cleo_y cdf_rd cdf_xp2 cdf_yprime babar_kspipi_x babar_kspipi_y endline 
+
 use_hfag_convention
 allow_indirect_cpv
 fit_for_qp 

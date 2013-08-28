@@ -14,12 +14,12 @@ result hfag_agamma        agamma none -0.00022 0.00161 0.0000 0.0000 1.00
 result lhcb_agamma_kk     agamma none -0.00035 0.00062 0.00012 0.0000 1.00
 result lhcb_agamma_pipi   agamma none 0.00033 0.00106 0.00014 0.0000 1.00
 #
-result lhcb_xp2_p           xprimep kpi  0.000055 0.000042 0.000026 0.000 1.00
-result lhcb_yprime_p        yprimep kpi  0.004810 0.000850 0.000530 0.000 1.00
-result lhcb_rd_p            rsubdp  none 0.003568 0.000058 0.000033 0.000 1.00
-result lhcb_xp2_m           xprimem kpi  0.000055 0.000042 0.000026 0.000 1.00
-result lhcb_yprime_m        yprimem kpi  0.004810 0.000850 0.000530 0.000 1.00
-result lhcb_rd_m            rsubdm  none 0.003568 0.000058 0.000033 0.000 1.00
+result lhcb_xp2_p           xprimep kpi  0.000049 0.000060 0.000036 0.000 1.00
+result lhcb_yprime_p        yprimep kpi  0.005100 0.001200 0.000700 0.000 1.00
+result lhcb_rd_p            rsubdp  none 0.003523 0.000081 0.000047 0.000 1.00
+result lhcb_xp2_m           xprimem kpi  0.000060 0.000058 0.000036 0.000 1.00
+result lhcb_yprime_m        yprimem kpi  0.004500 0.001200 0.000700 0.000 1.00
+result lhcb_rd_m            rsubdm  none 0.003613 0.000082 0.000047 0.000 1.00
 #
 result belle_kspipi_x      plainx none 0.0081 0.0030 0.0015 0.000 1.00
 result belle_kspipi_y      plainy none 0.0037 0.0025 0.0012 0.000 1.00
@@ -29,8 +29,8 @@ result belle_phi           phi    none -0.244 0.31   0.09   0.000 1.00
 result cleo_cosd          cosangle kpi  0.81 0.200 0.060 0.000 1.00
 result cleo_sind          sinangle kpi -0.01 0.410 0.040 0.000 1.00
 result cleo_rd            rsubd    none  0.00533 0.00107 0.00045 0.0 1.0
-result cleo_xp2           xprime   kpi   0.0006 0.0023 0.0011 0.0 1.0
-result cleo_yprime        yprime   kpi   0.042  0.02   0.01   0.0 1.0
+result cleo_x2            xsquare  kpi   0.0006 0.0023 0.0011 0.0 1.0
+result cleo_y        	  plainy   kpi   0.042  0.02   0.01   0.0 1.0
 #
 result cdf_rd             rsubd  none 0.00304 0.00055 0.0 0.0 1.0 
 result cdf_xp2            xprime kpi -0.00012 0.00035 0.0 0.0 1.0
@@ -107,7 +107,7 @@ correlation belle_qoverp   belle_phi      -0.266
 #
 correlation babar_kspipi_x babar_kspipi_y 0.0615
 #
-fitlist hfag_ycp lhcb_xp2_m lhcb_yprime_m lhcb_rd_m lhcb_xp2_p lhcb_yprime_p lhcb_rd_p belle_kspipi_x belle_kspipi_y belle_qoverp belle_phi cleo_rd cleo_xp2 cleo_y cleo_cosd cleo_sind cdf_rd cdf_xp2 cdf_yprime babar_rd_m babar_xp2_m babar_yprime_m babar_rd_p babar_xp2_p babar_yprime_p belle_rd_m belle_xp2_m belle_yprime_m belle_rd_p belle_xp2_p belle_yprime_p babar_kspipi_x babar_kspipi_y hfag_agamma endline 
+fitlist hfag_ycp lhcb_xp2_m lhcb_yprime_m lhcb_rd_m lhcb_xp2_p lhcb_yprime_p lhcb_rd_p belle_kspipi_x belle_kspipi_y belle_qoverp belle_phi cleo_cosd cleo_sind cleo_rd cleo_x2 cleo_y cdf_rd cdf_xp2 cdf_yprime belle_rd_m belle_xp2_m belle_yprime_m belle_rd_p belle_xp2_p belle_yprime_p babar_kspipi_x babar_kspipi_y hfag_agamma endline 
 #
 
 

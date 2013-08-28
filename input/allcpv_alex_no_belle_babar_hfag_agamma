@@ -87,15 +87,15 @@ correlation belle_rd_p  belle_xp2_p     0.655
 correlation belle_rd_p  belle_yprime_p -0.834
 correlation belle_xp2_p belle_yprime_p -0.909
 #
-correlation cleo_rd     cleo_xp2     0.000
-correlation cleo_rd     cleo_yprime  0.000
+correlation cleo_rd     cleo_x2      0.000
+correlation cleo_rd     cleo_y       0.000
 correlation cleo_rd     cleo_cosd   -0.420
 correlation cleo_rd     cleo_sind    0.010
-correlation cleo_xp2    cleo_yprime -0.730
-correlation cleo_xp2    cleo_cosd    0.390
-correlation cleo_xp2    cleo_sind    0.020
-correlation cleo_yprime cleo_cosd   -0.530
-correlation cleo_yprime cleo_sind   -0.030
+correlation cleo_x2    	cleo_y	    -0.730
+correlation cleo_x2    	cleo_cosd    0.390
+correlation cleo_x2    	cleo_sind    0.020
+correlation cleo_y 	cleo_cosd   -0.530
+correlation cleo_y 	cleo_sind   -0.030
 correlation cleo_cosd   cleo_sind    0.040
 #
 correlation belle_kspipi_x belle_kspipi_y -0.007
