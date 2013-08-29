@@ -10,9 +10,9 @@
 #
 result hfag_ycp           ycp none 0.008660 0.001550 0.0000 0.0000 1.00
 #
-result lhcb_xp2           xprime kpi  0.000055 0.000042 0.000026 0.000 1.00
-result lhcb_yprime        yprime kpi  0.004810 0.000850 0.000530 0.000 1.00
-result lhcb_rd            rsubdm none 0.003568 0.000058 0.000033 0.000 1.00
+result lhcb_xp2          xprime kpi  -0.00009 0.000130 0.000000 0.000 1.00
+result lhcb_yprime        yprime kpi  0.007200 0.002400 0.000000 0.000 1.00
+result lhcb_rd            rsubd  none 0.00352 0.00015 0.000000 0.000 1.00
 #
 result hfag_kspipi_x      plainx none 0.00419 0.00211 0.000 0.000 1.00
 result hfag_kspipi_y      plainy none 0.00456 0.00186 0.000 0.000 1.00
@@ -46,9 +46,9 @@ correlation cleo_y     	cleo_cosd  -0.530
 correlation cleo_y     	cleo_sind  -0.030
 correlation cleo_cosd   cleo_sind   0.040
 #
-correlation lhcb_rd lhcb_yprime -0.953
-correlation lhcb_rd lhcb_xp2 0.869
-correlation lhcb_yprime lhcb_xp2 -0.967
+correlation lhcb_rd	  lhcb_yprime   -0.954 
+correlation lhcb_rd       lhcb_xp2     	 0.882
+correlation lhcb_yprime   lhcb_xp2    	-0.973
 #
 correlation cdf_rd cdf_xp2 0.923
 correlation cdf_rd cdf_yprime -0.971

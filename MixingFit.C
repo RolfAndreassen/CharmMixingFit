@@ -92,10 +92,11 @@ void MixingResult::randomise () {//randomizer
 }
 
 double getMixX (double x12, double y12, double phi12) {//
-  x12 *= x12;
-  y12 *= y12; 
-
-  double ret = sqrt(x12 - y12 + sqrt(pow(x12+y12, 2) - x12*y12*pow(2*sin(phi12), 2)));
+  //x12 *= x12;
+  //y12 *= y12; 
+  double x12sq=x12*x12;
+  double y12sq=y12*y12;
+  double ret = sqrt(x12sq - y12sq + sqrt(pow(x12sq+y12sq, 2) - x12sq*y12sq*pow(2*sin(phi12), 2)));
   if (cos(phi12) < 0) ret *= -1; 
   ret *= sqrt(0.5); 
 
@@ -103,9 +104,11 @@ double getMixX (double x12, double y12, double phi12) {//
 }
 
 double getMixY (double x12, double y12, double phi12) {
-  x12 *= x12;
-  y12 *= y12; 
-  double ret = sqrt(y12 - x12 + sqrt(pow(x12+y12, 2) - x12*y12*pow(2*sin(phi12), 2)));
+  double x12sq=x12*x12;
+  double y12sq=y12*y12;
+  //  x12 *= x12;
+  //  y12 *= y12; 
+  double ret = sqrt(y12sq - x12sq + sqrt(pow(x12sq+y12sq, 2) - x12sq*y12sq*pow(2*sin(phi12), 2)));
   assert(ret == ret);
   ret *= sqrt(0.5); 
   

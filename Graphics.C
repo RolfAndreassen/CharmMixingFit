@@ -923,8 +923,8 @@ void MixDrawer::drawEllipseForce_Adam (DrawOptions* dis, TCanvas* foo) {
   }
 
   TGraph* the_central_val = new TGraph(1);
-  std::cout<<"set central val graph to (x,y) = ("<<orgpar[0]<<","<<orgpar[1]<<")"<<std::endl;
-  the_central_val->SetPoint(0,orgpar[0],orgpar[1]);
+  std::cout<<"set central val graph to ("<<xaxisTitle<<","<<yaxisTitle <<") = ("<<orgpar[graphicsXIndex]<<","<<orgpar[graphicsYIndex]<<")"<<std::endl;
+  the_central_val->SetPoint(0,orgpar[graphicsXIndex],orgpar[graphicsYIndex]);
   the_central_val->SetMarkerStyle(kFullDotLarge);
   the_central_val->SetMarkerColor(kMagenta);
   
@@ -1104,6 +1104,8 @@ void MixDrawer::drawEllipseForce_Adam (DrawOptions* dis, TCanvas* foo) {
     }
   }
   histogram->GetZaxis()->SetRangeUser(0,80);
+  histogram->GetXaxis()->SetTitle(xaxisTitle.c_str());
+  histogram->GetYaxis()->SetTitle(yaxisTitle.c_str());
   edmhist->GetZaxis()->SetRangeUser(0, 0.00001); 
   edmhist->Draw("colz"); 
   foo->SaveAs("edms.png"); 
