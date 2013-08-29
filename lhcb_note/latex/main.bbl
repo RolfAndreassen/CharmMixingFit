@@ -1,0 +1,23 @@
+\ifx\mcitethebibliography\mciteundefinedmacro
+\PackageError{LHCb.bst}{mciteplus.sty has not been loaded}
+{This bibstyle requires the use of the mciteplus package.}\fi
+\providecommand{\href}[2]{#2}
+\begin{mcitethebibliography}{1}
+\mciteSetBstSublistMode{n}
+\mciteSetBstMaxWidthForm{subitem}{\alph{mcitesubitemcount})}
+\mciteSetBstSublistLabelBeginEnd{\mcitemaxwidthsubitemform\space}
+{\relax}{\relax}
+
+\bibitem{HFAG}
+Heavy Flavor Averaging Group, Y.~Amhis {\em et~al.},
+  \ifthenelse{\boolean{articletitles}}{{\it {Averages of $b$-hadron,
+  $c$-hadron, and $\tau$-lepton properties as of early 2012}},
+  }{}\href{http://arxiv.org/abs/1207.1158}{{\tt arXiv:1207.1158}}, {updated
+  results and plots available at:
+  \href{http://www.slac.stanford.edu/xorg/hfag/}{{\tt
+  http://www.slac.stanford.edu/xorg/hfag/}}}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\end{mcitethebibliography}
