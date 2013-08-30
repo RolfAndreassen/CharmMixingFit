@@ -95,6 +95,6 @@ fitlist hfag_ycp hfag_agamma lhcb_rd lhcb_yprime lhcb_xp2 belle_kspipi_x belle_k
 use_hfag_convention
 allow_indirect_cpv
 #fit_for_qp
-special_alex_fit 
+#special_alex_fit 
 #silent
 endfile 

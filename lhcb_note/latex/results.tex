@@ -8,12 +8,55 @@ no CPV allowed fits. Figure~\ref{fig:xy_all_variations} shows the results for a
 subset of variations on All CPV allowed fits. 
 \subsection{HFAG 2013 Validation}
 In order to insure that our fit is robust, we attempt to reproduce the April 2013 results
-of the HFAG collaboration\cite{HFAG}. The results of this fit are listed in Table~\ref{table:hfag_2013_april_table}.
+of the HFAG collaboration\cite{HFAG}. The results of this fit are listed in Table~\ref{table:hfag_2013_april_table}. 
+Additionally, the fit for the underlying $x_{12},y_{12}$ and $\phi_{12}$ is given in Table~\ref{table:hfag_2013_april_table_12}. 
 Results are statistically equivalent and many errors are reproduced. The main differences 
 stem from the fact that not all of the results listed from the HFAG website\cite{HFAG} are 
 used in our fit. However, the fact that many of the errors are reproduced ensures that 
 the dominant contributions to the fit are accurate.
 \input{hfag_output_table}
+\begin{figure}[htb]
+  \begin{center}
+    \begin{subfigure}[b]{0.3\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{hfag_nodcpv_xy.pdf}
+      \caption{No Direct CPV and fit for $x_{12}$ and $y_{12}$.}
+      \label{fig:nodcpv_xy}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{hfag_nodcpv_xphi.pdf}
+      \caption{No Direct CPV and fit for $x_{12}$ and $\phi_{12}$.}
+      \label{fig:nodcpv_xphi}
+    \end{subfigure}%
+    \begin{subfigure}[b]{0.3\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{hfag_nodcpv_yphi.pdf}
+      \caption{No Direct CPV and fit for $x_{12}$ and $\phi_{12}$.}
+      \label{fig:nodcpv_xphi}
+    \end{subfigure}%
+    \\
+    \begin{subfigure}[b]{0.4\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{hfag_all_cpv_xy}
+      \caption{All CPV allowed, $y$ vs $x$.}
+      \label{fig:xy_all_hfag}
+    \end{subfigure}\hspace{3mm}%
+    \begin{subfigure}[b]{0.4\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{hfag_all_cpv_qp.pdf}
+      \caption{All CPV allowed, $|q/p|$ vs $\phi$.}
+      \label{fig:qp_all_hfag}
+    \end{subfigure}%
+    \hspace{3mm}
+  \end{center}
+  \caption{Plots of Fits for HFAG April 2013 data. Top row is No Direct CPV allowed, and Bottom is all CPV allowed. Countours are 1-5$\sigma$ in two dimensional
+  probability. The magenta point represents the central value.}
+  \label{fig:hfag_fit_2013}
+\end{figure}
+
+
+
 \subsection{No CP Violation Allowed}
 Table~\ref{table:nocpv_output_table} lists the results from the No CP Violation allowed
 global fit. As $A_\Gamma =0$ in the the case of No CPV, the data is not included in 
@@ -163,38 +206,55 @@ is the evaluation of $x$, which varies quite a bit with the inclusion of differi
 %%%%%%%%%%%%%%%% Q/P %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[tb]
   \begin{center}
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.3\textwidth}
       \centering
-      \includegraphics[width=\textwidth]{finalplot_allcpv_no_belle_babar_graph_qop_phi_hfag_agamma.pdf}
-      \caption{Two dimensional error ellipses for x and y from fit excluding Belle and BaBar $K\pi$ results. Does not include latest $A_\Gamma$ result of LHCb.}
-      \label{fig:xy_all_cpv_no_agamma}
+      \includegraphics[width=\textwidth]{finalplot_allcpv_all_measurements_graph_qop_phi_hfag_agamma}
+      \caption{All CPV plot, without the preliminary LHCb $A_\Gamma$ result, using all available inputs.}
+      \label{fig:qop_all_cpv_no_agamma_all}
     \end{subfigure}% 
     \hspace{2mm}
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.3\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{finalplot_allcpv_all_measurements_graph_qop_phi_hfag_agamma}
+      \caption{All CPV plot, including the preliminary LHCb $A_\Gamma$ result, using all available inputs.}
+      \label{fig:qop_all_cpv_with_agamma_all}
+    \end{subfigure}%
+    \\
+%%%%%%%%%
+    \begin{subfigure}[b]{0.3\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{finalplot_allcpv_no_belle_babar_graph_qop_phi_hfag_agamma.pdf}
+      \caption{All CPV plot, without the preliminary LHCb $A_\Gamma$ result. Excludes the Belle and Babar $K\pi$ results.}
+      \label{fig:qop_all_cpv_no_agamma_nobb}
+    \end{subfigure}% 
+    \hspace{2mm}
+    \begin{subfigure}[b]{0.3\textwidth}
       \centering
       \includegraphics[width=\textwidth]{finalplot_allcpv_no_belle_babar_graph_qop_phi_lhcb_agamma.pdf}
-      \caption{Two dimensional error ellipses for x and y from fit excluding Belle and BaBar $K\pi$ results. Include latest $A_\Gamma$ result of LHCb.}
-      \label{fig:xy_all_cpv_with_agamma}
+      \caption{All CPV plot, including the preliminary LHCb $A_\Gamma$ result.Excludes the Belle and Babar $K\pi$ results.}
+      \label{fig:qop_all_cpv_with_agamma_nobb}
     \end{subfigure}%
 %%%%%%%%%
         \\
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.3\textwidth}
       \centering
       \includegraphics[width=\textwidth]{finalplot_allcpv_no_belle_babar_cdf_graph_qop_phi_hfag_agamma.pdf}
-      \caption{Two dimensional error ellipses for x and y from fit excluding Belle, BaBar and CDF $K\pi$ results. Does not include latest $A_\Gamma$ result of LHCb.}
-      \label{fig:xy_all_cpv_no_agamma}
+      \caption{All CPV plot, without the preliminary LHCb $A_\Gamma$ result. Excludes all $K\pi$ measurements but the latest LHCb Result.}
+      \label{fig:qop_all_cpv_no_agamma}
     \end{subfigure}%
     \hspace{2mm}
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.3\textwidth}
       \centering
       \includegraphics[width=\textwidth]{finalplot_allcpv_no_belle_babar_cdf_graph_qop_phi_lhcb_agamma.pdf}
-      \caption{Two dimensional error ellipses for x and y from fit excluding Belle, BaBar and CDF $K\pi$ results. Include latest $A_\Gamma$ result of LHCb.}
-      \label{fig:xy_all_cpv_with_agamma}
+      \caption{All CPV plot, including the preliminary LHCb $A_\Gamma$ result. Excludes all $K\pi$ measurements but the latest LHCb Result.}
+      \label{fig:qop_all_cpv_with_agamma}
     \end{subfigure}%
     %\vspace*{-1.0cm}
   \end{center}
-  \caption{Two dimensional error ellipses of fit for All CPV including differing sets of data for $\phi$ vs $q/p$. The biggest differences come from including the CDF result, which elongates the error ellipses. The differing colors represent the 1-5$\sigma$ contours.}
-  \label{fig:xy_all_variations}
+  \caption{Plots of $\phi$ vs $|q/p|$ for the case of all CP violation allowed. Fig.~\ref{fig:qop_all_cpv_no_agamma_all}-\ref{fig:qop_all_cpv_with_agamma_all}
+corresponds to all available results, Fig.~\ref{fig:qop_all_cpv_no_agamma_nobb}-\ref{fig:qop_all_cpv_with_agamma_nobb} to results excluding the BaBar and Belle $K\pi$
+ results, and Fig.~\ref{fig:qop_all_cpv_no_agamma}-\ref{fig:qop_all_cpv_with_agamma} to fits excluding all $K\pi$ results except the latest LHCb result.}
+  \label{fig:qop_all_variations}
 \end{figure}
 
 %\subsection{All CP Violation Allowed, Fit for $x_{12},y_{12},\phi_{12}$}
