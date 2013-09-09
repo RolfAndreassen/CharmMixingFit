@@ -118,6 +118,9 @@ public:
   std::string xaxisTitle;
   std::string yaxisTitle; 
 
+  double extraXMultiplier;
+  double extraYMultiplier; 
+
   void addResult (MixingResult* dat, DrawOptions* dis);
   void draw (); 
   static int pointsPerContour; 
