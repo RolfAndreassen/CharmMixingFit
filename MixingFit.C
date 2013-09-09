@@ -159,6 +159,7 @@ double MixingResult::calcEpsilon (double x,
     phi = rphi; 
   }
   else {
+    double thing = 0; 
     switch (fit_for_which) {
     case MixingResult::PHI_FREE:
       //qoverp = 1 - (y/x)*tan(phi);
@@ -171,6 +172,11 @@ double MixingResult::calcEpsilon (double x,
       // ie, y approaches zero, tan phi approaches infinity, phi is pi/2.
       else phi = atan(((1-qoverp*qoverp)/(1+qoverp*qoverp))*(x/y)); 
       break;
+    case DELTAGAMMA_FREE:
+      // Formal parameter qoverp is actually delta^gamma; calculate real qoverp from constraint. 
+      thing = (y/x)*tan(phi + qoverp);
+      qoverp = pow((1+thing)/(1-thing), 0.25); 
+      break; 
     default:
       break;
     }
@@ -737,6 +743,7 @@ int main (int argc, char** argv) {
     else if (lineType == "use_hfag_convention") use_hfag_convention = true;
     else if (lineType == "fit_for_qp") {fit_for_which = MixingResult::QP_FREE; which_override = true;}
     else if (lineType == "fit_for_phi") {fit_for_which = MixingResult::PHI_FREE; which_override = true;} 
+    else if (lineType == "fit_for_deltagamma") {fit_for_which = MixingResult::DELTAGAMMA_FREE; which_override = true;} 
     else if (lineType == "special_alex_fit") special_alex_fit = true; 
     else if (lineType == "skipGraphics") skipGraphics = true; 
     else if (lineType == "use_block_diag") {
@@ -819,11 +826,20 @@ int main (int argc, char** argv) {
   maxVal[6]   = 0.01; 
   parName[6]  = "rsubdp"; 
 
-  par[7]      = 1.00; 
-  stepSize[7] = 0.01;
-  minVal[7]   = 0.25;
-  maxVal[7]   = 1.9; 
-  parName[7]  = "qoverp"; 
+  if (MixingResult::DELTAGAMMA_FREE == fit_for_which) {
+    par[7]      = 0.00; 
+    stepSize[7] = 0.01;
+    minVal[7]   = -1.0;
+    maxVal[7]   = 1.0; 
+    parName[7]  = "delta_gamma"; 
+  }
+  else {
+    par[7]      = 1.00; 
+    stepSize[7] = 0.01;
+    minVal[7]   = 0.25;
+    maxVal[7]   = 1.9; 
+    parName[7]  = "qoverp"; 
+  }
   
   /*
   par[0] = 4.81799e-03;            
@@ -1016,6 +1032,9 @@ int main (int argc, char** argv) {
     }
     else if (lineType == "contours") {
       grpOpts >> fiveSigma >> fourSigma >> threeSigma >> twoSigma >> oneSigma; 
+    }
+    else if (lineType == "extraAxes") {
+      grpOpts >> drawer->extraXMultipler >> drawer->extraYMultiplier; 
     }
     else if (lineType == "endfile") break; 
   }
