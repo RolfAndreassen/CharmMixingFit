@@ -32,6 +32,8 @@ MixDrawer::MixDrawer ()
   , ymax(0.045)
   , xaxisTitle("x")
   , yaxisTitle("y")
+  , extraXMultiplier(-1)
+  , extraYMultiplier(-1)
 {}
 
 
@@ -204,6 +206,11 @@ void MixDrawer::draw () {
   foo->SetFrameBorderMode(0);
 
   // Kludge to get nice axis endpoints. 
+  // Taking weighted averages of xmin and xmax
+  // to get *graph* points that are a little 
+  // pulled in from the endpoints we want for
+  // the *axis*; then ROOT will give you a little
+  // bit of space around the *graph* points. 
   double XMIN = (xmax+11*xmin)/12;
   double XMAX = (xmin+11*xmax)/12;
   double YMIN = (ymax+11*ymin)/12;
@@ -270,8 +277,18 @@ void MixDrawer::draw () {
     }
   }
 
-    foo->SaveAs((directory + "/finalplot.png").c_str()); 
-    foo->SaveAs((directory + "/finalplot.pdf").c_str()); 
+  if (0 < extraXMultiplier) {
+    TF1* multXBy = new TF1("multXBy", "x", xmin, xmax);
+    TF1* multYBy1k = new TF1("multYBy1k", "1000*x", ymin*ymult, ymax*ymult);
+    TGaxis* xaxis = new TGaxis(xmin,ymin,xmax,ymin,"multXBy1k",510,"+");
+
+    TGaxis* yaxis = new TGaxis(xmin,ymin,xmin,ymax,"multYBy1k",510,"-");
+	
+
+  }
+
+  foo->SaveAs((directory + "/finalplot.png").c_str()); 
+  foo->SaveAs((directory + "/finalplot.pdf").c_str()); 
   delete foo; 
 }
 
@@ -928,10 +945,10 @@ void MixDrawer::drawEllipseForce_Adam (DrawOptions* dis, TCanvas* foo) {
   the_central_val->SetMarkerStyle(kFullDotLarge);
   the_central_val->SetMarkerColor(kMagenta);
   
-  double XMIN = (xmax+11*xmin)/12;//why??
-  double XMAX = (xmin+11*xmax)/12;//why??
-  double YMIN = (ymax+11*ymin)/12;//why??
-  double YMAX = (ymin+11*ymax)/12;//why??
+  double XMIN = (xmax+11*xmin)/12; // Nice axis endpoints. 
+  double XMAX = (xmin+11*xmax)/12;
+  double YMIN = (ymax+11*ymin)/12;
+  double YMAX = (ymin+11*ymax)/12;
   
   TH2F* histogram = new TH2F("hist", "", nbins, XMIN, XMAX, nbins, YMIN, YMAX); 
   //this is the final histogram we want to draw, so that'll be ok.
@@ -954,7 +971,7 @@ void MixDrawer::drawEllipseForce_Adam (DrawOptions* dis, TCanvas* foo) {
   MixingResult::minuit->SetErrorDef(1); //Reset Error Definition
   MixingResult::minuit->SetPrintLevel(-1); //let's not spit out all the shit.
 
-  for (int i = 1; i <= nbins; ++i) {
+  for (int i = 2; i < nbins; ++i) {
     //for (int i = 100; i <= 400; ++i) {
     double prevChisq = 1000; 
     double xval = xmin + (i + 0.5)*(xmax - xmin)/((double) nbins);//this is the grid position in x
@@ -963,13 +980,14 @@ void MixDrawer::drawEllipseForce_Adam (DrawOptions* dis, TCanvas* foo) {
     assert(0 == dummy);
     if (0 == i%25) std::cout << "Fitting line " << i << std::endl; 
     //for (int j = 200; j <= 1000; ++j) {
-    for (int j = 2; j <= nbins; ++j) {
+    for (int j = 2; j < nbins; ++j) {
       double yval = ymin + (j + 0.5)*(ymax - ymin)/((double) nbins);//this is the grid position in y
       sprintf(strbuf, "SET PAR %i %f", graphicsYIndex+1, yval);
       MixingResult::minuit->mncomd(strbuf, dummy);
       assert(0 == dummy);
       chisq = runFit() - centralChisq;
 
+      //std::cout << "Found chisq " << chisq << " " << centralChisq << std::endl; 
       if (chisq > fiveSigma) {
 	//std::cout << "Bad fit for (" << i << ", " << j << ") " << chisq << ", retrying with last working set.\n";
 	for (int p = 1; p <= 8; ++p) {
