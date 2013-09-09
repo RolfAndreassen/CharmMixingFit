@@ -93,9 +93,10 @@ void MixingResult::randomise () {//randomizer
 
 double getMixX (double x12, double y12, double phi12) {//
   x12 *= x12;
-  y12 *= y12; 
+  y12 *= y12;
 
   double ret = sqrt(x12 - y12 + sqrt(pow(x12+y12, 2) - x12*y12*pow(2*sin(phi12), 2)));
+
   if (cos(phi12) < 0) ret *= -1; 
   ret *= sqrt(0.5); 
 
@@ -105,8 +106,12 @@ double getMixX (double x12, double y12, double phi12) {//
 double getMixY (double x12, double y12, double phi12) {
   x12 *= x12;
   y12 *= y12; 
-  double ret = sqrt(y12 - x12 + sqrt(pow(x12+y12, 2) - x12*y12*pow(2*sin(phi12), 2)));
+  //  double ret = sqrt(y12 - x12 + sqrt(pow(x12+y12, 2) - x12*y12*pow(2*sin(phi12), 2)));
+  double ret = y12 - x12 + sqrt(pow(x12+y12, 2) - x12*y12*pow(2*sin(phi12), 2));
+  
+  if(ret!= ret){std::cout<<"x12 = "<<x12<<",y12 = "<<y12<<", phi12 = "<<phi12<</*"ret1 = "<<ret1<<*/", ret = "<<ret<<std::endl;}//debug
   assert(ret == ret);
+  ret=sqrt(ret);
   ret *= sqrt(0.5); 
   
   return ret;
@@ -124,9 +129,13 @@ double getQoverP (double x12, double y12, double phi12) {
 double getPhi (double x12, double y12, double phi12) {
   if (fabs(x12) <= fabs(y12)*1e-10) return 0; 
 
-  double ret = -sin(2*phi12);
+  /*  double ret = -sin(2*phi12);
   ret /= (cos(2*phi12) + (y12*y12/(x12*x12)));
-  ret = atan(ret); 
+  ret = atan(ret); */
+
+  double num = -sin(2*phi12);
+  double denom = (cos(2*phi12) + (y12*y12/(x12*x12))); 
+  double ret=atan2(num,denom);
   assert(ret == ret);
   ret *= 0.5; 
   return ret;  

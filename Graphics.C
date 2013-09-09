@@ -267,7 +267,8 @@ void MixDrawer::draw () {
       if (MixingResult::isSensitive[MixingResult::EKS]) {
 	//drawEllipse3(drawmap[MixingResult::fitResult], foo); 
 	//	drawEllipseForce(drawmap[MixingResult::fitResult], foo); 
-	drawEllipseForce_Adam(drawmap[MixingResult::fitResult], foo); 
+	if(graphicsYIndex==4){drawEllipse3(drawmap[MixingResult::fitResult], foo); }
+	else drawEllipseForce_Adam(drawmap[MixingResult::fitResult], foo); 
 	//drawEllipse(drawmap[MixingResult::fitResult], foo); 
       }
       else {
@@ -940,8 +941,8 @@ void MixDrawer::drawEllipseForce_Adam (DrawOptions* dis, TCanvas* foo) {
   }
 
   TGraph* the_central_val = new TGraph(1);
-  std::cout<<"set central val graph to (x,y) = ("<<orgpar[0]<<","<<orgpar[1]<<")"<<std::endl;
-  the_central_val->SetPoint(0,orgpar[0],orgpar[1]);
+  std::cout<<"set central val graph to ("<<xaxisTitle<<","<<yaxisTitle <<") = ("<<orgpar[graphicsXIndex]<<","<<orgpar[graphicsYIndex]<<")"<<std::endl;
+  the_central_val->SetPoint(0,orgpar[graphicsXIndex],orgpar[graphicsYIndex]);
   the_central_val->SetMarkerStyle(kFullDotLarge);
   the_central_val->SetMarkerColor(kMagenta);
   
@@ -975,7 +976,7 @@ void MixDrawer::drawEllipseForce_Adam (DrawOptions* dis, TCanvas* foo) {
     //for (int i = 100; i <= 400; ++i) {
     double prevChisq = 1000; 
     double xval = xmin + (i + 0.5)*(xmax - xmin)/((double) nbins);//this is the grid position in x
-    sprintf(strbuf, "SET PAR %i %f", graphicsXIndex+1, xval);
+    sprintf(strbuf, "SET PAR %i %f", graphicsXIndex+1, xval);  
     MixingResult::minuit->mncomd(strbuf, dummy);
     assert(0 == dummy);
     if (0 == i%25) std::cout << "Fitting line " << i << std::endl; 
@@ -996,16 +997,17 @@ void MixDrawer::drawEllipseForce_Adam (DrawOptions* dis, TCanvas* foo) {
 	  sprintf(strbuf, "SET PAR %i %f", p, wrkpar[p-1]);
 	  MixingResult::minuit->mncomd(strbuf, dummy);
 	  assert(0 == dummy);
+	  
 	}
 	chisq = runFit() - centralChisq;
-	if (chisq > 2*fiveSigma) {
+       	if (chisq > 2*fiveSigma) {
 	  //std::cout << "  Still bad, " << chisq << ", retrying with central values.\n";
 	  for (int p = 1; p <= 8; ++p) {
 	    if (p == graphicsXIndex+1) continue;
 	    if (p == graphicsYIndex+1) continue;
 	    sprintf(strbuf, "SET PAR %i %f", p, orgpar[p-1]);
 	    MixingResult::minuit->mncomd(strbuf, dummy);
-	    assert(0 == dummy);
+	    assert(0 == dummy);	  
 	  }
 	  chisq = runFit() - centralChisq;
 	  if (chisq > 3*fiveSigma) {
@@ -1017,7 +1019,6 @@ void MixDrawer::drawEllipseForce_Adam (DrawOptions* dis, TCanvas* foo) {
 	else for (int p = 0; p < MixingResult::nParams; ++p) MixingResult::minuit->GetParameter(p, wrkpar[p], fiterr[p]);
       }
       else for (int p = 0; p < MixingResult::nParams; ++p) MixingResult::minuit->GetParameter(p, wrkpar[p], fiterr[p]);
-      
       double fmin, fedm, errdef;
       int nparx, istat; 
       MixingResult::minuit->mnstat(fmin, fedm, errdef, dummy, nparx, istat);
@@ -1122,6 +1123,8 @@ void MixDrawer::drawEllipseForce_Adam (DrawOptions* dis, TCanvas* foo) {
     }
   }
   histogram->GetZaxis()->SetRangeUser(0,80);
+  histogram->GetXaxis()->SetTitle(xaxisTitle.c_str());
+  histogram->GetYaxis()->SetTitle(yaxisTitle.c_str());
   edmhist->GetZaxis()->SetRangeUser(0, 0.00001); 
   edmhist->Draw("colz"); 
   foo->SaveAs("edms.png"); 
@@ -1151,7 +1154,7 @@ std::vector<TGraph*> MixDrawer::drawEllipse3 (DrawOptions* dis, TCanvas* foo) {
   for (int i = 0; i < MixingResult::nParams; ++i) {
     MixingResult::minuit->GetParameter(i, fitpar[i], fiterr[i]);
   }
-
+  
   std::vector<TGraph*> ret(dis->numContours); 
   MixingResult::initialised = false; 
 
@@ -1198,6 +1201,15 @@ std::vector<TGraph*> MixDrawer::drawEllipse3 (DrawOptions* dis, TCanvas* foo) {
     if (ret[ell_num]) ret[ell_num]->Draw("if9");
   }
   ret[0]->Draw("if9");
+
+  
+  TGraph* the_central_val = new TGraph(1);
+  std::cout<<"set central val graph to ("<<xaxisTitle<<","<<yaxisTitle <<") = ("<<fitpar[graphicsXIndex]<<","<<fitpar[graphicsYIndex]<<")"<<std::endl;
+  the_central_val->SetPoint(0,fitpar[graphicsXIndex],fitpar[graphicsYIndex]);
+  the_central_val->SetMarkerStyle(kFullDotLarge);
+  the_central_val->SetMarkerColor(kMagenta);
+  the_central_val->Draw("samep");
+
   MixingResult::minuit->SetErrorDef(1.00);
   return ret; 
 }

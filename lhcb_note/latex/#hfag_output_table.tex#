@@ -1,0 +1,33 @@
+\begin{table}[htdp]
+%\begin{tiny}
+
+\begin{center}
+\resizebox{16cm}{!} {
+\begin{tabular}{|c||c||c||c|}
+\hline
+& No CPV & No Direct CPV & All CPV allowed
+
+$x[\%]                    $ & & \\ \hline
+
+$y[\%]                    $ & & \\ \hline
+
+$\delta_{K\pi}[\text{deg}]$ & & \\ \hline
+
+$\phi[\text{deg}]         $ & & \\ \hline
+
+$R_D^-[10^{-3}]           $ & & \\ \hline
+
+$R_D^+[10^{-3}]           $ & & \\ \hline
+
+$|q/p|[\%]                $ & & \\ \hline
+
+$\chi^2/ndf               $ & & \\ \hline
+
+\end{tabular}
+}
+\end{center}
+\caption{Output of the All CP Violation allowed global fit excluding the preliminary LHCb $A_\Gamma$ measurement. Different Columns list 
+differing subsets of data included in the fit.}
+\label{table:hfag_2013_april_table}
+%\end{tiny}
+\end{table}%

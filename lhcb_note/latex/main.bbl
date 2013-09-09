@@ -1,0 +1,89 @@
+\ifx\mcitethebibliography\mciteundefinedmacro
+\PackageError{LHCb.bst}{mciteplus.sty has not been loaded}
+{This bibstyle requires the use of the mciteplus package.}\fi
+\providecommand{\href}[2]{#2}
+\begin{mcitethebibliography}{1}
+\mciteSetBstSublistMode{n}
+\mciteSetBstMaxWidthForm{subitem}{\alph{mcitesubitemcount})}
+\mciteSetBstSublistLabelBeginEnd{\mcitemaxwidthsubitemform\space}
+{\relax}{\relax}
+
+\bibitem{HFAG}
+Heavy Flavor Averaging Group, Y.~Amhis {\em et~al.},
+  \ifthenelse{\boolean{articletitles}}{{\it {Averages of $b$-hadron,
+  $c$-hadron, and $\tau$-lepton properties as of early 2012}},
+  }{}\href{http://arxiv.org/abs/1207.1158}{{\tt arXiv:1207.1158}}, {updated
+  results and plots available at:
+  \href{http://www.slac.stanford.edu/xorg/hfag/}{{\tt
+  http://www.slac.stanford.edu/xorg/hfag/}}}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{Abe:2007rd}
+BELLE Collaboration, K.~Abe {\em et~al.},
+  \ifthenelse{\boolean{articletitles}}{{\it {Measurement of D0 - anti-D0 Mixing
+  Parameters in $D0 \to K(s)0 pi+ pi-$ decays}},
+  }{}\href{http://dx.doi.org/10.1103/PhysRevLett.99.131803}{Phys.\ Rev.\ Lett.\
+   {\bf 99} (2007) 131803}, \href{http://arxiv.org/abs/0704.1000}{{\tt
+  arXiv:0704.1000}}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{delAmoSanchez:2010xz}
+BaBar Collaboration, P.~del Amo~Sanchez {\em et~al.},
+  \ifthenelse{\boolean{articletitles}}{{\it {Measurement of D0-antiD0 mixing
+  parameters using $D0 \to K(S)0 pi+ pi-$ and $D0 \to K(S)0 K+ K-$ decays}},
+  }{}\href{http://dx.doi.org/10.1103/PhysRevLett.105.081803}{Phys.\ Rev.\
+  Lett.\  {\bf 105} (2010) 081803}, \href{http://arxiv.org/abs/1004.5053}{{\tt
+  arXiv:1004.5053}}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{Asner:2012xb}
+CLEO Collaboration, D.~Asner {\em et~al.},
+  \ifthenelse{\boolean{articletitles}}{{\it {Updated Measurement of the Strong
+  Phase in $D^0 \to K^+\pi^-$ Decay Using Quantum Correlations in $e^+e^- \to
+  D^0 \bar{D}^0$ at CLEO}},
+  }{}\href{http://dx.doi.org/10.1103/PhysRevD.86.112001}{Phys.\ Rev.\  {\bf
+  D86} (2012) 112001}, \href{http://arxiv.org/abs/1210.0939}{{\tt
+  arXiv:1210.0939}}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{Aubert:2007wf}
+BaBar Collaboration, B.~Aubert {\em et~al.},
+  \ifthenelse{\boolean{articletitles}}{{\it {Evidence for $D^0$ -anti-D0
+  Mixing}}, }{}\href{http://dx.doi.org/10.1103/PhysRevLett.98.211802}{Phys.\
+  Rev.\ Lett.\  {\bf 98} (2007) 211802},
+  \href{http://arxiv.org/abs/hep-ex/0703020}{{\tt arXiv:hep-ex/0703020}}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{Zhang:2006dp}
+BELLE Collaboration, L.~Zhang {\em et~al.},
+  \ifthenelse{\boolean{articletitles}}{{\it {Improved constraints on D0 -
+  anti-D0 mixing in D0 $\to$ K+ pi- decays at BELLE}},
+  }{}\href{http://dx.doi.org/10.1103/PhysRevLett.96.151801}{Phys.\ Rev.\ Lett.\
+   {\bf 96} (2006) 151801}, \href{http://arxiv.org/abs/hep-ex/0601029}{{\tt
+  arXiv:hep-ex/0601029}}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem{Aaltonen:2007ac}
+CDF Collaboration, T.~Aaltonen {\em et~al.},
+  \ifthenelse{\boolean{articletitles}}{{\it {Evidence for $D^0 - \bar{D}^0$
+  mixing using the CDF II Detector}},
+  }{}\href{http://dx.doi.org/10.1103/PhysRevLett.100.121802}{Phys.\ Rev.\
+  Lett.\  {\bf 100} (2008) 121802}, \href{http://arxiv.org/abs/0712.1567}{{\tt
+  arXiv:0712.1567}}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\end{mcitethebibliography}

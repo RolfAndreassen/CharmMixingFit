@@ -109,8 +109,6 @@ correlation babar_kspipi_x babar_kspipi_y 0.0615
 #
 fitlist hfag_ycp lhcb_xp2_m lhcb_yprime_m lhcb_rd_m lhcb_xp2_p lhcb_yprime_p lhcb_rd_p belle_kspipi_x belle_kspipi_y belle_qoverp belle_phi cleo_cosd cleo_sind cleo_rd cleo_x2 cleo_y cdf_rd cdf_xp2 cdf_yprime belle_rd_m belle_xp2_m belle_yprime_m belle_rd_p belle_xp2_p belle_yprime_p babar_kspipi_x babar_kspipi_y hfag_agamma endline 
 #
-
-
 use_hfag_convention yes 
 allow_all_cpv 
 #skipGraphics
