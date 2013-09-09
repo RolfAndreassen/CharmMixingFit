@@ -1043,7 +1043,7 @@ int main (int argc, char** argv) {
       grpOpts >> fiveSigma >> fourSigma >> threeSigma >> twoSigma >> oneSigma; 
     }
     else if (lineType == "extraAxes") {
-      grpOpts >> drawer->extraXMultipler >> drawer->extraYMultiplier; 
+      grpOpts >> drawer->extraXMultiplier >> drawer->extraYMultiplier; 
     }
     else if (lineType == "endfile") break; 
   }
