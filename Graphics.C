@@ -267,8 +267,8 @@ void MixDrawer::draw () {
       if (MixingResult::isSensitive[MixingResult::EKS]) {
 	//drawEllipse3(drawmap[MixingResult::fitResult], foo); 
 	//	drawEllipseForce(drawmap[MixingResult::fitResult], foo); 
-	if(graphicsYIndex==4){drawEllipse3(drawmap[MixingResult::fitResult], foo); }
-	else drawEllipseForce_Adam(drawmap[MixingResult::fitResult], foo); 
+	//if(graphicsYIndex==4){drawEllipse3(drawmap[MixingResult::fitResult], foo); }
+	/*else*/ drawEllipseForce_Adam(drawmap[MixingResult::fitResult], foo); 
 	//drawEllipse(drawmap[MixingResult::fitResult], foo); 
       }
       else {
@@ -945,12 +945,16 @@ void MixDrawer::drawEllipseForce_Adam (DrawOptions* dis, TCanvas* foo) {
   the_central_val->SetPoint(0,orgpar[graphicsXIndex],orgpar[graphicsYIndex]);
   the_central_val->SetMarkerStyle(kFullDotLarge);
   the_central_val->SetMarkerColor(kMagenta);
-  
+  /*  
   double XMIN = (xmax+11*xmin)/12; // Nice axis endpoints. 
   double XMAX = (xmin+11*xmax)/12;
   double YMIN = (ymax+11*ymin)/12;
   double YMAX = (ymin+11*ymax)/12;
-  
+  */
+  double XMIN = xmin-(xmin/(double)nbins*0.5);//shift by half a bin to make the bin centers correct
+  double XMAX = xmax+(xmax/(double)nbins*0.5);
+  double YMIN = ymin-(ymin/(double)nbins*0.5);
+  double YMAX = ymax+(ymax/(double)nbins*0.5);
   TH2F* histogram = new TH2F("hist", "", nbins, XMIN, XMAX, nbins, YMIN, YMAX); 
   //this is the final histogram we want to draw, so that'll be ok.
   
@@ -1145,7 +1149,7 @@ void MixDrawer::drawEllipseForce_Adam (DrawOptions* dis, TCanvas* foo) {
   TColor::SetPalette(8, colors_new); 
 
   histogram->Draw("col"); 
-  the_central_val->Draw("samep");
+  the_central_val->Draw("p");
 }
 
 std::vector<TGraph*> MixDrawer::drawEllipse3 (DrawOptions* dis, TCanvas* foo) {
