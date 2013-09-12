@@ -536,7 +536,8 @@ bool MixingResult::isSensitiveTo (int param) const {
     if (YPRIME_P == myType) return true; 
     if (YPRIME_M == myType) return true; 
     if (XPRIME_P == myType) return true; 
-    if (XPRIME_M == myType) return true; 
+    if (XPRIME_M == myType) return true;
+    if (PHI == myType) return true;//added to fix sensitivity to phi
     return false;
   case RSUBDP:
     if ((RD == myType) && (ALL_CPV == allowcpv)) return true; 
@@ -734,8 +735,10 @@ int main (int argc, char** argv) {
       std::string name;
       while (true) {
 	fitOpts >> name;
+	std::cout<<"name = "<<name<<std::endl;
 	if (name == "endline") break;
 	MixingResult* one = MixingResult::getByName(name);
+	std::cout<<"got "<< one->getName()<<std::endl;
 	one->setActive(true); 
 	std::cout << "Activating result: " << name << std::endl; 
 	numActive++; 
